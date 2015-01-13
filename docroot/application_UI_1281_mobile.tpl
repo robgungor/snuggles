@@ -1,6 +1,6 @@
-<!-- BEGIN info -->
+<!-- BEGIN info 
 README - IMPORTANT - REMOVED THIS BLOCK! This is the default MySpace player template for all doors. To customize this template for other doors, save it as a template in the format embed_myspace_*doorid*.tpl Keep all the sws in the door's folder under swf ex: host-d.oddcast.com/door name/swf/player.swf Same with all the images ex: host-d.oddcast.com/door name/images/ Template Variables: {doorId} => The Door ID {clientId} => The Client ID {topicId} => The Topic ID {messageId} => The Message Id {movieURL} => The URL to the SWF {baseURL} => Accelrated URL {imageURL} => Path the image folder {title} => Application Title {descp} => Application Description {contentURL} => Content Domain URL {jsURL} => Accelerated URL /includes/ {fbcApplicationKey} => sets fbconnect key value {fbcURL} => script tags for fbconnect and related oddcast functions The below JAVASCRIPT was done this way so that each workshop can have there own parameters passed to them.
-<!-- END info -->
+END info -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
 
@@ -9,10 +9,10 @@ README - IMPORTANT - REMOVED THIS BLOCK! This is the default MySpace player temp
 
 
     <!--THIS NEEDS TO BE ABOVE BASE-->
-    <base href="http://{dynamicURL}/nutcracker-2014/mobile/" />
+    <!--<base href="http://{dynamicURL}/nutcracker-2014/mobile/" /> -->
 
     <title>Snuggle&#039;s Share a Snug</title>
-    <!-- zei test-->
+    
     <!-- Open Graph data -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{baseURL}" />
@@ -27,7 +27,7 @@ README - IMPORTANT - REMOVED THIS BLOCK! This is the default MySpace player temp
     <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=yes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     
-    {youTubeJS}
+    <!-- {youTubeJS}-->
 
     <link href='http://fonts.googleapis.com/css?family=Dosis:800' rel='stylesheet' type='text/css'>
  
@@ -150,6 +150,7 @@ README - IMPORTANT - REMOVED THIS BLOCK! This is the default MySpace player temp
             position: absolute;          
             left: 73px;
             top: 19px;
+            top: 26px;
             width: 1px;
             overflow: hidden; 
             -webkit-transition: width .5s ease-out 0;
