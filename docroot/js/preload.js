@@ -38,6 +38,7 @@
               }
             },
             loadJS: function(file, callback) {
+              //TODO - handle an array instead of a file
               var script = d.createElement("script");
               script.type = "text/javascript";
               var self = this;
@@ -65,6 +66,32 @@
               }
               d.getElementsByTagName("head")[0].appendChild(script);
             },
+            loadJavascripts: function(callback){
+                var self = this,
+                    filesToLoad = ['../img/main/video-placehold.jpg',
+                                    '../img/main/button-email.png',
+                                    '../img/main/input-bg.jpg'
+                                    ],
+                    filesTotal;
+                                            
+                var onJSLoaded = function (){
+                    // remove the previous loaded image
+                    filesToLoad = filesToLoad.slice(1, filesToLoad.length);
+                    
+                    var filesLeft = filesTotal-filesToLoad.length;                    
+                    self.jsPercentLoaded = (filesLeft/filesTotal);
+                   
+                    if(imagesToLoad.length > 0) loadNextImage();
+                    else callback();
+                }
+
+                var loadNext = function(){
+                    self.loadJS(filesToLoad[0], onJSLoaded);
+                };
+
+                imagesTotal = imagesToLoad.length;
+                loadNextImage();
+            },  
             loadFiles: function(production, obj, callback) {
               var self = this;
               
@@ -86,6 +113,8 @@
                   if(obj["dev-js"]) {                    
                     // Loads Require.js and tells Require.js to find the correct intialization file
                     self.loadJS(obj["dev-js"], callback);
+                    //TODO
+                    //self.loadJavascripts(callback);
                   }
                 });
               }
@@ -98,27 +127,31 @@
                                     ],
                     imagesTotal;
                                             
-                    if (window.devicePixelRatio == 2) {
+                    //if (window.devicePixelRatio == 2) {
                       //retina images
                       imagesToLoad.push.apply(imagesToLoad, 
                         [ '../img/main/share-a-snug-logo@2x.png',
-                          '../img/main/bubble-button-bg@2x.png',                   
+                          '../img/main/bubble-button-bg@2x.png',
+                          '../img/main/bubble-button-bg-active@2x.png',
                           '../img/main/button-email@2x.png',
+                          '../img/main/button-email-active@2x.png',
                           '../img/main/button-fb@2x.png',
+                          '../img/main/button-fb-active@2x.png',
                           '../img/main/bubble-button-long-bg@2x.png',
-                          '../img/main/button-twitter@2x.png'
+                          '../img/main/button-twitter@2x.png',
+                          '../img/main/button-twitter-active@2x.png'
                         ]);
 
-                    } else{
-                      imagesToLoad.push.apply(imagesToLoad, 
-                        [ '../img/main/share-a-snug-logo.png',
-                          '../img/main/customize-and-share.png',
-                          '../img/main/bubble-button-bg.png',
-                          '../img/main/bubble-button-long-bg.png',
-                          '../img/main/button-fb.png',
-                          '../img/main/button-twitter.png'                          
-                        ]);
-                    }       
+                    // } else{
+                    //   imagesToLoad.push.apply(imagesToLoad, 
+                    //     [ '../img/main/share-a-snug-logo.png',
+                    //       '../img/main/customize-and-share.png',
+                    //       '../img/main/bubble-button-bg.png',
+                    //       '../img/main/bubble-button-long-bg.png',
+                    //       '../img/main/button-fb.png',
+                    //       '../img/main/button-twitter.png'                          
+                    //     ]);
+                    // }       
 
                 var onImageLoaded = function (){
                     // remove the previous loaded image
