@@ -1,0 +1,1156 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.screenCanvas {
+  text-align: center;
+  /*            margin: 0 auto;*/ }
+
+body {
+  background-color: #24afe9;
+  font-family: 'Dosis', sans-serif;
+  min-height: 100%;
+  height: 100%;
+  height: 100vh;
+  min-height: 100vh; }
+
+.main {
+  /*	        width: 100%;*/ }
+
+a:link {
+  color: white; }
+
+a:visited {
+  color: white; }
+
+a:hover {
+  color: white; }
+
+a:active {
+  color: white; }
+
+button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+main {
+  background: url(../img/common/main-bg.jpg) no-repeat top left;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  display: none;
+  min-height: 620px; }
+  main header {
+    height: 15%;
+    position: relative; }
+    main header .logo {
+      bottom: -12%;
+      position: absolute;
+      width: 62%;
+      height: auto; }
+    main header .caption {
+      position: absolute;
+      right: 30px;
+      bottom: 10%;
+      width: 33%;
+      height: auto; }
+  main #video-container {
+    padding: 0 18px; }
+    main #video-container img {
+      width: 100%; }
+  main form {
+    text-align: right; }
+    main form .form-row {
+      padding-right: 20px; }
+    main form .ui-helper-hidden-accessible {
+      display: none; }
+    main form input {
+      width: calc(94% - 40px);
+      height: 10.25vw;
+      margin-bottom: .55rem;
+      font-family: 'Dosis', sans-serif;
+      color: #fff;
+      background: url(../img/main/input-bg.jpg) no-repeat left;
+      background-size: 100%;
+      border: none;
+      padding-top: .1rem;
+      font-size: .98rem;
+      text-align: center; }
+      main form input:-webkit-autofill {
+        background: url(../img/main/input-bg.jpg) no-repeat left; }
+    main form label {
+      font-size: .9em;
+      color: #1eafeb; }
+    main form ::-webkit-input-placeholder {
+      color: #ffffff; }
+    main form :-moz-placeholder {
+      color: #ffffff; }
+    main form ::-moz-placeholder {
+      color: #ffffff; }
+    main form :-ms-input-placeholder {
+      color: #ffffff; }
+    main form textarea:focus, main form input:focus, main form *:focus {
+      outline: 0; }
+  main #message-selection header {
+    color: #1eafeb;
+    text-align: center;
+    font-size: .9rem;
+    margin-top: .4rem;
+    margin-bottom: .2rem; }
+  main #message-selection nav {
+    text-align: center; }
+    main #message-selection nav .bubble {
+      font-family: 'Dosis', sans-serif;
+      background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
+      color: #d747b8;
+      width: 147px;
+      height: 50px;
+      border: 0;
+      outline: none;
+      background-position-y: 5px;
+      line-height: 0px;
+      padding-bottom: 7px;
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3);
+      -ms-transform: scale(1.3);
+      margin: .175rem 1.2rem;
+      font-size: .8em;
+      background-size: 100%; }
+      @media screen and (max-width: 320px) {
+        main #message-selection nav .bubble {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          -ms-transform: scale(1);
+          margin: 0;
+          margin-bottom: -8px; } }
+      main #message-selection nav .bubble:active {
+        background: url(../img/main/bubble-button-bg-active@2x.png) no-repeat;
+        background-size: 100%;
+        padding-top: 9px;
+        height: 37px; }
+      main #message-selection nav .bubble.last:active {
+        margin-bottom: 16px; }
+  main #sharing {
+    margin-top: 6px; }
+    main #sharing aside {
+      color: #1eafeb;
+      float: left;
+      padding: 22px 0px 0px 20px;
+      font-size: 0.9rem; }
+    main #sharing nav button {
+      list-style: none;
+      float: left;
+      display: block;
+      min-width: 50px;
+      min-height: 50px;
+      width: 19vw;
+      height: 19vw;
+      margin-left: 2%;
+      border: none;
+      background-size: 100%;
+      border: 0;
+      outline: none;
+      background-color: transparent; }
+      main #sharing nav button:active {
+        border: none;
+        outline: none; }
+      main #sharing nav button.fb {
+        background-image: url("../img/main/button-fb@2x.png"); }
+        main #sharing nav button.fb:active {
+          background-image: url("../img/main/button-fb-active@2x.png"); }
+      main #sharing nav button.twitter {
+        background-image: url("../img/main/button-twitter@2x.png"); }
+        main #sharing nav button.twitter:active {
+          background-image: url("../img/main/button-twitter-active@2x.png"); }
+      main #sharing nav button.email {
+        background-image: url("../img/main/button-email@2x.png"); }
+        main #sharing nav button.email:active {
+          background-image: url("../img/main/button-email-active@2x.png"); }
+
+ul.ui-autocomplete {
+  max-width: calc(94% - 60px);
+  background: #ffffff; }
+  ul.ui-autocomplete li {
+    list-style: none;
+    padding: 1px .8rem; }
+    ul.ui-autocomplete li a {
+      color: #1eafeb; }
+
+/*////////////////////////////////////////////////////////////////// All stuff */
+/*////////////////////////////////////////////////////////////////// header stuff */
+.headerCanvas {
+  background-image: url(images/header.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #24afe9;
+  background-size: contain;
+  border-bottom: 3px solid #FFF; }
+
+.headerCanvas {
+  top: 0px;
+  height: 72px;
+  width: 100%; }
+
+/*////////////////////////////////////////////////////////////////// landing page stuff */
+/*////////////////////////////////////////////////////////////////// video page stuff */
+#videoPage {
+  background-image: url(images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0; }
+
+/*////////////////////////////////////////////////////////////////// bigshow page stuff */
+#bigshowPage {
+  background-image: url("images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0px;
+  padding: 0px;
+  background-position: center center; }
+
+#bigshowPage #balls_img {
+  padding-bottom: 20px; }
+
+.bigshow_videoPage {
+  float: none;
+  width: 100%;
+  clear: both; }
+
+.btn_videoPage_shareBtns {
+  width: 131px;
+  height: 30px;
+  background-image: url("images/btn_createyourown.gif");
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-size: cover;
+  border-style: none;
+  margin: 20px; }
+
+/*////////////////////////////////////////////////////////////////// share page stuff */
+#sharePage {
+  background-image: url(images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 230px; }
+
+#urlHolder {
+  padding-top: 130px; }
+
+#url_text_area {
+  background-image: url(images/pop_email_horizontal.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 266px;
+  height: 157px;
+  /*            margin: auto;*/
+  margin: 20px; }
+
+#url_text_area p {
+  padding-top: 30px; }
+
+#url_text_input {
+  width: 230px; }
+
+#url_text {
+  width: 266px;
+  margin: auto; }
+
+#button_X {
+  background-image: url(images/btn_x.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 25px;
+  height: 25px;
+  border-style: none;
+  background-color: transparent;
+  float: right; }
+
+#button_ok {
+  background-image: url(images/btn_ok.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 144px;
+  height: 33px;
+  border-style: none; }
+
+/*////////////////////////////////////////////////////////////////// footer stuff */
+.footerCanvas {
+  height: 45px;
+  background-color: #24afe9;
+  color: #ffffff;
+  /*	        position: absolute;*/
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 0.6em; }
+
+.footerCanvas #links {
+  float: left;
+  top: 25%;
+  position: relative;
+  width: 33%; }
+
+.footerCanvas #copyright {
+  top: 25%;
+  position: relative;
+  float: left;
+  width: 33%; }
+
+.footerCanvas #enjoy {
+  top: 25%;
+  position: relative;
+  float: left;
+  width: 33%; }
+
+.footerCanvas #enjoy_img {
+  width: 50px; }
+
+/* FROM MATT */
+.videoPage_shareBtns {
+  height: 41px;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+#video_share_text {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #b48847;
+  float: left;
+  line-height: 41px;
+  padding-left: 20px; }
+
+.shareBtn {
+  width: 42px;
+  height: 42px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-size: cover;
+  border-style: none;
+  background-color: transparent; }
+
+/*
+	.shareBtn:hover{	background-position: 0 -83px;}
+	.shareBtn:active{	background-position: 0 -83px;} margin:0 10px 0;
+*/
+.shareBtn_fb {
+  background-image: url("images/--share_facebook.png"); }
+
+.shareBtn_twitter {
+  background-image: url("images/--share_twitter.png"); }
+
+.shareBtn_email {
+  background-image: url("images/--share_email.png"); }
+
+.shareBtn_geturl {
+  background-image: url("images/--share_link.png"); }
+
+/* dropmenus --------- */
+.dropmenus {
+  text-align: center;
+  margin: 10px auto;
+  width: 185px;
+  height: 66px;
+  position: relative;
+  display: none; }
+
+.dropmenus .dropmenusHeader {
+  height: 50px;
+  top: 0px;
+  cursor: pointer;
+  clear: both; }
+
+.dropmenus .dropmenusBody {
+  /*		width:185px;*/
+  height: 200px;
+  /*		background-color: #ffffff;*/
+  position: absolute;
+  display: none; }
+
+.dropmenus .dropmenusHeader .selectedAudioBtn {
+  width: 185px;
+  height: 50px;
+  background-image: url("images/btn_brown_hit.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-style: none; }
+
+.dropmenus .dropmenusBody .audioBtns {
+  /*		width:185px;*/ }
+
+.audioBtns .audioBtn {
+  width: 185px;
+  height: 50px;
+  margin: 0px 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border-style: none; }
+
+.audioBtns .audioBtn:hover {
+  background-image: url("images/btn_brown.gif"); }
+
+.audioBtns .audioBtn:active {
+  background-image: url("images/btn_brown.gif"); }
+
+.audioBtns .btnSelected {
+  cursor: auto; }
+
+.audioBtns .btn01 {
+  background-image: url("images/btn_brown_hit.gif"); }
+
+.audioBtns .btn02 {
+  background-image: url("images/btn_brown_hit.gif"); }
+
+.audioBtns .btn03 {
+  background-image: url("images/btn_brown_hit.gif"); }
+
+.audioBtns .btn04 {
+  background-image: url("images/btn_brown_hit.gif"); }
+
+/* dropmenus --------- */
+@media only screen and (orientation: portrait) {
+  #landingPage {
+    background-image: url(images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-position: center center; }
+
+  .landingCanvasContent {
+    text-align: center; }
+
+  #nut_img {
+    float: left;
+    width: 40%;
+    padding-top: 100px;
+    left: -30px;
+    position: relative; }
+
+  .landingCanvasContent_balls {
+    padding-left: 10px; }
+
+  #balls_img {
+    float: right;
+    width: 40%; }
+
+  .landingCanvasContent_text {
+    align-items: center;
+    color: #512F25;
+    width: 60%;
+    padding-top: 20px;
+    /*	        padding-bottom: 20px;*/
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1.2em;
+    float: right; }
+
+  .landingCanvasContent_button {
+    padding-top: 20px; }
+
+  #button_get_started {
+    background-image: url(images/btn_getstarted.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 33px;
+    border-style: none; }
+
+  #videoPage {
+    background-image: url(images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-position: center center; }
+
+  #select_video {
+    /* -webkit-appearance:none; ios */
+    width: 285px;
+    height: 33px;
+    background-color: #8F613F;
+    background-image: url("images/btn_dropdown_select_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center;
+    color: transparent;
+    margin-top: 10px;
+    padding: 0px; }
+
+  #vid1 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_nutshell_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  #vid2 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_nuttynice_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  #vid3 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_downunder_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  #vid4 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_winederful_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  #introVideo {
+    margin: auto;
+    display: inline-block; }
+
+  .dropmenus {
+    display: block; }
+
+  #button_ok {
+    background-image: url(images/btn_ok.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 38px;
+    border-style: none;
+    margin-top: 10px; }
+
+  .landingCanvasContent_mantel {
+    height: 72px;
+    background-image: url(images/mantle.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    clear: both; }
+
+  #sharePage {
+    height: 380px; }
+
+  #urlHolder {
+    padding-top: 130px; } }
+@media only screen and (orientation: landscape) {
+  .headerCanvas {
+    top: 0px;
+    height: 100px;
+    width: 100%; }
+
+  #landingPage {
+    background-image: url(images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-position: center 35%; }
+
+  .landingCanvasContent {
+    text-align: center; }
+
+  #nut_img {
+    width: 33%;
+    float: left;
+    left: 30px;
+    position: relative; }
+
+  .landingCanvasContent_balls {
+    padding-left: 10px; }
+
+  #balls_img {
+    float: right;
+    width: 25%; }
+
+  .landingCanvasContent_text {
+    align-items: center;
+    color: #512F25;
+    width: 33%;
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1.4em;
+    float: right;
+    padding-top: 30px;
+    padding-bottom: 0px;
+    padding-right: 30px;
+    /*
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+    */ }
+
+  .landingCanvasContent_button {
+    padding-top: 15px; }
+
+  #button_frame {
+    padding: 3px;
+    background-color: #000080; }
+
+  #button_get_started {
+    background-image: url(images/btn_getstarted.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 33px;
+    margin: 3px;
+    border-style: none; }
+
+  #videoPage {
+    background-image: url(images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-position: center 35%; }
+
+  #select_video {
+    /* -webkit-appearance:none; ios */
+    width: 285px;
+    height: 33px;
+    background-color: #8F613F;
+    background-image: url("images/btn_dropdown_select_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center;
+    color: transparent;
+    margin-top: 10px;
+    padding: 0px; }
+
+  #vid1 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_nutshell_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  #vid2 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_nuttynice_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  #vid3 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_downunder_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  #vid4 {
+    width: 285px;
+    height: 33px;
+    background-image: url("images/btn_dropdown_winederful_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    text-align: center; }
+
+  .dropmenus {
+    display: none; }
+
+  .videoHolder {
+    float: left;
+    width: 75%;
+    margin-bottom: 30px; }
+
+  .videoPage_shareBtns {
+    float: right;
+    width: 25%; }
+
+  #video_share_text {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #B48847;
+    line-height: 20px;
+    padding-left: 0px;
+    float: none; }
+
+  #button_ok {
+    background-image: url("images/btn_ok.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 38px;
+    border-style: none;
+    margin-top: 100px; }
+
+  .shareBtn_fb {
+    margin: 0; }
+
+  .shareBtn_twitter {
+    /*            margin: 0;*/ }
+
+  .shareBtn_email {
+    margin: 0; }
+
+  .shareBtn_geturl {
+    /*            margin: 0;*/ }
+
+  #sharePage {
+    height: 230px; }
+
+  #urlHolder {
+    padding-top: 10px;
+    padding-left: 50px; }
+
+  .landingCanvasContent_mantel {
+    height: 72px;
+    background-image: url(images/mantle.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    clear: both; } }
+/*==========  Mobile First Method  ==========*/
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) and (orientation: portrait) {
+  .headerCanvas {
+    top: 0px;
+    height: 50px;
+    width: 100%; }
+
+  .landingCanvasContent_text {
+    font-size: 0.8em;
+    padding-top: 30px; }
+
+  .landingCanvasContent_video_buttons {
+    display: none; }
+
+  #introVideo {
+    width: 300px;
+    height: 166px; }
+
+  #bigshowVideo {
+    width: 300px;
+    height: 166px; }
+
+  #button_ok {
+    background-image: url(images/btn_ok.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 38px;
+    border-style: none;
+    margin-top: 10px; } }
+@media only screen and (min-width: 320px) and (orientation: landscape) {
+  .headerCanvas {
+    height: 50px; }
+
+  #nut_img {
+    width: 100px; }
+
+  .landingCanvasContent_text {
+    font-size: 0.8em;
+    /*            padding-top: 50px;*/
+    padding-bottom: 0px; }
+
+  .dropmenus {
+    display: block;
+    float: left;
+    width: 70%; }
+
+  .landingCanvasContent_video_buttons {
+    display: none;
+    /*
+                width: 185px;
+                height: 50px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-style: none;
+    */ }
+
+  /*
+          .landingCanvasContent_video_buttons vid_1{background-image: url('images/btn_brown_hit.gif');}
+          .landingCanvasContent_video_buttons vid_2{background-image: url('images/btn_brown_hit.gif');}
+          .landingCanvasContent_video_buttons vid_3{background-image: url('images/btn_brown_hit.gif');}
+          .landingCanvasContent_video_buttons vid_4{background-image: url('images/btn_brown_hit.gif');}
+  */
+  #introVideo {
+    width: 300px;
+    height: 166px;
+    margin: auto; }
+
+  #bigshowVideo {
+    width: 300px;
+    height: 166px; }
+
+  #button_ok {
+    background-image: url("images/btn_ok.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 38px;
+    border-style: none;
+    margin-top: 10px; }
+
+  .landingCanvasContent_mantel {
+    height: 36px; }
+
+  .footerCanvas {
+    height: 35px; } }
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 670px) {
+  #select_video {
+    display: none; }
+
+  .landingCanvasContent_video_buttons {
+    display: block;
+    clear: both; }
+
+  .landingCanvasContent_video_buttons #vid_1 {
+    width: 120px;
+    height: 31px;
+    background-image: url("images/btn_scene_nutshell_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  .landingCanvasContent_video_buttons #vid_2 {
+    width: 120px;
+    height: 31px;
+    background-image: url("images/btn_scene_nuttynice_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  .landingCanvasContent_video_buttons #vid_3 {
+    width: 120px;
+    height: 31px;
+    background-image: url("images/btn_scene_downunder_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  .landingCanvasContent_video_buttons #vid_4 {
+    width: 120px;
+    height: 31px;
+    background-image: url("images/btn_scene_winederful_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  #introVideo {
+    width: 550px;
+    height: 305px; }
+
+  #video_share_text {
+    font-size: 1.8em;
+    line-height: 83px;
+    padding-left: 50px; }
+
+  #video_share_text p {
+    /*            width: 20%;*/
+    float: right;
+    padding-right: 50px; }
+
+  .shareBtn {
+    width: 83px;
+    height: 83px; } }
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) and (orientation: portrait) {
+  .headerCanvas {
+    height: 162px; }
+
+  #nut_img {
+    width: 340px;
+    left: 0px;
+    padding-top: 50px; }
+
+  #videoPage .landingCanvasContent .landingCanvasContent_balls #balls_img {
+    float: right;
+    width: 200px; }
+
+  .landingCanvasContent_text {
+    font-size: 1.4em;
+    padding-top: 50px;
+    width: 287px;
+    padding-right: 80px; }
+
+  #button_get_started {
+    width: 287px;
+    height: 67px; }
+
+  .dropmenus {
+    display: none; }
+
+  .landingCanvasContent_video_buttons {
+    display: block;
+    clear: both; }
+
+  .landingCanvasContent_video_buttons #vid_1 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_nutshell_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  .landingCanvasContent_video_buttons #vid_2 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_nuttynice_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  .landingCanvasContent_video_buttons #vid_3 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_downunder_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  .landingCanvasContent_video_buttons #vid_4 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_winederful_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    /*          color: white;
+                font-weight: bold;*/ }
+
+  #select_video {
+    display: none; }
+
+  #introVideo {
+    width: 720px;
+    height: 400px; }
+
+  #bigshowVideo {
+    width: 720px;
+    height: 400px; }
+
+  .videoPage_shareBtns {
+    height: 83px; }
+
+  #video_share_text {
+    font-size: 1.8em;
+    line-height: 83px;
+    padding-left: 75px; }
+
+  #video_share_text p {
+    /*
+                display: block;
+                margin: auto;
+    */
+    width: 20%;
+    float: right; }
+
+  .shareBtn {
+    width: 83px;
+    height: 83px; }
+
+  #sharePage {
+    background-image: url(images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 730px; }
+
+  #urlHolder {
+    padding-top: 200px; }
+
+  #url_text_area {
+    background-image: url(images/pop_email_horizontal.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 532px;
+    height: 314px;
+    margin: auto; }
+
+  #url_text_input {
+    width: 430px; }
+
+  #button_ok {
+    background-image: url("images/btn_ok.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 38px;
+    border-style: none;
+    margin-top: 100px; }
+
+  .landingCanvasContent_mantel {
+    height: 72px; }
+
+  .footerCanvas {
+    height: 35px; } }
+@media only screen and (min-width: 768px) and (orientation: landscape) {
+  .headerCanvas {
+    height: 81px; }
+
+  #nut_img {
+    width: 250px; }
+
+  #balls_img {
+    width: 250px; }
+
+  .landingCanvasContent_text {
+    font-size: 1.4em;
+    padding-top: 150px;
+    padding-right: 90px; }
+
+  #button_get_started {
+    width: 287px;
+    height: 67px; }
+
+  .dropmenus {
+    display: none; }
+
+  .landingCanvasContent_video_buttons {
+    display: block;
+    clear: both;
+    float: left;
+    padding-left: 37px;
+    padding-bottom: 0px; }
+
+  .landingCanvasContent_video_buttons #vid_1 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_nutshell_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none;
+    padding-bottom: 0px; }
+
+  .landingCanvasContent_video_buttons #vid_2 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_nuttynice_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none; }
+
+  .landingCanvasContent_video_buttons #vid_3 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_downunder_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none; }
+
+  .landingCanvasContent_video_buttons #vid_4 {
+    width: 170px;
+    height: 36px;
+    background-image: url("images/btn_scene_winederful_over.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-style: none; }
+
+  #select_video {
+    display: none; }
+
+  #introVideo {
+    width: 720px;
+    height: 400px; }
+
+  #bigshowVideo {
+    width: 720px;
+    height: 400px; }
+
+  .videoPage_shareBtns {
+    height: 83px;
+    float: left;
+    width: 20%; }
+
+  #video_share_text {
+    font-size: 1.8em;
+    line-height: 83px; }
+
+  .shareBtn {
+    width: 83px;
+    height: 83px; }
+
+  #sharePage {
+    background-image: url(images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    height: 630px; }
+
+  #urlHolder {
+    padding-top: 200px; }
+
+  #url_text_area {
+    background-image: url(images/pop_email_horizontal.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 532px;
+    height: 314px;
+    margin: auto; }
+
+  #url_text_input {
+    width: 430px; }
+
+  #button_ok {
+    background-image: url("images/btn_ok.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 144px;
+    height: 38px;
+    border-style: none;
+    margin-top: 100px; }
+
+  .landingCanvasContent_mantel {
+    height: 72px; }
+
+  .footerCanvas {
+    height: 45px; } }
+/* Medium Devices, Desktops */
+/* Large Devices, Wide Screens */
+
+/*# sourceMappingURL=app.css.map */
