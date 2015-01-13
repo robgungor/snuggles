@@ -68,9 +68,9 @@
             },
             loadJavascripts: function(callback){
                 var self = this,
-                    filesToLoad = ['../img/main/video-placehold.jpg',
-                                    '../img/main/button-email.png',
-                                    '../img/main/input-bg.jpg'
+                    filesToLoad = ['img/main/video-placehold.jpg',
+                                    'img/main/button-email.png',
+                                    'img/main/input-bg.jpg'
                                     ],
                     filesTotal;
                                             
@@ -121,35 +121,35 @@
             },
             loadImages: function(callback){
                 var self = this,
-                    imagesToLoad = ['../img/main/video-placehold.jpg',
-                                    '../img/main/button-email.png',
-                                    '../img/main/input-bg.jpg'
+                    imagesToLoad = ['img/main/video-placehold.jpg',
+                                    'img/main/button-email.png',
+                                    'img/main/input-bg.jpg'
                                     ],
                     imagesTotal;
                                             
                     //if (window.devicePixelRatio == 2) {
                       //retina images
                       imagesToLoad.push.apply(imagesToLoad, 
-                        [ '../img/main/share-a-snug-logo@2x.png',
-                          '../img/main/bubble-button-bg@2x.png',
-                          '../img/main/bubble-button-bg-active@2x.png',
-                          '../img/main/button-email@2x.png',
-                          '../img/main/button-email-active@2x.png',
-                          '../img/main/button-fb@2x.png',
-                          '../img/main/button-fb-active@2x.png',
-                          '../img/main/bubble-button-long-bg@2x.png',
-                          '../img/main/button-twitter@2x.png',
-                          '../img/main/button-twitter-active@2x.png'
+                        [ 'img/main/share-a-snug-logo@2x.png',
+                          'img/main/bubble-button-bg@2x.png',
+                          'img/main/bubble-button-bg-active@2x.png',
+                          'img/main/button-email@2x.png',
+                          'img/main/button-email-active@2x.png',
+                          'img/main/button-fb@2x.png',
+                          'img/main/button-fb-active@2x.png',
+                          'img/main/bubble-button-long-bg@2x.png',
+                          'img/main/button-twitter@2x.png',
+                          'img/main/button-twitter-active@2x.png'
                         ]);
 
                     // } else{
                     //   imagesToLoad.push.apply(imagesToLoad, 
-                    //     [ '../img/main/share-a-snug-logo.png',
-                    //       '../img/main/customize-and-share.png',
-                    //       '../img/main/bubble-button-bg.png',
-                    //       '../img/main/bubble-button-long-bg.png',
-                    //       '../img/main/button-fb.png',
-                    //       '../img/main/button-twitter.png'                          
+                    //     [ 'img/main/share-a-snug-logo.png',
+                    //       'img/main/customize-and-share.png',
+                    //       'img/main/bubble-button-bg.png',
+                    //       'img/main/bubble-button-long-bg.png',
+                    //       'img/main/button-fb.png',
+                    //       'img/main/button-twitter.png'                          
                     //     ]);
                     // }       
 
@@ -212,15 +212,15 @@
             // Mobile/Tablet CSS and JavaScript files to load
             filesToLoad = {
               // CSS file that is loaded when in development mode
-              "dev-css": "../css/app.css",
+              "dev-css": "css/app.css",
               // CSS file that is loaded when in production mode
-              "prod-css": "../css/app.min.css",
+              "prod-css": "css/app.min.css",
               // Require.js configuration file that is loaded when in development mode
-              "dev-js": { "data-main": "/js/app/config/config.js", "src": "/js/libs/require.js" },
+              "dev-js": { "data-main": "js/app/config/config.js", "src": "js/libs/require.js" },
               // JavaScript initialization file that is also loaded when in development mode
-              "dev-init": "/js/app/init/MobileInit.js",
+              "dev-init": "js/app/init/MobileInit.js",
               // JavaScript file that is loaded when in production mode
-              "prod-js": "/js/app/init/MobileInit.min.js",
+              "prod-js": "js/app/init/MobileInit.min.js",
             };
 
           //}
