@@ -4,7 +4,8 @@
 	<img class='caption' src="img/main/customize-and-share@2x.png" width='104' height='32'/>	
 </header>
 
-<section id="video-container"><img src="img/main/video-placehold.jpg"/></section>
+<!-- rendered in video-preview.html -->
+<section id="video-preview"></section>
 
 <section>
 
@@ -12,7 +13,7 @@
 
 		<div class="form-row">
 			<label for="fname">From:</label>
-			<input autofocus id="fname" name="fname" placeholder="Type Your First Name">
+			<input id="fname" name="fname" placeholder="Type Your First Name">
 		</div>
 
 		<div class="form-row ui-widget">
@@ -30,11 +31,11 @@
 		<header>Select a Message:</header>
 		
 		<nav>
-			<button class="bubble">Super Snuggle</button>
-			<button class="bubble">Hearts</button>
-			<button class="bubble">Kisses &amp; Snuggles</button>
-			<button class="bubble">Love You Forever</button>
-			<button class="bubble last">Snug You This Much</button>			
+			<button class="bubble selected" data-video-name="super-snuggle">Super Snuggle</button>
+			<button class="bubble" data-video-name="hearts">Hearts</button>
+			<button class="bubble" data-video-name="kisses">Kisses &amp; Snuggles</button>
+			<button class="bubble" data-video-name="love-you-forever">Love You Forever</button>
+			<button class="bubble last" data-video-name="snug-you-this-much">Snug You This Much</button>			
 		</nav>
 
 </section>

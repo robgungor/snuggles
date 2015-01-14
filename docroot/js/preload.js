@@ -121,7 +121,7 @@
             },
             loadImages: function(callback){
                 var self = this,
-                    imagesToLoad = ['img/main/video-placehold.jpg',
+                    imagesToLoad = ['img/video_preview/super-snuggle.jpg',
                                     'img/main/button-email.png',
                                     'img/main/input-bg.jpg'
                                     ],
