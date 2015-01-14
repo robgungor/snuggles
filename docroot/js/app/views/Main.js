@@ -69,9 +69,10 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
                 document.getElementById("video-player").play();
             },
 
-            playVideo: function() {
-                $("#video-container").addClass('active');
-                document.getElementById("video-player").play();
+            playVideo: function($container) {
+                $container = $container || this.$el;
+                $container.find("#video-container").addClass('active');
+                $container.find("#video-player")[0].play();
             },
 
             onVideoSelectClick: function(e) {
@@ -81,19 +82,27 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
                     $currentVid = $($('.video-wrapper')[0]),
                     vidName = $(e.currentTarget).attr('data-video-name');
 
+                // pause current video
+                $("#video-player")[0].pause();
+                
                 this.model.set({'selectedVideo':vidName});
                 
                 $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
                 
                 var $nextVid = $('.'+vidName);
                 var $poster = $nextVid.find('img');         
-                $poster.hide(0);
+                //$poster.hide(0);
                 
-                var $img = $nextVid.find('img').on('load', function(){                  
-                  $poster.fadeIn(400, function(){
+                $nextVid.find('img').on('load', function(){                  
+                   
+                    self.playVideo($nextVid);   
+                    setTimeout(function(){
                       $currentVid.remove();
-                      self.playVideo();                     
-                  });
+                    }, 1000);
+                  // $poster.fadeIn(400, function(){
+                  //     $currentVid.remove();
+                  //     self.playVideo();                     
+                  // });
                 });
                 
                 $('#message-selection button.selected').removeClass('selected');
