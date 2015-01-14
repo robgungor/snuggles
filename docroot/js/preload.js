@@ -70,7 +70,8 @@
                 var self = this,
                     filesToLoad = ['img/main/video-placehold.jpg',
                                     'img/main/button-email.png',
-                                    'img/main/input-bg.jpg'
+                                    'img/main/input-bg.jpg',
+                                    'img/main/video-spinner-bg.jpg'
                                     ],
                     filesTotal;
                                             
@@ -123,7 +124,8 @@
                 var self = this,
                     imagesToLoad = ['img/video_preview/super-snuggle.jpg',
                                     'img/main/button-email.png',
-                                    'img/main/input-bg.jpg'
+                                    'img/main/input-bg.jpg',
+                                    'img/main/video-spinner-bg.jpg'
                                     ],
                     imagesTotal;
                                             
@@ -139,7 +141,12 @@
                           'img/main/button-fb-active@2x.png',
                           'img/main/bubble-button-long-bg@2x.png',
                           'img/main/button-twitter@2x.png',
-                          'img/main/button-twitter-active@2x.png'
+                          'img/main/button-twitter-active@2x.png',
+                          'img/video_preview/hearts.jpg',
+                          'img/video_preview/kisses.jpg',
+                          'img/video_preview/love-you-forever.jpg',
+                          'img/video_preview/snug-you-this-much.jpg',
+                          'img/video_preview/super-snuggle.jpg'
                         ]);
 
                     // } else{

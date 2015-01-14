@@ -45,36 +45,74 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             // View Event Handlers
             events: {
               'click .poster-image': 'onVideoPreviewClick',
-              'click .bubble':'onVideoSelectClick',              
+              //'click .bubble':'onVideoSelectClick',              
+              'mousedown .bubble':'onVideoSelectClick',              
             },
 
             // Renders the view's template to the UI
             render: function() {
-                console.log("RENDERED");
-                // Setting the view's template property using the Underscore template method
+                
+                // Setting the view's template using the template method
                 this.template = _.template(template, {});
 
                 // Dynamically updates the UI with the view's template
                 this.$el.html(this.template);
 
-                $('#video-preview').html(_.template(previewTemplate, this.model.toJSON()));
-                // Maintains chainability
+                $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
+
+                // first time, show this
+                $('.poster-image').css({opacity:1});
+                $('#video-loading-spinner').hide();
                 return this;
             },
-
+            // on click of a thumbnail
             onVideoPreviewClick: function(e) {
+                // prevent default actions
                 e.preventDefault();
-                                
-                $("#video-container").addClass('active');
-                document.getElementById("video-player").play();
+
+                // play video 
+                this.playVideo();
             },
 
-            playVideo: function($container) {
-                $container = $container || this.$el;
-                $container.find("#video-container").addClass('active');
-                $container.find("#video-player")[0].play();
+            // play video
+            playVideo: function($parent) {                
+                var self = this;
+
+                // show loading state
+                $('#video-loading-spinner').show();
+
+                // we do this so we don't reference an old video that is still hanging
+                $parent = $parent || self.$el;                
+                // show the container of the player
+                $parent.find("#video-container").addClass('active');
+                
+                var $video = $($parent.find("video#video-player").get(0));
+                // on pause of video
+                $video.on('pause', function(){self.onVideoPaused();});                
+                // on end of video
+                $video.on('ended', function(){self.onVideoEnded();});
+
+                $video.on('playing', function(){
+                   // hide loading state
+                  $('#video-loading-spinner').fadeOut();
+                });
+
+                // play the video
+                $video.get(0).play();
+            },
+            
+            onVideoPaused: function(){              
+                var video = $('.'+this.model.get('selectedVideo')).find("video#video-player").get(0);                
+                // if we aren't in full screen, assume the video is ended... 
+                if (!video.webkitDisplayingFullscreen) this.onVideoEnded(); 
             },
 
+            onVideoEnded: function(){
+              // show poster image/thumbnail
+              $('.poster-image').css({opacity:1});
+              $("#video-container").removeClass('active');
+            },
+            
             onVideoSelectClick: function(e) {
                 e.preventDefault();
                 
@@ -84,31 +122,32 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
 
                 // pause current video
                 $("#video-player")[0].pause();
-                
+                // set the selected video name to the model
                 this.model.set({'selectedVideo':vidName});
-                
+                // render the new video
                 $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
                 
-                var $nextVid = $('.'+vidName);
-                var $poster = $nextVid.find('img');         
-                //$poster.hide(0);
+                var $nextVidWrap = $('.video-wrapper.'+vidName);        
+
+                self.playVideo($nextVidWrap);   
                 
-                $nextVid.find('img').on('load', function(){                  
-                   
-                    self.playVideo($nextVid);   
-                    setTimeout(function(){
-                      $currentVid.remove();
-                    }, 1000);
-                  // $poster.fadeIn(400, function(){
-                  //     $currentVid.remove();
-                  //     self.playVideo();                     
-                  // });
-                });
-                
-                $('#message-selection button.selected').removeClass('selected');
-                
-                $(e.currentTarget).addClass('selected');                
-            }
+                // wait for it to play, remove the previous
+                $nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
+
+                // update video selection nav
+                self.updateSelectedButton();
+                     
+            },
+
+            updateSelectedButton: function(){
+              var self = this;
+
+              // deselect previous button
+              $('#message-selection button.selected').removeClass('selected');
+              // select current button
+              $('button[data-video-name='+self.model.get('selectedVideo')+']').addClass('selected');
+            },
+
 
         });
 

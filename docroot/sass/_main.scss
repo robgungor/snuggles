@@ -39,6 +39,16 @@ main{
 		padding-bottom: 54%;
 		width: calc(100% - 77px);
 		
+		#video-loading-spinner{
+			z-index: 200;
+			background: url(../img/main/video-spinner-bg.jpg);
+			background-size: cover;
+			width: 100%;
+			padding: 0;
+			position: absolute;
+			padding-bottom: 64%;
+		}
+
 		.video-wrapper{
 			// display: none;
 
@@ -47,16 +57,18 @@ main{
 		.poster-image{
 			z-index: 100;
 			position: absolute;			
-			width: 100%;			
+			width: 100%;
+			opacity: 0;
+			img{
+				width: 100%;
+			}
 		}
 
 		video{
 			width: 100%;
 		}
 		
-		img{
-			width: 100%;
-		}
+		
 
 		#video-container{
 			position: absolute;
@@ -139,7 +151,7 @@ main{
 				background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
 				color: #d747b8;
 				width: 147px;
-				height: 44px;
+				height: 45px;
 				border: 0;
 				outline: none;
 				background-position-y: -1px;
@@ -165,17 +177,10 @@ main{
 					background: url(../img/main/bubble-button-bg-active@2x.png) no-repeat;				
 					background-size: 100%;
 					background-position-y: -1px;
-					padding-bottom: 4px;
-					height: 37px;
+					padding-bottom: 8px;
+					height: 45px;
 					-webkit-tap-highlight-color: transparent;			
 					-webkit-tap-highlight-color: rgba(0,0,0,0);
-				}
-
-				&.last{
-
-					&:active, &.selected{
-						margin-bottom: 13px;
-					}
 				}
 			}
 		}

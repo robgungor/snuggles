@@ -71,13 +71,22 @@ main {
     position: relative;
     padding-bottom: 54%;
     width: calc(100% - 77px); }
+    main #video-preview #video-loading-spinner {
+      z-index: 200;
+      background: url(../img/main/video-spinner-bg.jpg);
+      background-size: cover;
+      width: 100%;
+      padding: 0;
+      position: absolute;
+      padding-bottom: 64%; }
     main #video-preview .poster-image {
       z-index: 100;
       position: absolute;
-      width: 100%; }
+      width: 100%;
+      opacity: 0; }
+      main #video-preview .poster-image img {
+        width: 100%; }
     main #video-preview video {
-      width: 100%; }
-    main #video-preview img {
       width: 100%; }
     main #video-preview #video-container {
       position: absolute;
@@ -138,7 +147,7 @@ main {
       background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
       color: #d747b8;
       width: 147px;
-      height: 44px;
+      height: 45px;
       border: 0;
       outline: none;
       background-position-y: -1px;
@@ -162,12 +171,10 @@ main {
         background: url(../img/main/bubble-button-bg-active@2x.png) no-repeat;
         background-size: 100%;
         background-position-y: -1px;
-        padding-bottom: 4px;
-        height: 37px;
+        padding-bottom: 8px;
+        height: 45px;
         -webkit-tap-highlight-color: transparent;
         -webkit-tap-highlight-color: transparent; }
-      main #message-selection nav button.bubble.last:active, main #message-selection nav button.bubble.last.selected {
-        margin-bottom: 13px; }
   main #sharing {
     margin-top: 6px; }
     main #sharing aside {

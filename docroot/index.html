@@ -11,7 +11,7 @@
        More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Backbone-Require Boilerplate</title>
+  <title>Share a Snug</title>
   <meta name="description" content="Backbone.js and Require.js Boilerplate Library">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
@@ -34,7 +34,7 @@
         height:100vh;
         min-height:100vh;
     }
-    #spinner {        
+    .spinner {        
         border-radius: 50%; /* Rounds out the halo */
         opacity: .7; /* Some subtle opacity to help blend with variable background colors */
         width: 32px;
@@ -162,7 +162,7 @@
 </style>
 </head>
 <body ontouchstart="">
-    <img id="spinner" src="img/landing/spinner.gif"/>
+    <img id="loading-spinner" class='spinner' src="img/common/spinner.gif"/>
 
     <div id="landing">        
         <div class="top-right cloud"><img src="img/landing/cloud.png"></div>
@@ -192,7 +192,7 @@
     <div id='fb-root'></div>
 
 <script type="text/javascript">
-    function preloadOnload(){document.getElementById("landing").style.opacity = '1';document.getElementById("spinner").style.opacity = '0';window.scrollTo(0, 1);var e=document.createElement("script");e.src="js/preload.js";document.body.appendChild(e)}if(window.addEventListener)window.addEventListener("load",preloadOnload,false);else if(window.attachEvent)window.attachEvent("onload",preloadOnload);else window.onload=preloadOnload
+    function preloadOnload(){document.getElementById("landing").style.opacity = '1';document.getElementById("loading-spinner").style.opacity = '0';window.scrollTo(0, 1);var e=document.createElement("script");e.src="js/preload.js";document.body.appendChild(e)}if(window.addEventListener)window.addEventListener("load",preloadOnload,false);else if(window.attachEvent)window.attachEvent("onload",preloadOnload);else window.onload=preloadOnload
 </script>
 </body>
 </html>
