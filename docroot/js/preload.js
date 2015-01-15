@@ -34,7 +34,7 @@
               link.href = url;
               d.getElementsByTagName("head")[0].appendChild(link);
               if(callback) {
-                callback();
+                setTimeout(function(){callback();}, 200);
               }
             },
             loadJS: function(file, callback) {
@@ -122,7 +122,8 @@
             },
             loadImages: function(callback){
                 var self = this,
-                    imagesToLoad = ['img/video_preview/super-snuggle.jpg',                                    
+                    imagesToLoad = ['img/common/main-bg.jpg',
+                                    'img/video_preview/super-snuggle.jpg',                                    
                                     'img/main/input-bg.jpg',
                                     'img/main/video-spinner-bg.jpg'
                                     ],

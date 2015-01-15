@@ -5,7 +5,7 @@ END info -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
 
 <head>
-    <!-- TODO- load in via preloader --><script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>
+    <!-- TODO- load in via preloader <script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>-->
 
 
     <!--THIS NEEDS TO BE ABOVE BASE-->
@@ -37,7 +37,7 @@ END info -->
         padding:0;
     }   
     body {
-        /*background: url("img/landing-bg.jpg") no-repeat left top;*/
+        /*background: url("img/landing-bg.jpg") no-repeat left top;*/        
         background-size: cover;
         background-color: #24afe9;
         font-family: 'Dosis', sans-serif;
@@ -65,7 +65,9 @@ END info -->
         height: 100%;
         overflow: hidden; 
         width: 100vw;
-        height: 100vh;        
+        height: 100vh; 
+        position: absolute;
+        z-index: 1000;     
     }
     #landing, #loading-heart {
         -webkit-transition: opacity 500ms ease-out 0;
@@ -201,6 +203,9 @@ END info -->
     
     <!-- in templates/main.html -->
     <main></main>
+
+    <!-- some weird iphone bugs have lead me to this -->
+    <div id="main-bg-container"></div>
 
     <div id='fb-root'></div>
 

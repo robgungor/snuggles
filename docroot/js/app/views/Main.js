@@ -50,7 +50,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
 
               'orientationchange':'onOrientationChange'
             },            
-            
+
 
             // Renders the view's template to the UI
             render: function() {
@@ -118,6 +118,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             
             onVideoSelectClick: function(e) {
                 e.preventDefault();
+                $(document.body).addClass('postloaded');
                 
                 var self = this,
                     $currentVid = $($('.video-wrapper')[0]),

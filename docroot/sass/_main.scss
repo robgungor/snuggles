@@ -4,10 +4,24 @@ main{
 	top: 0;
 	left: 0;
 	z-index: 0;
+	margin-left: 2.5vh;	
+	top: 0;
+	position: absolute;
+	left: 0;
 	display: none;
-	margin: auto;
-	min-height: 620px;
+
+	@media screen and (max-device-width: $iphone6) {			
+		width: 90vw;
+		margin-left: 2.5vh;	
+	}
+
+	@media screen and (max-device-width: $iphone6plus) {	
+		font-size: 1.2em;
+		width: 88vw;
+		margin-left: 3.25vh;
+	}
 	
+
 	header{
 		height: 13%;
 		position: relative;	
@@ -39,7 +53,7 @@ main{
 			width: 100%;
 			padding: 0;
 			position: absolute;
-			padding-bottom: 64%;
+			padding-bottom: 58%;
 		}
 
 		.video-wrapper{
@@ -89,7 +103,7 @@ main{
 			}
 			
 			input{			
-				width: calc(100% - 40px);
+				width: calc(100% - 2.7em);
 				height: 10.25vw;
 				margin-bottom: .25em;
 				font-family: 'Dosis', sans-serif;
@@ -130,6 +144,10 @@ main{
 			font-size: .9em;
 			margin-top: .5em;
 			margin-bottom: .5em;
+
+			@media screen and (min-width: $iphone6plus) {	
+				margin-bottom: .65em;			
+			}
 		}
 
 		nav {
@@ -145,16 +163,26 @@ main{
 				outline: none;
 				background-position-y: -1px;
 				line-height: 0px;
-				padding-bottom: 13px;
 				-webkit-transform: scale(1.2);
 				transform: scale(1.2);
 				-ms-transform: scale(1.2);
-				margin: 0.2rem .6rem;
-				font-size: .8em;
+				margin: 0.2rem .6rem;	
+				padding-bottom: 13px;
+				
+				font-size: .8rem;
 				background-size: 100%;
 				vertical-align: top;
 
-				@media screen and (max-width: $break-small) {				
+
+				@media screen and (min-device-width: $iphone6plus) {	
+					-webkit-transform: scale(1.4);
+					transform: scale(1.35);
+					-ms-transform: scale(1.35);
+					margin: 0.2rem 1.2rem;
+					padding-bottom: 17px;
+				}
+				
+				@media screen and (max-device-width: $break-small) {				
 					-webkit-transform: scale(1);
 					transform: scale(1);
 					-ms-transform: scale(1);
@@ -175,14 +203,22 @@ main{
 		}
 	}
 
-	#sharing{
-		margin-top: 6px;
+	#sharing{		
 
 		aside{
 			color: $light-blue;
 			float: left;
-			padding: 22px 0px 0px 0px;
+			padding: 22px 1% 0px 0px;
 			font-size: 0.9em;
+			
+			@media only screen and (max-device-width : $iphone6plus) {
+				padding: 14px 3.5% 0px 0px;			
+			}
+
+			@media only screen and (max-device-width : $break-small) {
+				padding: 14px 0% 0px 0px;
+				font-size: 0.875em;
+			}
 		}
 
 		nav{
@@ -193,8 +229,8 @@ main{
 				display: block;
 				min-width: 50px;
 				min-height: 50px;
-				width: 19vw;
-				height: 19vw;
+				width: 16vw;
+				height: 16vw;
 				margin-left: 3px;
 				border: none;
 				background-size: 100%;
@@ -202,6 +238,11 @@ main{
 				outline: none;
 				background-color: transparent;
 				
+				@media only screen and (max-device-width : 320px) {
+					width: 18vw;
+					height: 18vw;
+				}
+
 				&:active{
 					border: none;
 					outline: none;
@@ -300,5 +341,18 @@ ul.ui-autocomplete{
 			color: $light-blue;
 		}
 	}
+}
+
+#main-bg-container{
+    background: url(../img/common/main-bg.jpg) no-repeat top left;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #f0f0f0;
+    min-height:100%;
+    height: 100%;
+    height:100vh;
+    width: 100vw;
+    min-height:100vh;
+    opacity: 0;
 }
 
