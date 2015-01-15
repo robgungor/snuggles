@@ -1,21 +1,16 @@
 main{
-	background: url(../img/common/main-bg.jpg) no-repeat top left;
-	width: 100%;
-	height: 100%;
-	background-size: cover;
-	background-attachment: fixed;
-	width: 100vw;
+	width: 90vw;
 	height: 100vh;
-	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 0;
-	display:none;
+	display: none;
+	margin: auto;
 	min-height: 620px;
-
+	
 	header{
-		height: 15%;
-		position: relative;		
+		height: 13%;
+		position: relative;	
 
 		.logo{
 			bottom: -12%;
@@ -34,11 +29,9 @@ main{
 	}
 
 	#video-preview{
-		padding: 0 18px;
 		position: relative;
-		padding-bottom: 54%;
-		width: calc(100% - 77px);
-		
+		padding-bottom: 58%;
+
 		#video-loading-spinner{
 			z-index: 200;
 			background: url(../img/main/video-spinner-bg.jpg);
@@ -67,8 +60,6 @@ main{
 		video{
 			width: 100%;
 		}
-		
-		
 
 		#video-container{
 			position: absolute;
@@ -87,50 +78,48 @@ main{
 			}
 		}
 	}
+	.form-container{
+		margin-top: 5px;
 
-	form{
-		text-align: right;		
+		form{
+			text-align: right;				
 
-		.form-row{
-			padding-right: 20px;
-		}
-
-		.ui-helper-hidden-accessible{
-			display: none;
-		}
-		
-		input{			
-			width: calc(94% - 40px);
-			height: 10.25vw;
-			margin-bottom: .55rem;//9px;
-			font-family: 'Dosis', sans-serif;
-			color: #fff;
-			background: url(../img/main/input-bg.jpg) no-repeat left;
-			background-size: 100%;			
-			border: none;
-			padding-top: .1rem;//2px;
-			font-size: .98rem;//15px;
-			text-align: center;		
+			.ui-helper-hidden-accessible{
+				display: none;
+			}
 			
-			&:-webkit-autofill{
+			input{			
+				width: calc(100% - 40px);
+				height: 10.25vw;
+				margin-bottom: .25em;
+				font-family: 'Dosis', sans-serif;
+				color: #fff;
 				background: url(../img/main/input-bg.jpg) no-repeat left;
+				background-size: 100%;		
+				border: none;
+				padding-top: .1em;
+				font-size: .98em;
+				text-align: center;		
+				
+				&:-webkit-autofill{
+					background: url(../img/main/input-bg.jpg) no-repeat left;
+				}
+			}
+
+			label{
+				font-size: .9em;
+				color: $light-blue;
+			}
+
+			::-webkit-input-placeholder{ color: #ffffff;}
+			:-moz-placeholder{ color: #ffffff;}
+			::-moz-placeholder{ color: #ffffff;}
+			:-ms-input-placeholder{ color: #ffffff;}
+			
+			textarea:focus, input:focus, *:focus{
+			    outline: 0;
 			}
 		}
-
-		label{
-			font-size: .9em;
-			color: $light-blue;
-		}
-
-		::-webkit-input-placeholder{ color: #ffffff;}
-		:-moz-placeholder{ color: #ffffff;}
-		::-moz-placeholder{ color: #ffffff;}
-		:-ms-input-placeholder{ color: #ffffff;}
-		
-		textarea:focus, input:focus, *:focus{
-		    outline: 0;
-		}
-		
 	}
 
 	#message-selection {
@@ -138,9 +127,9 @@ main{
 		header{
 			color: $light-blue;
 			text-align: center;
-			font-size: .9rem;
-			margin-top: .4rem;
-			margin-bottom: .2rem;
+			font-size: .9em;
+			margin-top: .5em;
+			margin-bottom: .5em;
 		}
 
 		nav {
@@ -150,17 +139,17 @@ main{
 				font-family: 'Dosis', sans-serif;
 				background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
 				color: #d747b8;
-				width: 147px;
+				width: 140px;
 				height: 45px;
 				border: 0;
 				outline: none;
 				background-position-y: -1px;
 				line-height: 0px;
 				padding-bottom: 13px;
-				-webkit-transform: scale(1.3);
-				transform: scale(1.3);
-				-ms-transform: scale(1.3);
-				margin: 0.35rem 1.2rem;
+				-webkit-transform: scale(1.2);
+				transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				margin: 0.2rem .6rem;
 				font-size: .8em;
 				background-size: 100%;
 				vertical-align: top;
@@ -192,8 +181,8 @@ main{
 		aside{
 			color: $light-blue;
 			float: left;
-			padding: 22px 0px 0px 20px;
-			font-size: 0.9rem;
+			padding: 22px 0px 0px 0px;
+			font-size: 0.9em;
 		}
 
 		nav{
@@ -206,7 +195,7 @@ main{
 				min-height: 50px;
 				width: 19vw;
 				height: 19vw;
-				margin-left: 2%;
+				margin-left: 3px;
 				border: none;
 				background-size: 100%;
 				border: 0;
@@ -246,7 +235,57 @@ main{
 			}
 		}
 	}
-	
+	@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : portrait)
+	{ 
+		header, section{
+			max-width: 72%;
+			margin: auto;
+		}
+
+		#video-preview{
+			padding: 0;
+			padding-bottom: 42%;
+
+			#video-loading-spinner{
+				padding-bottom: 58%;
+			}
+		}
+
+		form {
+			font-size: 1.5em;
+
+			.form-row{
+				padding: 0;
+			}
+
+			input{
+				height: 7.75vw;
+				margin-bottom: .25em;
+			}
+		}
+
+		#message-selection{
+			-webkit-transform: scale(1.5);
+			margin-top: 59px;			
+		}
+
+		#sharing{
+			margin-top: 56px;
+
+			aside{
+				font-size: 1.4em;
+				padding-left: 50px;
+			}
+
+			button{
+				max-width: 80px;
+				max-height: 80px;
+			}
+		}
+	}
 }
 
 ul.ui-autocomplete{	
@@ -255,7 +294,7 @@ ul.ui-autocomplete{
 
 	li{
 		list-style: none;
-		padding: 1px .8rem;
+		padding: 1px .8em;
 		
 		a{
 			color: $light-blue;
