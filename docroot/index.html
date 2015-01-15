@@ -10,16 +10,46 @@
   <!-- Use the .htaccess and remove these lines to avoid edge case issues.
        More info: h5bp.com/i/378 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
+  <base href="mobile" />
   <title>Share a Snug</title>
   <meta name="description" content="Backbone.js and Require.js Boilerplate Library">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <!-- Mobile viewport optimized: h5bp.com/viewport -->
   <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
-  <link href='http://fonts.googleapis.com/css?family=Dosis:800' rel='stylesheet' type='text/css'>
+  <!-- BEGIN info 
+README - IMPORTANT - REMOVED THIS BLOCK! This is the default MySpace player template for all doors. To customize this template for other doors, save it as a template in the format embed_myspace_*doorid*.tpl Keep all the sws in the door's folder under swf ex: host-d.oddcast.com/door name/swf/player.swf Same with all the images ex: host-d.oddcast.com/door name/images/ Template Variables: {doorId} => The Door ID {clientId} => The Client ID {topicId} => The Topic ID {messageId} => The Message Id {movieURL} => The URL to the SWF {baseURL} => Accelrated URL {imageURL} => Path the image folder {title} => Application Title {descp} => Application Description {contentURL} => Content Domain URL {jsURL} => Accelerated URL /includes/ {fbcApplicationKey} => sets fbconnect key value {fbcURL} => script tags for fbconnect and related oddcast functions The below JAVASCRIPT was done this way so that each workshop can have there own parameters passed to them.
+END info -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
 
-  
-  <style>  
+<head>
+    <!-- TODO- load in via preloader --><script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>
+
+
+    <!--THIS NEEDS TO BE ABOVE BASE-->
+    <!--<base href="http://{dynamicURL}/snuggle-valentine/mobile/" />-->
+
+    <title>Snuggle&#039;s Share a Snug</title>
+    
+    <!-- Open Graph data -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{baseURL}" />
+    <meta property="og:image" content="https://www.google.com/images/srpr/logo11w.png" />
+    <meta property="og:title" content="{title}" />
+    <meta property="og:description" content="{descp}" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="{descp}" />
+    <meta name="keywords" content="" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- {youTubeJS}-->
+
+    <link href='http://fonts.googleapis.com/css?family=Dosis:800' rel='stylesheet' type='text/css'>
+
+    <style>  
     * {
         margin:0;
         padding:0;
@@ -162,6 +192,7 @@
 </style>
 </head>
 <body ontouchstart="">
+    <div id="landscape-blocker"></div>
     <img id="loading-spinner" class='spinner' src="img/common/spinner.gif"/>
 
     <div id="landing">        
@@ -194,5 +225,20 @@
 <script type="text/javascript">
     function preloadOnload(){document.getElementById("landing").style.opacity = '1';document.getElementById("loading-spinner").style.opacity = '0';window.scrollTo(0, 1);var e=document.createElement("script");e.src="js/preload.js";document.body.appendChild(e)}if(window.addEventListener)window.addEventListener("load",preloadOnload,false);else if(window.attachEvent)window.attachEvent("onload",preloadOnload);else window.onload=preloadOnload
 </script>
+
+</body>
+
+
+<script type="text/javascript">
+    // OC.init(_wsSettings);
+    // FB.init({
+    //     appId: _wsSettings.fbcApplicationKey,
+    //     status: true,
+    //     cookie: true
+    // });
+</script>
+
+
+</html>
 </body>
 </html>

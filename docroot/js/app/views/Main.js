@@ -46,8 +46,11 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             events: {
               'click .poster-image': 'onVideoPreviewClick',
               //'click .bubble':'onVideoSelectClick',              
-              'mousedown .bubble':'onVideoSelectClick',              
-            },
+              'mousedown .bubble':'onVideoSelectClick',   
+
+              'orientationchange':'onOrientationChange'
+            },            
+            
 
             // Renders the view's template to the UI
             render: function() {

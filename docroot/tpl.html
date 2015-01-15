@@ -9,7 +9,7 @@ END info -->
 
 
     <!--THIS NEEDS TO BE ABOVE BASE-->
-    <!--<base href="http://{dynamicURL}/nutcracker-2014/mobile/" /> -->
+    <base href="http://{dynamicURL}/snuggle-valentine/mobile/" />
 
     <title>Snuggle&#039;s Share a Snug</title>
     
@@ -30,154 +30,151 @@ END info -->
     <!-- {youTubeJS}-->
 
     <link href='http://fonts.googleapis.com/css?family=Dosis:800' rel='stylesheet' type='text/css'>
- 
-      <style>  
-        * {
-            margin:0;
-            padding:0;
-        }   
-        body {
-            /*background: url("img/landing-bg.jpg") no-repeat left top;*/
-            background-size: cover;
-            background-color: #24afe9;
-            font-family: 'Dosis', sans-serif;
-            min-height:100%;
-            height: 100%;
-            height:100vh;
-            min-height:100vh;
+
+    <style>  
+    * {
+        margin:0;
+        padding:0;
+    }   
+    body {
+        /*background: url("img/landing-bg.jpg") no-repeat left top;*/
+        background-size: cover;
+        background-color: #24afe9;
+        font-family: 'Dosis', sans-serif;
+        min-height:100%;
+        height: 100%;
+        height:100vh;
+        min-height:100vh;
+    }
+    .spinner {        
+        border-radius: 50%; /* Rounds out the halo */
+        opacity: .7; /* Some subtle opacity to help blend with variable background colors */
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -16px;
+        margin-top: -16px;
+    }    
+    #landing {
+        opacity: 0;
+        background: url("img/landing/landing-bg.jpg") no-repeat left top #24afe9;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; 
+        width: 100vw;
+        height: 100vh;        
+    }
+    #landing, #loading-heart {
+        -webkit-transition: opacity 500ms ease-out 0;
+        -moz-transition: opacity 500ms ease-out 0;
+        -o-transition: opacity 500ms ease-out 0;
+        transition: opacity 500ms ease-out 0;
+    }
+    #landing .landing-text {
+        text-align: center;
+        color: #ffffff;
+        font-size: 1.375em;
+        margin-top: -6%;
+        margin-top: -25px;
+        float: left;
+        width: 100%;       
+        margin-top: -9%;
+    }
+    #landing .landing-logo {
+        text-align: center;
+        padding-top: 3%;
+        text-align: center;
+        margin-top: -25%;
+        float: left;
+        margin-left: auto;
+        width: 100%; 
+    }    
+    #landing .landing-logo img {
+        width: 100%;
+        max-width: 400px; 
+    }
+    #landing .landing-oddcast-logo {
+        position: absolute;
+        right: 12px;
+        bottom: 33px;
+        width: 100px; 
+    }
+    #landing .landing-oddcast-logo img {
+        width: 100%;
+        max-width: 104px; 
+    }
+    #landing .cloud {   position: absolute; }
+    #landing .cloud img {   width: 100%; }
+    #landing .cloud.top-right {
+        top: 3%;
+        right: -66px;
+        width: 211px;
+        float: right;
+        position: relative;
+        position: relative; 
+    }
+    #landing .cloud.top-left {
+        width: 112px;
+        top: 13%;
+        left: -10%; 
+    }
+    #landing .cloud.bottom-middle {
+        bottom: 0;
+        left: 3%;
+        float: left;
+        width: 195px;
+        z-index: 10;
+        height: 67px;
+        overflow: hidden; 
+    }   
+    #landing .loading-bar {
+        background: url("img/landing/loading-bar-bg.png") no-repeat left top;
+        float: left;
+        position: absolute;
+        left: 50%;
+        width: 395px;
+        height: 103px;
+        bottom: 65px;
+        margin-left: -197.5px; 
+    }
+    #loading-heart {
+        position: absolute;
+        top: 12px;
+        right: 19px;
+        opacity: 0;
+    }
+    #loading-bar-fill {
+        position: absolute;          
+        left: 73px;
+        top: 19px;
+        width: 1px;
+        overflow: hidden; 
+        -webkit-transition: width .5s ease-out 0;
+        -moz-transition: width .5s ease-out 0;
+        -o-transition: width .5s ease-out 0;
+        transition: width .5s ease-out 0;
+    }  
+
+    @media screen and (max-width: 320px) {
+         #landing .landing-logo, #landing .loading-bar, #landing .landing-oddcast-logo {
+            -webkit-transform: scale(.8);
+            transform: scale(.8);
+            -ms-transform: scale(.8);           
         }
-        #spinner {        
-            border-radius: 50%; /* Rounds out the halo */
-            opacity: .7; /* Some subtle opacity to help blend with variable background colors */
-            width: 32px;
-            height: 32px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -16px;
-            margin-top: -16px;
-        }    
-        #landing {
-            opacity: 0;
-            background: url("img/landing/landing-bg.jpg") no-repeat left top #24afe9;
-            background-size: cover;
-            width: 100%;
-            height: 100%;
-            overflow: hidden; 
-            width: 100vw;
-            height: 100vh;        
+        #landing .landing-logo{
+            margin-top: -39%;
         }
-        #landing, #loading-heart {
-            -webkit-transition: opacity 500ms ease-out 0;
-            -moz-transition: opacity 500ms ease-out 0;
-            -o-transition: opacity 500ms ease-out 0;
-            transition: opacity 500ms ease-out 0;
-        }
-        #landing .landing-text {
-            text-align: center;
-            color: #ffffff;
-            font-size: 1.375em;
-            margin-top: -6%;
-            margin-top: -25px;
-            float: left;
-            width: 100%;       
-            margin-top: -9%;
-        }
-        #landing .landing-logo {
-            text-align: center;
-            padding-top: 3%;
-            text-align: center;
-            margin-top: -25%;
-            float: left;
-            margin-left: auto;
-            width: 100%; 
-        }    
-        #landing .landing-logo img {
-            width: 100%;
-            max-width: 400px; 
-        }
-        #landing .landing-oddcast-logo {
-            position: absolute;
-            right: 12px;
-            bottom: 33px;
-            width: 100px; 
-        }
-        #landing .landing-oddcast-logo img {
-            width: 100%;
-            max-width: 104px; 
-        }
-        #landing .cloud {   position: absolute; }
-        #landing .cloud img {   width: 100%; }
-        #landing .cloud.top-right {
-            top: 3%;
-            right: -66px;
-            width: 211px;
-            float: right;
-            position: relative;
-            position: relative; 
-        }
-        #landing .cloud.top-left {
-            width: 112px;
-            top: 13%;
-            left: -10%; 
-        }
-        #landing .cloud.bottom-middle {
-            bottom: 0;
-            left: 3%;
-            float: left;
-            width: 195px;
-            z-index: 10;
-            height: 67px;
-            overflow: hidden; 
-        }   
         #landing .loading-bar {
-            background: url("img/landing/loading-bar-bg.png") no-repeat left top;
-            float: left;
-            position: absolute;
-            left: 50%;
-            width: 395px;
-            height: 103px;
-            bottom: 65px;
-            margin-left: -197.5px; 
+            bottom: 5%;
         }
-        #loading-heart {
-            position: absolute;
-            top: 12px;
-            right: 19px;
-            opacity: 0;
-        }
-        #loading-bar-fill {
-            position: absolute;          
-            left: 73px;
-            top: 19px;
-            top: 26px;
-            width: 1px;
-            overflow: hidden; 
-            -webkit-transition: width .5s ease-out 0;
-            -moz-transition: width .5s ease-out 0;
-            -o-transition: width .5s ease-out 0;
-            transition: width .5s ease-out 0;
-        }  
-
-        @media screen and (max-width: 320px) {
-             #landing .landing-logo, #landing .loading-bar, #landing .landing-oddcast-logo {
-                -webkit-transform: scale(.8);
-                transform: scale(.8);
-                -ms-transform: scale(.8);           
-            }
-            #landing .landing-logo{
-                margin-top: -39%;
-            }
-            #landing .loading-bar {
-                bottom: 5%;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
-
-
 <body ontouchstart="">
-    <img id="spinner" src="img/landing/spinner.gif"/>
+    <img id="loading-spinner" class='spinner' src="img/common/spinner.gif"/>
 
     <div id="landing">        
         <div class="top-right cloud"><img src="img/landing/cloud.png"></div>
@@ -206,9 +203,9 @@ END info -->
 
     <div id='fb-root'></div>
 
-    <script type="text/javascript">
-        function preloadOnload(){document.getElementById("landing").style.opacity = '1';document.getElementById("spinner").style.opacity = '0';var e=document.createElement("script");e.src="js/preload.js";document.body.appendChild(e)}if(window.addEventListener)window.addEventListener("load",preloadOnload,false);else if(window.attachEvent)window.attachEvent("onload",preloadOnload);else window.onload=preloadOnload
-    </script>
+<script type="text/javascript">
+    function preloadOnload(){document.getElementById("landing").style.opacity = '1';document.getElementById("loading-spinner").style.opacity = '0';window.scrollTo(0, 1);var e=document.createElement("script");e.src="js/preload.js";document.body.appendChild(e)}if(window.addEventListener)window.addEventListener("load",preloadOnload,false);else if(window.attachEvent)window.attachEvent("onload",preloadOnload);else window.onload=preloadOnload
+</script>
 
 </body>
 
