@@ -1,17 +1,18 @@
 // MainView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!templates/video-preview.html", "utils/OC_Utils", "jqueryui"],
+define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!templates/video-preview.html", "utils/OC_Utils", "views/Sharing", "jqueryui"],
 
-    function($, Backbone, Model, template, previewTemplate, OC_Utils){
+    function($, Backbone, Model, template, previewTemplate, OC_Utils, Sharing){
         
         var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
             el: "main",
-
+            sharing: null,
             // View constructor
             initialize: function() {
-                this.model.set({'selectedVideo':'super-snuggle'});
+                this.model.set({'selectedVideo':'nutshell'});
+                this.sharing = new Sharing({model:this.model});
                 this.loadNameList();             
             },
 
