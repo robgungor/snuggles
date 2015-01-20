@@ -17,11 +17,7 @@ define(["jquery", "backbone"],
             // Default values for all of the Model attributes
             defaults: {               
             },
-
-            parse: function(response, options) {
-                console.log('PARSING AUDIO OBJ');
-                console.log(this);
-            },
+    
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)
             validate: function(attrs) {
 

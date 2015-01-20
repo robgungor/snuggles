@@ -1,8 +1,8 @@
 // Model.js
 // --------
-define(["jquery", "backbone","collections/Audios"],
+define(["jquery", "backbone","collections/Audios", "models/Settings"],
 
-    function($, Backbone, Audios) {
+    function($, Backbone, Audios, Settings) {
 
         // Creates a new Backbone Model class object
         var Main = Backbone.Model.extend({
@@ -13,6 +13,7 @@ define(["jquery", "backbone","collections/Audios"],
             initialize: function(options) {                
                 // loads in and parses list of audios from the server
                 this.audios = new Audios([],options.config);
+                this.settings = new Settings({config:options.config});
                 this.config = options.config;
             },
 
@@ -24,6 +25,12 @@ define(["jquery", "backbone","collections/Audios"],
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)
             validate: function(attrs) {
 
+            },
+
+            getMessageLink: function (){
+                //return "http://" +this._wsSettings.accURL +"/php/application_UI/doorId=" +this._wsSettings.doorId +"/clientId=" +this._wsSettings.clientId +"/?mId="+mid;
+                var pickup_url=OC_Parser.getStrNodeValue(self._settingsText, "PICKUP_URL");
+                return pickup_url +"?mId="+this.get('mId')+".3";
             }
 
         });

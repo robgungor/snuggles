@@ -31,7 +31,8 @@ define(["jquery","backbone","models/Audio",],
 		parse: function(data) {
 			var parsed = [];
 			var baseURL = $(data).find("AUDIOS").attr("BASEURL");
-			$(data).find("AUDIO").each(function (index) {            
+			$(data).find("AUDIO").each(function (index) {   
+			console.log('creating audio: '+$(this).attr("NAME"));
 			    parsed.push({
 			    	'id'	: $(this).attr("ID"),
 					'source': $(this).attr("URL"),				
@@ -43,6 +44,13 @@ define(["jquery","backbone","models/Audio",],
 
 			return parsed;      			
 		},
+
+		getAudioByName: function(audioName){
+			return this.findWhere({name: audioName});
+			console.log(arr);
+			return arr[0];
+			this.models.find(function(model) { return model.get('name') == audioName; });
+		}	
 
 
 	});

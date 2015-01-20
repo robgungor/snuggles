@@ -28,6 +28,45 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
 
     // Instantiates a new Mobile Router instance
     new MobileRouter();
+
+    // fb and twitter laoding
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+    twttr.ready(function (twttr) {
+      twttr.events.bind('tweet', function(event) {
+        if(window.postedToTwitter)
+          postedToTwitter(event);
+      });
+    });
+
+    // facebook api loading in... 
+     (function(d, debug){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+         ref.parentNode.insertBefore(js, ref);
+       }(document, /*debug*/ false));
+
+      // window.fbAsyncInit = function()
+      // {
+      //     FB.init
+      //     (
+      //         {
+      //              appId: OC_CONFIG.fbcApplicationKey,
+      //              status: true,
+      //              cookie: true
+      //         }
+      //     );
+
+      // }
+
+
   }
 
 );

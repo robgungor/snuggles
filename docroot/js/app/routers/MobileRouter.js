@@ -23,7 +23,7 @@ define(["jquery", "backbone", "models/Main", "views/Main", "collections/Collecti
 
             index: function() {
 
-                // Instantiates a new view which will render the header text to the page
+                // Instantiates a new view which will render the header text to the page                
                 new MainView({model:new MainModel({config:OC_CONFIG})});
 
             }

@@ -1,8 +1,8 @@
 // MainView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!templates/video-preview.html", "utils/OC_Utils", "views/Sharing", "jqueryui"],
+define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!templates/video-preview.html", "utils/OC_Utils", "utils/OC_MessageSaver", "views/Sharing", "jqueryui"],
 
-    function($, Backbone, Model, template, previewTemplate, OC_Utils, Sharing){
+    function($, Backbone, Model, template, previewTemplate, OC_Utils, OC_MessageSaver, Sharing){
         
         var View = Backbone.View.extend({
 
@@ -66,6 +66,11 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             // View Event Handlers
             events: {
               'click .poster-image': 'onVideoPreviewClick',
+
+              'click .email': 'onEmailShareClick',
+              'click .fb': 'onFbShareClick',
+              'click .twitter': 'onTwitterShareClick',
+
               //'click .bubble':'onVideoSelectClick',              
               'mousedown .bubble':'onVideoSelectClick',   
 
@@ -172,6 +177,42 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
               // select current button
               $('button[data-video-name='+self.model.get('selectedVideo')+']').addClass('selected');
             },
+
+            onEmailShareClick: function(e){              
+              var self = this;
+              // for email we always will generate a new mId
+              self.sharing.shareEmail();
+            },
+
+            onFbShareClick: function(e){
+              var self = this;
+              self.getMID( self.sharing.shareFacebook );
+            },
+
+            onTwitterShareClick: function(e){
+              var self = this;              
+              self.getMID( self.sharing.shareTwitter );
+            },
+
+            getMID: function(callback){
+              var self = this;
+              var mId = self.model.get('mId');
+              
+              if( !OC_Utils.isUndefined(mId) ) {
+                // if we have an mId, reuse it
+                callback(mId);
+              } else {
+                  var onMessageSaveComplete = function(mId){
+                    // set the mId to our model so it is not forgetten about                    
+                    self.model.set({'mId': mId});                    
+                    // pass along to next step
+                    callback(mId);
+                  }
+                  // save our message
+                  OC_MessageSaver.saveMessage(self.model, {}, onMessageSaveComplete);
+              }
+
+            }
 
 
         });

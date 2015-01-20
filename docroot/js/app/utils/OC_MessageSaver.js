@@ -12,22 +12,16 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 		},
 	    //NOTE saveMessage
 		saveMessage : function (model, extraData, callback){
-			_wsSettings = _wsSettings || {
-				doorId	: 1281,
-				clientId: 360,
-				topicId: 0
-			}
-			var audio = model.audios.getAudioByName(model.get('selectedVideo'));
-	        // var tmp_videoName = isaac_selected_video_name;
-	        // var isaac_audio_id = OC._audioNameToId[tmp_videoName];
-	        // var isaac_audio_path = OC._audios[ OC._audioNameToId[tmp_videoName] ];
 			
+			console.log('saving message: '+model.get('selectedVideo'));
+			var audio = model.audios.getAudioByName(model.get('selectedVideo'));
+	        
 			var strExtraData = "";
 			for (var prop in extraData) {
 				strExtraData += prop +"=" +encodeURIComponent(extraData[prop]) +"&amp;";
 			}
 		  
-			xml = "";
+			var xml = "";
 			xml += '<player>\n';
 			xml += '  <params>\n';
 			xml += '    <door>'	 + model.config.doorId   +'</door>\n';
@@ -36,27 +30,12 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			xml += '    <mode>embed</mode>\n';
 			xml += '    <appType>workshop</appType>\n';
 			xml += '  </params>\n';
-			xml += '  <assets>\n';
-	        
-	//		xml += '    <video tempid="'+videoId1+'" name="" length="25" vidid="0">' +videoSrc1 +'</video>\n';
-	//		xml += '    <video tempid="'+videoId2+'" name="" length="25" vidid="0">' +videoSrc2 +'</video>\n';
-	//		xml += '    <bg tempid="'+bgId+'" name="">' +bgSrc +'</bg>\n';
-	        xml += '    <avatar modelId="28370" tempid="1" type="2D" is3d="0">oh/28370/0/74453/0/0/0/0/0/0/0/0/ohv2.swf?cs=</avatar>\n'; //isaac
-	///        xml += '    <bg id="56849" name="1x1">http://content-vd.oddcast.com/ccs6/customhost/1253/bg/1358553887449755.jpg</bg>\n'; //isaac
+			xml += '  <assets>\n';	       
+	        xml += '    <avatar modelId="28370" tempid="1" type="2D" is3d="0">oh/28370/0/74453/0/0/0/0/0/0/0/0/ohv2.swf?cs=</avatar>\n'; //isaac	
 	        xml += '    <audio type="prerec" id="'+audio.get('id')+'" name="'+audio.get('name')+'">'+audio.get('url')+'</audio>\n';//isaac
-	        
 			xml += '  </assets>\n';
 			xml += '  <scenes>\n';
 			xml += '    <scene>\n';
-	        
-	//		xml += '      <video>\n';
-	//		xml += '        <tempid>' +videoId1 +'</tempid>\n';
-	//		xml += '        <tempid>' +videoId2 +'</tempid>\n';
-	//		xml += '      </video>\n';
-	//		xml += '      <bg>\n';
-	//		xml += '        <tempid>' +bgId +'</tempid>\n';
-	//		xml += '      </bg>\n';
-	//		xml += '      <id>1</id>\n';
 	        xml += '      <fb_scene_id>null</fb_scene_id>\n';       //isaac
 	        xml += '      <avatar>\n';                              //isaac
 	        xml += '        <tempid>1</tempid>\n';                  //isaac
@@ -64,7 +43,7 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 	        xml += '        <y>0.00</y>\n';                         //isaac
 	        xml += '        <scale>100.00</scale>\n';               //isaac
 	        xml += '      </avatar>\n';                             //isaac
-	        xml += '      <audio><id>'+isaac_audio_id+'</id></audio>\n';         //isaac
+	        xml += '      <audio><id>'+audio.get('id')+'</id></audio>\n';         //isaac
 	///        xml += '      <bg><id>56849</id></bg>\n';               //isaac
 	        xml += '      <id>1</id>\n';                            //isaac
 	        
@@ -73,8 +52,8 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			xml += '  <extradata>bgPos=0%2E0%2C0%2E0%2C1%2E000%2C0%2E0</extradata>\n'; //' +strExtraData +'
 			xml += '</player>\n';
 
-			var tmp;
-			OC_Utilities.getUrl(model.config.baseURL +"/api/saveWorkshopData.php?rand=" +Math.random(), {xmlData: xml}, true, function(tmp){
+			var tmp;			
+			OC_Utilities.getUrl('//'+model.config.baseURL +"/api/saveWorkshopData.php?rand=" +Math.random(), {xmlData: xml}, true, function(tmp){
 				//for testting purpose ===> http://host-vd.oddcast.com/php/api/playScene/doorId=1217/clientId=217/mId=<mId>
 				tmp = OC_Parser.getXmlDoc(tmp);
 				tmp = OC_Parser.getXmlNode(tmp, 'MESSAGE');
@@ -129,7 +108,7 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 				}
 				cb(tmp);
 			});
-		}
+		},
 
 		getExtraDataFromPlayScene : function (mid){
 			try{

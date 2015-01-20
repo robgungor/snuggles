@@ -7,7 +7,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
         var Sharing = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: "sharing",
+            //el: "sharing",
 
             // View constructor
             initialize: function() {
@@ -16,7 +16,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             
             // View Event Handlers
             events: {
-              'click #sharing .email': 'onEmailShareClick'             
+              'click #sharing-nav .email': 'onEmailShareClick'             
             },            
 
 
@@ -34,8 +34,19 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
            
            onEmailShareClick: function(e){
               console.log('on email shared');
-           }
+           },
 
+           shareFacebook: function(){
+              console.log('share facebook');
+           },
+
+           shareTwitter: function(){
+              console.log('shareTwitter');
+           },
+
+          shareEmail: function(){
+            console.log('shareEmail');
+          }
 
         });
 
