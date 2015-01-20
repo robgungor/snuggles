@@ -11,12 +11,12 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
 
             // View constructor
             initialize: function() {
-                               
+                console.log('this is sharing, bitch');
             },
             
             // View Event Handlers
             events: {
-              'click .email': 'onEmailShareClick'             
+              'click #sharing .email': 'onEmailShareClick'             
             },            
 
 
