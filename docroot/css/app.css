@@ -193,22 +193,22 @@ main {
         height: 45px;
         -webkit-tap-highlight-color: transparent;
         -webkit-tap-highlight-color: transparent; }
-  main #sharing {
+  main #sharing-nav {
     text-align: center; }
-    main #sharing aside {
+    main #sharing-nav aside {
       color: #1eafeb;
       font-size: 0.9em; }
       @media only screen and (max-device-width: 414px) {
-        main #sharing aside {
+        main #sharing-nav aside {
           padding: 14px 3.5% 0px 0px; } }
       @media only screen and (max-device-width: 320px) {
-        main #sharing aside {
+        main #sharing-nav aside {
           padding: 14px 0% 0px 0px;
           font-size: 0.875em; } }
-    main #sharing nav {
+    main #sharing-nav nav {
       width: calc(38vw - 5px);
       margin: auto; }
-      main #sharing nav button {
+      main #sharing-nav nav button {
         list-style: none;
         float: left;
         display: block;
@@ -223,24 +223,24 @@ main {
         outline: none;
         background-color: transparent; }
         @media only screen and (max-device-width: 320px) {
-          main #sharing nav button {
+          main #sharing-nav nav button {
             width: 18vw;
             height: 18vw; } }
-        main #sharing nav button:active {
+        main #sharing-nav nav button:active {
           border: none;
           outline: none;
           -webkit-tap-highlight-color: transparent; }
-        main #sharing nav button.fb {
+        main #sharing-nav nav button.fb {
           background-image: url("../img/main/button-fb@2x.png"); }
-          main #sharing nav button.fb:active {
+          main #sharing-nav nav button.fb:active {
             background-image: url("../img/main/button-fb-active@2x.png"); }
-        main #sharing nav button.twitter {
+        main #sharing-nav nav button.twitter {
           background-image: url("../img/main/button-twitter@2x.png"); }
-          main #sharing nav button.twitter:active {
+          main #sharing-nav nav button.twitter:active {
             background-image: url("../img/main/button-twitter-active@2x.png"); }
-        main #sharing nav button.email {
+        main #sharing-nav nav button.email {
           background-image: url("../img/main/button-email@2x.png"); }
-          main #sharing nav button.email:active {
+          main #sharing-nav nav button.email:active {
             background-image: url("../img/main/button-email-active@2x.png"); }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
     main header, main section {
