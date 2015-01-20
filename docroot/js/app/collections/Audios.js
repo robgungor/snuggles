@@ -15,7 +15,7 @@ define(["jquery","backbone","models/Audio", "utils/OC_Utils", "utils/OC_Parser"]
       initialize: function(models, options) {
       	console.log(options);
 	    this.doorId 	= options.doorId;
-	    this.apiBaseURL = options.apiBaseURL;
+	    this.apiBaseURL =  "//" + options.baseURL;
 
 	    this.fetch();
 	  },
