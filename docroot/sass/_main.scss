@@ -125,6 +125,14 @@ main{
 				color: $light-blue;
 			}
 
+			aside{
+				font-size: 12px;
+				width: calc(100% - 4.7em);
+				text-align: center;
+				padding-left: 13%;
+				color: #f360d6;	
+			}
+
 			::-webkit-input-placeholder{ color: #ffffff;}
 			:-moz-placeholder{ color: #ffffff;}
 			::-moz-placeholder{ color: #ffffff;}
@@ -204,11 +212,10 @@ main{
 	}
 
 	#sharing{		
+		text-align: center;
 
 		aside{
-			color: $light-blue;
-			float: left;
-			padding: 22px 1% 0px 0px;
+			color: $light-blue;						
 			font-size: 0.9em;
 			
 			@media only screen and (max-device-width : $iphone6plus) {
@@ -222,15 +229,17 @@ main{
 		}
 
 		nav{
-			
+			width: calc(38vw - 5px);
+			margin: auto;
+
 			button{
 				list-style: none;
 				float: left;
 				display: block;
 				min-width: 50px;
 				min-height: 50px;
-				width: 16vw;
-				height: 16vw;
+				width: 11vw;
+				height: 11vw;
 				margin-left: 3px;
 				border: none;
 				background-size: 100%;

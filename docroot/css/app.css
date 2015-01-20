@@ -126,6 +126,12 @@ main {
       main .form-container form label {
         font-size: .9em;
         color: #1eafeb; }
+      main .form-container form aside {
+        font-size: 12px;
+        width: calc(100% - 4.7em);
+        text-align: center;
+        padding-left: 13%;
+        color: #f360d6; }
       main .form-container form ::-webkit-input-placeholder {
         color: #ffffff; }
       main .form-container form :-moz-placeholder {
@@ -187,52 +193,55 @@ main {
         height: 45px;
         -webkit-tap-highlight-color: transparent;
         -webkit-tap-highlight-color: transparent; }
-  main #sharing aside {
-    color: #1eafeb;
-    float: left;
-    padding: 22px 1% 0px 0px;
-    font-size: 0.9em; }
-    @media only screen and (max-device-width: 414px) {
-      main #sharing aside {
-        padding: 14px 3.5% 0px 0px; } }
-    @media only screen and (max-device-width: 320px) {
-      main #sharing aside {
-        padding: 14px 0% 0px 0px;
-        font-size: 0.875em; } }
-  main #sharing nav button {
-    list-style: none;
-    float: left;
-    display: block;
-    min-width: 50px;
-    min-height: 50px;
-    width: 16vw;
-    height: 16vw;
-    margin-left: 3px;
-    border: none;
-    background-size: 100%;
-    border: 0;
-    outline: none;
-    background-color: transparent; }
-    @media only screen and (max-device-width: 320px) {
+  main #sharing {
+    text-align: center; }
+    main #sharing aside {
+      color: #1eafeb;
+      font-size: 0.9em; }
+      @media only screen and (max-device-width: 414px) {
+        main #sharing aside {
+          padding: 14px 3.5% 0px 0px; } }
+      @media only screen and (max-device-width: 320px) {
+        main #sharing aside {
+          padding: 14px 0% 0px 0px;
+          font-size: 0.875em; } }
+    main #sharing nav {
+      width: calc(38vw - 5px);
+      margin: auto; }
       main #sharing nav button {
-        width: 18vw;
-        height: 18vw; } }
-    main #sharing nav button:active {
-      border: none;
-      outline: none;
-      -webkit-tap-highlight-color: transparent; }
-    main #sharing nav button.fb {
-      background-image: url("../img/main/button-fb@2x.png"); }
-      main #sharing nav button.fb:active {
-        background-image: url("../img/main/button-fb-active@2x.png"); }
-    main #sharing nav button.twitter {
-      background-image: url("../img/main/button-twitter@2x.png"); }
-      main #sharing nav button.twitter:active {
-        background-image: url("../img/main/button-twitter-active@2x.png"); }
-    main #sharing nav button.email {
-      background-image: url("../img/main/button-email@2x.png"); }
-      main #sharing nav button.email:active {
-        background-image: url("../img/main/button-email-active@2x.png"); }
+        list-style: none;
+        float: left;
+        display: block;
+        min-width: 50px;
+        min-height: 50px;
+        width: 11vw;
+        height: 11vw;
+        margin-left: 3px;
+        border: none;
+        background-size: 100%;
+        border: 0;
+        outline: none;
+        background-color: transparent; }
+        @media only screen and (max-device-width: 320px) {
+          main #sharing nav button {
+            width: 18vw;
+            height: 18vw; } }
+        main #sharing nav button:active {
+          border: none;
+          outline: none;
+          -webkit-tap-highlight-color: transparent; }
+        main #sharing nav button.fb {
+          background-image: url("../img/main/button-fb@2x.png"); }
+          main #sharing nav button.fb:active {
+            background-image: url("../img/main/button-fb-active@2x.png"); }
+        main #sharing nav button.twitter {
+          background-image: url("../img/main/button-twitter@2x.png"); }
+          main #sharing nav button.twitter:active {
+            background-image: url("../img/main/button-twitter-active@2x.png"); }
+        main #sharing nav button.email {
+          background-image: url("../img/main/button-email@2x.png"); }
+          main #sharing nav button.email:active {
+            background-image: url("../img/main/button-email-active@2x.png"); }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
     main header, main section {
       max-width: 72%;

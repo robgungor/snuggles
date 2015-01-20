@@ -217,6 +217,28 @@ END info -->
 
 
 <script type="text/javascript">
+    var fbcApplicationKey = "118257895016063";
+    var fbcRequiredApplicationPermissions = "user_about_me, publish_actions";
+
+    var OC_CONFIG = {        
+        //messageId  : QueryString['mId']; //"{messageId}";
+        doorId       : "{doorId}",
+        clientId     : "{clientId}",
+        baseURL      : "{baseURL}",
+        imageURL     : "{imageURL}",
+        title        : "{title}",
+        descp        : "{descp}",
+        contentURL   : "{contentURL}",
+        jsURL        : "{jsURL}",
+        dynamicURL   : "//{dynamicURL}",
+        accURL       : "{accURL}",
+        trackingURL  : "{trackingURL}",
+        topicId      : "{topicId}",        
+        curURL       : (document.URL).substring(0, (document.URL).indexOf('.oddcast.com/') + 12),
+        appDirectory : "snuggles-valentine",
+        fbcAppKey    : fbcApplicationKey
+    }
+   
     // OC.init(_wsSettings);
     // FB.init({
     //     appId: _wsSettings.fbcApplicationKey,

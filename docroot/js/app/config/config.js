@@ -24,6 +24,7 @@ require.config({
       "backbone.validateAll": "../libs/plugins/Backbone.validateAll",
 
       "text": "../libs/plugins/text",
+
   },
 
   // Sets the configuration for your third party scripts that are not AMD compatible

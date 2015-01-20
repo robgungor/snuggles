@@ -1,8 +1,8 @@
 // MainView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!templates/video-preview.html", "jqueryui"],
+define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!templates/video-preview.html", "utils/OC_Utils", "jqueryui"],
 
-    function($, Backbone, Model, template, previewTemplate){
+    function($, Backbone, Model, template, previewTemplate, OC_Utils){
         
         var View = Backbone.View.extend({
 
@@ -13,10 +13,32 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             initialize: function() {
                 this.model.set({'selectedVideo':'super-snuggle'});
                 this.loadNameList();             
+                
             },
 
             loadNameList: function(){
                 var self = this;
+
+                self.render();
+
+                var data = [{id:'Robert',value:'Robert'},
+                {id:'Rubin',value:'Rubin'},
+                {id:'Rambit',value:'Rambit'},
+                {id:'Rogan',value:'Rogan'},
+                {id:'Rick',value:'Rick'}];                
+                    
+                    self.render();
+
+                    $( "#vname" ).autocomplete({
+                      source: data,
+                      minLength: 0,
+                      select: function( event, ui ) {
+                        $('#vname').val(ui.item.value); 
+                      }
+                    });
+
+                      return;
+
 
                  $.ajax({
                   url: "xml/names.xml",
@@ -119,7 +141,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             onVideoSelectClick: function(e) {
                 e.preventDefault();
                 $(document.body).addClass('postloaded');
-                
+
                 var self = this,
                     $currentVid = $($('.video-wrapper')[0]),
                     vidName = $(e.currentTarget).attr('data-video-name');

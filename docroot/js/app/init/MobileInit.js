@@ -20,6 +20,12 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
 
   	}, 300);
 
+    // FB.init({
+    //     appId: _wsSettings.fbcApplicationKey,
+    //     status: true,
+    //     cookie: true
+    // });
+
     // Instantiates a new Mobile Router instance
     new MobileRouter();
   }

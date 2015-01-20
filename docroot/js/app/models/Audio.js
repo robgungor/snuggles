@@ -1,25 +1,27 @@
 // Model.js
 // --------
-define(["jquery", "backbone","collections/Audios"],
+define(["jquery", "backbone"],
 
-    function($, Backbone, Audios) {
+    function($, Backbone) {
 
         // Creates a new Backbone Model class object
-        var Main = Backbone.Model.extend({
+        var Audio = Backbone.Model.extend({
 
             audios: null,
-
+            
             // Model Constructor
-            initialize: function(options) {                
-                // loads in and parses list of audios from the server
-                this.audios = new Audios([],{options:options.config});
+            initialize: function() {
+                
             },
 
             // Default values for all of the Model attributes
-            defaults: {
-                'selectedVideo':'super-snuggle',                
+            defaults: {               
             },
 
+            parse: function(response, options) {
+                console.log('PARSING AUDIO OBJ');
+                console.log(response);
+            },
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)
             validate: function(attrs) {
 
@@ -28,7 +30,7 @@ define(["jquery", "backbone","collections/Audios"],
         });
 
         // Returns the Model class
-        return Main;
+        return Audio;
 
     }
 
