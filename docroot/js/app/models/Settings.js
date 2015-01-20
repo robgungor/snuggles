@@ -11,31 +11,25 @@ define(["jquery", "backbone"],
             
             // Model Constructor
             initialize: function(options) {
-                this.config = options.config;
-
-                this.fetch();
+                this.config = options.config;                
+                this.fetch({dataType:'xml'});
             },
 
             url: function(){
-                return '//'+ this.config.baseURL +"/" +this.config.appDirectory +"/xml/settings.xml"
-                return this.apiBaseURL+"/php/vhss_editors/getAudios/doorId="+this.doorId;
+                return '//'+ this.config.baseURL +"/" +this.config.appDirectory +"/xml/settings.xml"              
             },
+        
             parse: function(data) {
-            var parsed = [];
-            console.log('settings data: ');
-            consiole.log(data);
-            $(data).find("AUDIO").each(function (index) {               
-                parsed.push({
-                    'id'    : $(this).attr("ID"),
-                    'source': $(this).attr("URL"),              
-                    'type'  : $(this).attr("TYPE"),
-                    'name'  : $(this).attr("NAME"),                 
-                    'url'   : baseURL+$(this).attr("URL")+".mp3"
-                });           
-            });
-
-            return parsed;                  
-        },
+                var parsed = [];    
+                
+                // convert each element to JSON element
+                $(data).find('data').children().each(function (index) {     
+                    var nodeName        = $(this)[0].localName;
+                    parsed[nodeName]    = $(this).text();                                                        
+                });
+                
+                return parsed;                  
+            },
 
             // Default values for all of the Model attributes
             defaults: {               
@@ -43,7 +37,7 @@ define(["jquery", "backbone"],
     
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)
             validate: function(attrs) {
-
+                console.log('validating: '+attrs);
             }
 
         });

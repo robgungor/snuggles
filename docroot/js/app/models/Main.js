@@ -9,6 +9,7 @@ define(["jquery", "backbone","collections/Audios", "models/Settings"],
 
             audios: null,
             config: null,
+            settings: null,
             // Model Constructor
             initialize: function(options) {                
                 // loads in and parses list of audios from the server
