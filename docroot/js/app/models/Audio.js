@@ -20,7 +20,7 @@ define(["jquery", "backbone"],
 
             parse: function(response, options) {
                 console.log('PARSING AUDIO OBJ');
-                console.log(response);
+                console.log(this);
             },
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)
             validate: function(attrs) {

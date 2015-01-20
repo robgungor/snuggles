@@ -11,16 +11,16 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			topicId: 0
 		},
 	    //NOTE saveMessage
-		saveMessage : function (videoName, extraData, callback){
+		saveMessage : function (model, extraData, callback){
 			_wsSettings = _wsSettings || {
 				doorId	: 1281,
 				clientId: 360,
 				topicId: 0
 			}
-		
-	        var tmp_videoName = isaac_selected_video_name;
-	        var isaac_audio_id = OC._audioNameToId[tmp_videoName];
-	        var isaac_audio_path = OC._audios[ OC._audioNameToId[tmp_videoName] ];
+			var audio = model.audios.getAudioByName(model.get('selectedVideo'));
+	        // var tmp_videoName = isaac_selected_video_name;
+	        // var isaac_audio_id = OC._audioNameToId[tmp_videoName];
+	        // var isaac_audio_path = OC._audios[ OC._audioNameToId[tmp_videoName] ];
 			
 			var strExtraData = "";
 			for (var prop in extraData) {
@@ -30,9 +30,9 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			xml = "";
 			xml += '<player>\n';
 			xml += '  <params>\n';
-			xml += '    <door>' +this._wsSettings.doorId +'</door>\n';
-			xml += '    <client>' +this._wsSettings.clientId +'</client>\n';
-			xml += '    <topic>' +this._wsSettings.topicId +'</topic>\n';
+			xml += '    <door>'	 + model.config.doorId   +'</door>\n';
+			xml += '    <client>'+ model.config.clientId +'</client>\n';
+			xml += '    <topic>' + model.config.topicId  +'</topic>\n';
 			xml += '    <mode>embed</mode>\n';
 			xml += '    <appType>workshop</appType>\n';
 			xml += '  </params>\n';
@@ -43,7 +43,7 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 	//		xml += '    <bg tempid="'+bgId+'" name="">' +bgSrc +'</bg>\n';
 	        xml += '    <avatar modelId="28370" tempid="1" type="2D" is3d="0">oh/28370/0/74453/0/0/0/0/0/0/0/0/ohv2.swf?cs=</avatar>\n'; //isaac
 	///        xml += '    <bg id="56849" name="1x1">http://content-vd.oddcast.com/ccs6/customhost/1253/bg/1358553887449755.jpg</bg>\n'; //isaac
-	        xml += '    <audio type="prerec" id="'+isaac_audio_id+'" name="'+tmp_videoName+'">'+isaac_audio_path+'</audio>\n';//isaac
+	        xml += '    <audio type="prerec" id="'+audio.get('id')+'" name="'+audio.get('name')+'">'+audio.get('url')+'</audio>\n';//isaac
 	        
 			xml += '  </assets>\n';
 			xml += '  <scenes>\n';
@@ -74,7 +74,7 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			xml += '</player>\n';
 
 			var tmp;
-			OC_Utilities.getUrl(this._api_base_url +"/api/saveWorkshopData.php?rand=" +Math.random(), {xmlData: xml}, true, function(tmp){
+			OC_Utilities.getUrl(model.config.baseURL +"/api/saveWorkshopData.php?rand=" +Math.random(), {xmlData: xml}, true, function(tmp){
 				//for testting purpose ===> http://host-vd.oddcast.com/php/api/playScene/doorId=1217/clientId=217/mId=<mId>
 				tmp = OC_Parser.getXmlDoc(tmp);
 				tmp = OC_Parser.getXmlNode(tmp, 'MESSAGE');

@@ -13,7 +13,6 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             initialize: function() {
                 this.model.set({'selectedVideo':'super-snuggle'});
                 this.loadNameList();             
-                
             },
 
             loadNameList: function(){
@@ -38,7 +37,6 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
                     });
 
                       return;
-
 
                  $.ajax({
                   url: "xml/names.xml",

@@ -8,11 +8,12 @@ define(["jquery", "backbone","collections/Audios"],
         var Main = Backbone.Model.extend({
 
             audios: null,
-
+            config: null,
             // Model Constructor
             initialize: function(options) {                
                 // loads in and parses list of audios from the server
                 this.audios = new Audios([],options.config);
+                this.config = options.config;
             },
 
             // Default values for all of the Model attributes
