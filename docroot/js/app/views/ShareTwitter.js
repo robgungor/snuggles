@@ -35,7 +35,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             },
 
             postToTwitter : function () {
-              window.open(this.model.getTwitterLink, '_blank');
+              window.open(this.model.getTwitterLink(), '_blank');
             },
             
             twLogin: function(cb) {

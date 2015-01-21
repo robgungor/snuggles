@@ -1,8 +1,8 @@
 // MainView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'views/ShareTwitter'],
+define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'views/ShareTwitter', "utils/OC_Utils", "utils/OC_MessageSaver"],
 
-    function($, Backbone, Model, template, ShareTwitter){
+    function($, Backbone, Model, template, ShareTwitter, OC_Utils, OC_MessageSaver){
         
         var Sharing = Backbone.View.extend({
 
@@ -43,15 +43,40 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'vie
 
            shareFacebook: function(){
               console.log('share facebook');
+              var self = this;
+              //self.getMID( self.fbShare.share );
            },
 
-           shareTwitter: function(){              
-              this.twitterShare.share();
+           shareTwitter: function(){     
+           
+              var self = this;
+              self.getMID( function(){self.twitterShare.share();} );
            },
 
           shareEmail: function(){
             console.log('shareEmail');
-          }
+            // for email we always will generate a new mId
+          },
+
+          getMID: function(callback){
+              var self = this;
+              var mId = self.model.get('mId');
+              
+              if( !OC_Utils.isUndefined(mId) ) {
+                // if we have an mId, reuse it
+                callback(mId);
+              } else {
+                  var onMessageSaveComplete = function(mId){
+                    // set the mId to our model so it is not forgetten about                    
+                    self.model.set({'mId': mId});                    
+                    // pass along to next step
+                    callback(mId);
+                  }
+                  // save our message
+                  OC_MessageSaver.saveMessage(self.model, {}, onMessageSaveComplete);
+              }
+
+            }
 
         });
 

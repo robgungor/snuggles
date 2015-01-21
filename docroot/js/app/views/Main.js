@@ -179,40 +179,21 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             },
 
             onEmailShareClick: function(e){              
-              var self = this;
-              // for email we always will generate a new mId
+              var self = this;              
               self.sharing.shareEmail();
             },
 
             onFbShareClick: function(e){
               var self = this;
-              self.getMID( self.sharing.shareFacebook );
+              self.sharing.shareFacebook();
             },
 
             onTwitterShareClick: function(e){
-              var self = this;              
-              self.getMID( self.sharing.shareTwitter );
+              var self = this;        
+              self.sharing.shareTwitter();
             },
 
-            getMID: function(callback){
-              var self = this;
-              var mId = self.model.get('mId');
-              
-              if( !OC_Utils.isUndefined(mId) ) {
-                // if we have an mId, reuse it
-                callback(mId);
-              } else {
-                  var onMessageSaveComplete = function(mId){
-                    // set the mId to our model so it is not forgetten about                    
-                    self.model.set({'mId': mId});                    
-                    // pass along to next step
-                    callback(mId);
-                  }
-                  // save our message
-                  OC_MessageSaver.saveMessage(self.model, {}, onMessageSaveComplete);
-              }
-
-            }
+            
 
 
         });
