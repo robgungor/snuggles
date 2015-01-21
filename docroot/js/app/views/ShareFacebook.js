@@ -33,7 +33,23 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             share: function(){
                
             },
-
+            postToFacebook : function () {
+                var obj = {
+                    /*display: 'touch',*/
+                    method: 'feed',
+                    //link: this._fbPost.link,
+                    link: "http://host-d.oddcast.com/fbrd.html?ocu=" +encodeURIComponent(this._fbPost.link),
+                    picture: this._fbPost.picture, 
+                    name: this._fbPost.name, 
+                    caption: this._fbPost.caption, 
+                    description: this._fbPost.description
+                };
+                FB.ui(obj, function(event){
+                    OC_ET.event("edfbc");
+                    if(window.postedToFacebook)
+                        postedToFacebook(event);
+                });
+            },
             start: function(){
 
             }

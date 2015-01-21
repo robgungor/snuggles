@@ -12,7 +12,7 @@
             // estimated amounts: helps with percentage of loading bar
             imagesEstimatedK: 513,
             cssEstimatedK: 22,
-            jsEstimatedK: 180,
+            jsEstimatedK: 280,
             jsPercentLoaded: 0,
             cssPercentLoaded: 0,
             imagesPercentLoaded: 0,
@@ -23,7 +23,7 @@
                 self.totalEstimatedK = self.imagesEstimatedK+self.cssEstimatedK+self.jsEstimatedK;
                 self.percentShown = 0;
                 self.percentLoaded = 0;
-                self.timer = setInterval(function(){self.updatePercentageView();}, 300);
+                window.preloadTimer = setInterval(function(){self.updatePercentageView();}, 300);
             },
             loadCSS: function(url, callback) {
               var self = this;
@@ -66,12 +66,12 @@
               }
               d.getElementsByTagName("head")[0].appendChild(script);
             },
-            loadJavascripts: function(callback){
+            loadJavascripts: function(firstFile, callback){
                 var self = this,
-                    filesToLoad = ['img/main/video-placehold.jpg',
-                                    'img/main/button-email.png',
-                                    'img/main/input-bg.jpg',
-                                    'img/main/video-spinner-bg.jpg'
+                    filesToLoad = ['//connect.facebook.net/en_US/fbds.js',
+                                    '//'+OC_CONFIG.baseURL+'/includes/facebookconnectV2.js',
+                                    '//platform.twitter.com/widgets.js',
+                                    
                                     ],
                     filesTotal;
                                             
@@ -80,9 +80,9 @@
                     filesToLoad = filesToLoad.slice(1, filesToLoad.length);
                     
                     var filesLeft = filesTotal-filesToLoad.length;                    
-                    self.jsPercentLoaded = (filesLeft/filesTotal);
+                    self.jsPercentLoaded = (filesLeft/filesTotal)-.25; // assume it's only half of what we gotta do
                    
-                    if(imagesToLoad.length > 0) loadNextImage();
+                    if(filesToLoad.length > 0) loadNext();
                     else callback();
                 }
 
@@ -90,33 +90,47 @@
                     self.loadJS(filesToLoad[0], onJSLoaded);
                 };
 
-                imagesTotal = imagesToLoad.length;
-                loadNextImage();
+                filesTotal = filesToLoad.length+1;
+                self.loadJS(firstFile, onJSLoaded);
             },  
+            loadFonts: function(callback){
+              var self = this;
+              self.loadCSS('http://fast.fonts.net/lt/1.css?apiType=css&c=02e28d94-07f8-4d37-85c4-456e261c1c10&fontids=710839,710836,710833,710830', callback);
+            },
             loadFiles: function(production, obj, callback) {
               var self = this;
               
-              self.cssPercentLoaded = 1;
+              self.cssPercentLoaded = 0;
 
               if(production) {
                 // Loads the production CSS file(s)
                 self.loadCSS(obj["prod-css"], function() {
-                  // If there are production JavaScript files to load
-                  if(obj["prod-js"]) {
-                    // Loads the correct initialization file (which includes Almond.js)
-                    self.loadJS(obj["prod-js"], callback);
-                  }
+                    // load fonts
+                    self.loadFonts(function(){
+                      // If there are production JavaScript files to load
+                      if(obj["prod-js"]) {
+                        // Loads the correct initialization file (which includes Almond.js)
+                        self.loadJS(obj["prod-js"], callback);
+                      }
+                    });
                 });
               } else {
                 // Loads the development CSS file(s)
                 self.loadCSS(obj["dev-css"], function() {                 
-                  // If there are development Javascript files to load
-                  if(obj["dev-js"]) {                    
-                    // Loads Require.js and tells Require.js to find the correct intialization file
-                    self.loadJS(obj["dev-js"], callback);
-                    //TODO
-                    //self.loadJavascripts(callback);
-                  }
+                  self.cssPercentLoaded = .5;
+                  // load fonts
+                  self.loadFonts(function(){
+                    self.cssPercentLoaded = 1;
+                    // If there are development Javascript files to load
+                    if(obj["dev-js"]) {                    
+                      // Loads Require.js and tells Require.js to find the correct intialization file
+                      
+                      self.loadJavascripts(obj["dev-js"], callback);
+                      //self.loadJS(obj["dev-js"], callback);
+                      //TODO
+                      //self.loadJavascripts(callback);
+                    }
+                  });
                 });
               }
             },
@@ -203,12 +217,12 @@
                 
                 var self = this;
 
-                clearInterval(self.timer);
+                //clearInterval(self.timer);
                                     
-                document.getElementById("loading-bar-fill").style.width = '253px';
-                setTimeout(function(){
-                  document.getElementById("loading-heart").style.opacity = '1';
-                }, 300);
+                // document.getElementById("loading-bar-fill").style.width = '253px';
+                // setTimeout(function(){
+                //   document.getElementById("loading-heart").style.opacity = '1';
+                // }, 300);
             }
                      
           };
