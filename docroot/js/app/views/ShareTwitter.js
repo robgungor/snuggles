@@ -20,13 +20,17 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
 
             // Renders the view's template to the UI
             render: function() {
-                
-                this.$el = $('#sharing');
+                var self = this;
+
+                self.$el = $('#sharing');
                 // Setting the view's template using the template method
-                this.template = _.template(template, {shareMethod:'Twitter'});
+                self.template = _.template(template, {shareMethod:'Twitter'});
 
                 // Dynamically updates the UI with the view's template
-                this.$el.html(this.template);
+                self.$el.html(self.template);
+                $('#ok').on("click", function(e){
+                    self.onOKClick(e);
+                });
               
                 return this;
             },
