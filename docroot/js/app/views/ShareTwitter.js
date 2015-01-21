@@ -7,7 +7,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
         var ShareTwitter = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            //el: "sharing",
+            el: "sharing",
 
             // View constructor
             initialize: function() {                
@@ -15,14 +15,15 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             
             // View Event Handlers
             events: {
-                'click #sharing-nav .email': 'onEmailShareClick'             
+                'click #ok': 'onOKClick'             
             },            
 
             // Renders the view's template to the UI
             render: function() {
                 
+                this.$el = $('#sharing');
                 // Setting the view's template using the template method
-                this.template = _.template(template, {});
+                this.template = _.template(template, {shareMethod:'Twitter'});
 
                 // Dynamically updates the UI with the view's template
                 this.$el.html(this.template);
@@ -30,12 +31,22 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
                 return this;
             },
             
-            share: function(){
+            onOKClick: function(e){
+                e.preventDefault();
                 this.postToTwitter();
+            },
+
+            share: function(){
+                console.log("SHARING");
+
+                this.render();                
+                $('main').fadeOut();
+                this.$el.fadeIn();
             },
 
             postToTwitter : function () {
               window.open(this.model.getTwitterLink(), '_blank');
+
             },
             
             twLogin: function(cb) {

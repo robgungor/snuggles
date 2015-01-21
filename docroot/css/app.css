@@ -35,6 +35,46 @@ button {
   -ms-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent; }
+  button.bubble {
+    font-family: 'Dosis', sans-serif;
+    background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
+    color: #d747b8;
+    width: 140px;
+    height: 45px;
+    border: 0;
+    outline: none;
+    background-position-y: -1px;
+    line-height: 0px;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    margin: 0.2rem .6rem;
+    padding-bottom: 13px;
+    font-size: .8rem;
+    background-size: 100%;
+    vertical-align: top; }
+    @media screen and (min-device-width: 414px) {
+      button.bubble {
+        -webkit-transform: scale(1.4);
+        transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        margin: 0.2rem 1.2rem;
+        padding-bottom: 17px; } }
+    @media screen and (max-device-width: 320px) {
+      button.bubble {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -ms-transform: scale(1);
+        margin: 0;
+        margin-bottom: -8px; } }
+    button.bubble:active, button.bubble.selected {
+      background: url(../img/main/bubble-button-bg-active@2x.png) no-repeat;
+      background-size: 100%;
+      background-position-y: -1px;
+      padding-bottom: 8px;
+      height: 45px;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color: transparent; }
 
 main {
   width: 90vw;
@@ -153,46 +193,6 @@ main {
         margin-bottom: .65em; } }
   main #message-selection nav {
     text-align: center; }
-    main #message-selection nav button.bubble {
-      font-family: 'Dosis', sans-serif;
-      background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
-      color: #d747b8;
-      width: 140px;
-      height: 45px;
-      border: 0;
-      outline: none;
-      background-position-y: -1px;
-      line-height: 0px;
-      -webkit-transform: scale(1.2);
-      transform: scale(1.2);
-      -ms-transform: scale(1.2);
-      margin: 0.2rem .6rem;
-      padding-bottom: 13px;
-      font-size: .8rem;
-      background-size: 100%;
-      vertical-align: top; }
-      @media screen and (min-device-width: 414px) {
-        main #message-selection nav button.bubble {
-          -webkit-transform: scale(1.4);
-          transform: scale(1.35);
-          -ms-transform: scale(1.35);
-          margin: 0.2rem 1.2rem;
-          padding-bottom: 17px; } }
-      @media screen and (max-device-width: 320px) {
-        main #message-selection nav button.bubble {
-          -webkit-transform: scale(1);
-          transform: scale(1);
-          -ms-transform: scale(1);
-          margin: 0;
-          margin-bottom: -8px; } }
-      main #message-selection nav button.bubble:active, main #message-selection nav button.bubble.selected {
-        background: url(../img/main/bubble-button-bg-active@2x.png) no-repeat;
-        background-size: 100%;
-        background-position-y: -1px;
-        padding-bottom: 8px;
-        height: 45px;
-        -webkit-tap-highlight-color: transparent;
-        -webkit-tap-highlight-color: transparent; }
   main #sharing-nav {
     text-align: center; }
     main #sharing-nav aside {
@@ -294,6 +294,11 @@ ul.ui-autocomplete {
   width: 100vw;
   min-height: 100vh;
   opacity: 0; }
+
+#sharing {
+  background: transparent; }
+  #sharing .share-in {
+    background: transparent; }
 
 @media only screen and (orientation: landscape) {
   #landscape-blocker {

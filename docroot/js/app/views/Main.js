@@ -67,8 +67,8 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             events: {
               'click .poster-image': 'onVideoPreviewClick',
 
-              'click .email': 'onEmailShareClick',
-              'click .fb': 'onFbShareClick',
+              'click .email'  : 'onEmailShareClick',
+              'click .fb'     : 'onFbShareClick',
               'click .twitter': 'onTwitterShareClick',
 
               //'click .bubble':'onVideoSelectClick',              
@@ -180,17 +180,17 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
 
             onEmailShareClick: function(e){              
               var self = this;              
-              self.sharing.shareEmail();
+              self.sharing.shareEmailInit();
             },
 
             onFbShareClick: function(e){
               var self = this;
-              self.sharing.shareFacebook();
+              self.sharing.shareFacebookInit();
             },
 
             onTwitterShareClick: function(e){
               var self = this;        
-              self.sharing.shareTwitter();
+              self.sharing.shareTwitterInit();
             },
 
             
