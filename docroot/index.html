@@ -158,7 +158,11 @@ END info -->
         -moz-transition: width .5s ease-out 0;
         -o-transition: width .5s ease-out 0;
         transition: width .5s ease-out 0;
-    }  
+    } 
+
+    #main-loading-spinner{
+        display: none;
+    }
 
     @media screen and (max-width: 320px) {
          #landing .landing-logo, #landing .loading-bar, #landing .landing-oddcast-logo {
@@ -178,6 +182,8 @@ END info -->
 <body ontouchstart="">
     <div id="landscape-blocker"></div>
     <img id="loading-spinner" class='spinner' src="img/common/spinner.gif"/>
+    
+    <div class='loading-spinner' id="main-loading-spinner"><img class="spinner" src="img/common/blue-spinner.gif"/></div>
 
     <div id="landing">        
         <div class="top-right cloud"><img src="img/landing/cloud.png"></div>

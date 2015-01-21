@@ -64,6 +64,9 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'vie
               var self = this;
               var mId = self.model.get('mId');              
 
+              $('main').fadeOut();
+              $('#main-loading-spinner').fadeIn();
+              
               if( !OC_Utils.isUndefined(mId) ) {
                 // if we have an mId, reuse it
                 if(shareView) shareView.share.apply(shareView, [mId]);

@@ -8,6 +8,7 @@
 
 body {
   background-color: #24afe9;
+  background: linear-gradient(top, #ffffff 0%, #24afe9 100%);
   font-family: 'Dosis', sans-serif;
   min-height: 100%;
   height: 100%;
@@ -76,12 +77,74 @@ button {
       -webkit-tap-highlight-color: transparent;
       -webkit-tap-highlight-color: transparent; }
 
+nav.share, nav.visit {
+  width: calc(38vw - 5px);
+  margin: auto;
+  min-width: 176px; }
+  nav.share button, nav.visit button {
+    list-style: none;
+    float: left;
+    display: block;
+    min-width: 50px;
+    min-height: 50px;
+    width: 11vw;
+    height: 11vw;
+    margin-left: 3px;
+    border: none;
+    background-size: 100%;
+    border: 0;
+    outline: none;
+    background-color: transparent; }
+    @media only screen and (max-device-width: 320px) {
+      nav.share button, nav.visit button {
+        width: 18vw;
+        height: 18vw; } }
+    nav.share button:active, nav.visit button:active {
+      border: none;
+      outline: none;
+      -webkit-tap-highlight-color: transparent; }
+    nav.share button.fb, nav.visit button.fb {
+      background-image: url("../img/main/button-fb@2x.png"); }
+      nav.share button.fb:active, nav.visit button.fb:active {
+        background-image: url("../img/main/button-fb-active@2x.png"); }
+    nav.share button.instagram, nav.visit button.instagram {
+      background-image: url("../img/common/button-instagram@2x.png"); }
+      nav.share button.instagram:active, nav.visit button.instagram:active {
+        background-image: url("../img/common/button-instagram-active@2x.png"); }
+    nav.share button.twitter, nav.visit button.twitter {
+      background-image: url("../img/main/button-twitter@2x.png"); }
+      nav.share button.twitter:active, nav.visit button.twitter:active {
+        background-image: url("../img/main/button-twitter-active@2x.png"); }
+    nav.share button.email, nav.visit button.email {
+      background-image: url("../img/main/button-email@2x.png"); }
+      nav.share button.email:active, nav.visit button.email:active {
+        background-image: url("../img/main/button-email-active@2x.png"); }
+
+.loading-spinner {
+  z-index: 200;
+  background: url(../img/main/video-spinner-bg.jpg);
+  background-size: cover;
+  width: 100%;
+  padding: 0;
+  position: absolute;
+  padding-bottom: 58%; }
+
+#main-loading-spinner {
+  display: none;
+  top: 32%; }
+
+.oddcast-logo {
+  width: 32vw;
+  left: 30%;
+  position: relative;
+  margin-top: 10px; }
+
 main {
   width: 90vw;
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
   margin-left: 2.5vh;
   top: 0;
   position: absolute;
@@ -113,14 +176,6 @@ main {
   main #video-preview {
     position: relative;
     padding-bottom: 58%; }
-    main #video-preview #video-loading-spinner {
-      z-index: 200;
-      background: url(../img/main/video-spinner-bg.jpg);
-      background-size: cover;
-      width: 100%;
-      padding: 0;
-      position: absolute;
-      padding-bottom: 58%; }
     main #video-preview .poster-image {
       z-index: 100;
       position: absolute;
@@ -205,43 +260,6 @@ main {
         main #sharing-nav aside {
           padding: 14px 0% 0px 0px;
           font-size: 0.875em; } }
-    main #sharing-nav nav {
-      width: calc(38vw - 5px);
-      margin: auto; }
-      main #sharing-nav nav button {
-        list-style: none;
-        float: left;
-        display: block;
-        min-width: 50px;
-        min-height: 50px;
-        width: 11vw;
-        height: 11vw;
-        margin-left: 3px;
-        border: none;
-        background-size: 100%;
-        border: 0;
-        outline: none;
-        background-color: transparent; }
-        @media only screen and (max-device-width: 320px) {
-          main #sharing-nav nav button {
-            width: 18vw;
-            height: 18vw; } }
-        main #sharing-nav nav button:active {
-          border: none;
-          outline: none;
-          -webkit-tap-highlight-color: transparent; }
-        main #sharing-nav nav button.fb {
-          background-image: url("../img/main/button-fb@2x.png"); }
-          main #sharing-nav nav button.fb:active {
-            background-image: url("../img/main/button-fb-active@2x.png"); }
-        main #sharing-nav nav button.twitter {
-          background-image: url("../img/main/button-twitter@2x.png"); }
-          main #sharing-nav nav button.twitter:active {
-            background-image: url("../img/main/button-twitter-active@2x.png"); }
-        main #sharing-nav nav button.email {
-          background-image: url("../img/main/button-email@2x.png"); }
-          main #sharing-nav nav button.email:active {
-            background-image: url("../img/main/button-email-active@2x.png"); }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
     main header, main section {
       max-width: 72%;
@@ -293,12 +311,54 @@ ul.ui-autocomplete {
   height: 100vh;
   width: 100vw;
   min-height: 100vh;
-  opacity: 0; }
+  opacity: 0;
+  position: fixed;
+  z-index: 0; }
 
 #sharing {
-  background: transparent; }
-  #sharing .share-in {
-    background: transparent; }
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  height: 100vh;
+  z-index: 1; }
+  #sharing .share-in, #sharing .share-result {
+    background: transparent;
+    top: 50%;
+    position: relative;
+    margin-top: -100px; }
+  #sharing h1 {
+    color: #ffffff;
+    font-size: 2.25em;
+    display: block;
+    position: relative;
+    text-shadow: 0px 1px 1px rgba(32, 175, 235, 0.55);
+    padding-bottom: 0;
+    padding-top: 1px;
+    text-align: center; }
+    #sharing h1:before, #sharing h1:after {
+      content: attr(title);
+      color: #2d92e8;
+      position: absolute;
+      text-shadow: none;
+      width: 100%; }
+    #sharing h1:before {
+      top: 0px;
+      left: 0px; }
+    #sharing h1:after {
+      top: 0px;
+      left: 0px;
+      color: rgba(0, 99, 169, 0.86); }
+  #sharing h2 {
+    color: #00569c;
+    font-size: 1.3em;
+    padding: 30px; }
+  #sharing nav {
+    width: calc(38vw - 5px);
+    margin: auto; }
+  #sharing .oddcast-logo {
+    bottom: 10px;
+    position: absolute; }
 
 @media only screen and (orientation: landscape) {
   #landscape-blocker {

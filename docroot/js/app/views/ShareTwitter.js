@@ -28,8 +28,16 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
 
                 // Dynamically updates the UI with the view's template
                 self.$el.html(self.template);
+
+                $('.share-result').hide();
+                
+
                 $('#ok').on("click", function(e){
                     self.onOKClick(e);
+                });
+
+                $('#ok-after').on("click", function(e){
+                    self.onOKAfterClick(e);
                 });
               
                 return this;
@@ -38,14 +46,24 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             onOKClick: function(e){
                 e.preventDefault();
                 this.postToTwitter();
+
+                $('.share-in').fadeOut();
+                $('.share-result').fadeIn();
             },
 
-            share: function(){
-                console.log("SHARING");
+            onOKAfterClick: function(e){
+                e.preventDefault();
+               
+                this.$el.fadeOut(200);
+                $('main').fadeIn();
+            },
+
+            share: function(){                
 
                 this.render();                
-                $('main').fadeOut();
-                this.$el.fadeIn();
+                
+                $('#main-loading-spinner').fadeOut(300);
+                $('#sharing').fadeIn();
             },
 
             postToTwitter : function () {
