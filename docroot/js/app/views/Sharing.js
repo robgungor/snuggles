@@ -1,17 +1,22 @@
 // MainView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
+define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'views/ShareTwitter'],
 
-    function($, Backbone, Model, template){
+    function($, Backbone, Model, template, ShareTwitter){
         
         var Sharing = Backbone.View.extend({
 
             // The DOM Element associated with this view
             //el: "sharing",
+            twitterShare: null,
 
             // View constructor
             initialize: function() {
-                console.log('this is sharing, bitch');
+                
+                var self = this;
+
+                self.twitterShare = new ShareTwitter({model:self.model});
+
             },
             
             // View Event Handlers
@@ -40,8 +45,8 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
               console.log('share facebook');
            },
 
-           shareTwitter: function(){
-              console.log('shareTwitter');
+           shareTwitter: function(){              
+              this.twitterShare.share();
            },
 
           shareEmail: function(){

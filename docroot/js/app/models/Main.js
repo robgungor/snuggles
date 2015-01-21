@@ -28,10 +28,20 @@ define(["jquery", "backbone","collections/Audios", "models/Settings"],
 
             },
 
-            getMessageLink: function (){
-                //return "http://" +this._wsSettings.accURL +"/php/application_UI/doorId=" +this._wsSettings.doorId +"/clientId=" +this._wsSettings.clientId +"/?mId="+mid;
-                var pickup_url=OC_Parser.getStrNodeValue(self._settingsText, "PICKUP_URL");
-                return pickup_url +"?mId="+this.get('mId')+".3";
+            getMessageLink: function (){                                
+                return this.settings.get('PICKUP_URL') +"?mId="+this.get('mId')+".3";
+            },
+
+            getTwitterLink: function(){
+                var self = this;
+
+                var url = "https://twitter.com/intent/tweet?";
+                url += "url=";
+                url += encodeURIComponent( self.getMessageLink( self.get('mId') ) );
+                url += "&text=";
+                url += encodeURIComponent( self.settings.get('TWITTER_DEFAULT_TEXT') );
+                
+                return url;              
             }
 
         });

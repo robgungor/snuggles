@@ -10,15 +10,13 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             //el: "sharing",
 
             // View constructor
-            initialize: function() {
-                console.log('this is sharing, bitch');
+            initialize: function() {                
             },
             
             // View Event Handlers
             events: {
-              'click #sharing-nav .email': 'onEmailShareClick'             
+                'click #sharing-nav .email': 'onEmailShareClick'             
             },            
-
 
             // Renders the view's template to the UI
             render: function() {
@@ -32,19 +30,12 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
                 return this;
             },
             
-            setTwitterPost : function (mid, snapshot){
-              var twitterUrl = "https://twitter.com/intent/tweet?";
-              twitterUrl += "url=";
-              twitterUrl += encodeURIComponent(OC.getMessageLink(mid));
-              twitterUrl += "&text=";
-              twitterUrl += encodeURIComponent(this._twitterPost.text);
-
-              //$("#twitter_link").attr("href", twitterUrl);
-              this._twitterPost.link=twitterUrl;
+            share: function(){
+                this.postToTwitter();
             },
 
             postToTwitter : function () {
-              window.open(this._twitterPost.link, '_blank');
+              window.open(this.model.getTwitterLink, '_blank');
             },
             
             twLogin: function(cb) {
@@ -70,7 +61,6 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             twUpdateProfileImage: function(imgsrc, cb) {
               var self = this;
               $.ajax({
-                
                   url: self.model.config.get('curURL') + '/api_misc/{doorId}/twitterApi.php?f=UpdateProfileImage&image=' + encodeURIComponent(imgsrc), 
                   dataType: 'json',
                   success: function (result) {
