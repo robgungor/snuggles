@@ -58,7 +58,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
                 $('main').fadeIn();
             },
 
-            share: function(){                
+            share: function(mId){                
 
                 this.render();                
                 

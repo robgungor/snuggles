@@ -22,8 +22,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'vie
           },
             
           // View Event Handlers
-          events: {
-            'click #sharing-nav .email': 'onEmailShareClick'             
+          events: {           
           },            
 
 
@@ -37,12 +36,8 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'vie
               this.$el.html(this.template);
             
               return this;
-          },
-           
-          onEmailShareClick: function(e){
-              console.log('on email shared');
-          },
-
+          },           
+         
           shareFacebookInit: function(){
               var self = this;            
               // we'll go ahead and get the mID even though we won't use it yet

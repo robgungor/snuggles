@@ -9,8 +9,9 @@
 	.share-in, .share-result{
 		background: transparent;
 		top: 50%;
-		position: relative;
+		position: absolute;
 		margin-top: -100px;
+		width: 100%;
 	}
 	h1{
 		color: #ffffff;

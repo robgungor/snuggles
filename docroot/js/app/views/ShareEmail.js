@@ -15,33 +15,75 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             
             // View Event Handlers
             events: {
-                'click #sharing-nav .email': 'onEmailShareClick'             
+                
             },            
 
             // Renders the view's template to the UI
             render: function() {
                 
+                var self = this;
+
+                self.$el = $('#sharing');
                 // Setting the view's template using the template method
-                this.template = _.template(template, {});
+                self.template = _.template(template, {shareMethod:'Email'});
 
                 // Dynamically updates the UI with the view's template
-                this.$el.html(this.template);
+                self.$el.html(self.template);
+
+                $('.share-result').hide();
+                
+
+                $('#ok').on("click", function(e){
+                    self.onOKClick(e);
+                });
+
+                $('#ok-after').on("click", function(e){
+                    self.onOKAfterClick(e);
+                });
               
                 return this;
             },
             
-            share: function(){
+            share: function(mId){
+
+                this.render();                
+                
+                $('#main-loading-spinner').fadeOut(300);
+                $('#sharing').fadeIn();
+
+                
+            },
+
+            onOKClick: function(e){
+                e.preventDefault();
+                this.sendEmail();
+
+                $('.share-in').fadeOut();
+                $('.share-result').fadeIn();
+            },
+
+            onOKAfterClick: function(e){
+                e.preventDefault();
+               
+                this.$el.fadeOut(200);
+                $('main').fadeIn();
+            },
+
+            sendEmail: function(){
                 //var here_link = "<a href='http://"+_wsSettings.baseURL +"/"+_wsSettings.appDirectory+"?mId="+isaac_mId+"'>here</a>";
                 var here_link = "here (http://"+this.model.config.baseURL +"/"+this.model.config.appDirectory+"?mId="+this.model.get('mId')+")";
                 
-                var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Valentine from Snuggle";
+                var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Valentine from Snuggle&";
                 mail_href_msg += "body=Hi%2C%0D%0A%0D%0ASomeone wants to make your holidays merry and bright!%0D%0A%0D%0A";
                 mail_href_msg += "Click "+here_link+" to see your Note from the Nutcracker!%0D%0A%0D%0A";
                 mail_href_msg += "Privacy Policy (http://content.oddcast.com/host/nutcracker/privacy.php)";
                 
-                window.location.href = mail_href_msg;
-                //OC_ET.event("ce8");
-                //isaac_share_after_event();
+
+                //  var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Note from the Nutcracker and Lindeman%E2%80%99s!&";
+                // mail_href_msg += "body=Hi%2C%0D%0A%0D%0ASomeone wants to make your holidays merry and bright!%0D%0A%0D%0A";
+                // mail_href_msg += "Click "+here_link+" to see your Note from the Nutcracker!%0D%0A%0D%0A";
+                // mail_href_msg += "Privacy Policy (http://content.oddcast.com/host/nutcracker/privacy.php)";
+                window.location.href = mail_href_msg;               
             },
 
             emailMessage : function (mid, fromInfo, toInfos, extradata, cb){

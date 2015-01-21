@@ -325,8 +325,9 @@ ul.ui-autocomplete {
   #sharing .share-in, #sharing .share-result {
     background: transparent;
     top: 50%;
-    position: relative;
-    margin-top: -100px; }
+    position: absolute;
+    margin-top: -100px;
+    width: 100%; }
   #sharing h1 {
     color: #ffffff;
     font-size: 2.25em;
