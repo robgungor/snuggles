@@ -9,7 +9,8 @@ main{
 	position: absolute;
 	left: 0;
 	display: none;
-
+	overflow-y: scroll;
+	
 	@media screen and (max-device-width: $iphone6) {			
 		width: 90vw;
 		margin-left: 2.5vh;	
@@ -177,7 +178,7 @@ main{
 	#sharing-nav{		
 		text-align: center;
 		margin-top: -15px;
-		
+
 		aside{
 			color: $light-blue;						
 			font-size: 0.9em;
