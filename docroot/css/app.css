@@ -330,7 +330,9 @@ ul.ui-autocomplete {
   min-height: 100vh;
   opacity: 0;
   position: fixed;
-  z-index: 0; }
+  z-index: 0;
+  top: 0;
+  left: 0; }
 
 #sharing {
   background: transparent;
