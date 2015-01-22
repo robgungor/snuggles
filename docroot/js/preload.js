@@ -162,7 +162,10 @@
                           'img/video_preview/kisses.jpg',
                           'img/video_preview/love-you-forever.jpg',
                           'img/video_preview/snug-you-this-much.jpg',
-                          'img/video_preview/super-snuggle.jpg'
+                          'img/video_preview/super-snuggle.jpg',
+                          'img/common/snuggle-logo@2x.png',
+                          'img/common/oddcast-logo@2x.png',
+                          'img/common/snuggledotcom-logo@2x.png'
                         ]);
 
                     // } else{
