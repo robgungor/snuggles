@@ -6,7 +6,7 @@
 	height: 100vh;	
 	z-index: 1;
 	top: 0;
-	
+
 	.share-in, .share-result{
 		background: transparent;
 		top: 50%;
@@ -61,5 +61,14 @@
 		bottom: 10px;
 		position: absolute;
 	}	
+	a.snuggledotcom-logo{
+		display: block;
+		width: 170px;
+		margin: auto;
+		margin-top: 15px;
+		img{
+			width: 100%;
+		}
+	}
 }
 

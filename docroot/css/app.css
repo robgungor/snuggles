@@ -174,21 +174,30 @@ main {
   padding: 5vw;
   padding-top: 0;
   display: none;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  padding-bottom: 0;
+  min-height: 100vh; }
   main.loaded {
     position: relative; }
+  main .snuggle-logo {
+    float: left;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 91px; }
+  main .oddcast-logo {
+    position: absolute;
+    bottom: 10px; }
   @media screen and (max-device-width: 414px) {
     main {
       font-size: 1.2em;
       width: 82vw;
-      padding: 9vw;
-      padding-top: 0; } }
+      padding: 0 9vw; } }
   @media screen and (max-device-width: 375px) {
     main {
       font-size: 1.1em;
       width: 87vw;
-      padding: 6vw;
-      padding-top: 0; } }
+      padding: 0 6vw; } }
   main header {
     height: 13vh;
     position: relative; }
@@ -412,6 +421,13 @@ ul.ui-autocomplete {
   #sharing .oddcast-logo {
     bottom: 10px;
     position: absolute; }
+  #sharing a.snuggledotcom-logo {
+    display: block;
+    width: 170px;
+    margin: auto;
+    margin-top: 15px; }
+    #sharing a.snuggledotcom-logo img {
+      width: 100%; }
 
 @media only screen and (orientation: landscape) {
   #landscape-blocker {

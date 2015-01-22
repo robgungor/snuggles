@@ -12,25 +12,35 @@ main{
 	padding-top: 0;
 	display: none;
 	overflow-y: scroll;
+	padding-bottom: 0;
+	min-height: 100vh;
 
 	&.loaded{
 		position: relative;
 	}
+	
+	.snuggle-logo{
+		float: left;
+		position: absolute;
+		bottom: 15px;
+		left: 15px;
+		width: 91px;
+	}
+	.oddcast-logo{
+		position: absolute;
+		bottom: 10px;
+	}
+
 	@media screen and (max-device-width: $iphone6plus) {					
 		font-size: 1.2em;
 		width: 82vw;
-		padding: 9vw;
-		padding-top: 0;
+		padding: 0 9vw;		
 	}
 	@media screen and (max-device-width: $iphone6) {			
 		font-size: 1.1em;
 		width: 87vw;
-		padding: 6vw;
-		padding-top: 0;
+		padding: 0 6vw;		
 	}
-
-	
-	
 
 	header{
 		height: 13vh;
