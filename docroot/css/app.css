@@ -238,10 +238,10 @@ main {
         font-size: .9em;
         color: #1eafeb; }
       main .form-container form aside {
-        font-size: 12px;
+        font-size: 10px;
         width: calc(100% - 4.7em);
         text-align: center;
-        padding-left: 13%;
+        padding-left: 14%;
         color: #f360d6; }
       main .form-container form ::-webkit-input-placeholder {
         color: #ffffff; }
@@ -345,6 +345,8 @@ ul.ui-autocomplete {
     position: absolute;
     margin-top: -100px;
     width: 100%; }
+  #sharing .share-result {
+    margin-top: -200px; }
   #sharing h1 {
     color: #ffffff;
     font-size: 2.25em;
