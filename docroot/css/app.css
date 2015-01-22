@@ -265,7 +265,8 @@ main {
   main #message-selection nav {
     text-align: center; }
   main #sharing-nav {
-    text-align: center; }
+    text-align: center;
+    margin-top: -15px; }
     main #sharing-nav aside {
       color: #1eafeb;
       font-size: 0.9em; }
