@@ -170,8 +170,8 @@ main{
 				
 
 
-				@media screen and (min-device-width: $iphone6plus) {	
-					margin: 0rem .6rem;
+				@media screen and (max-device-width: $iphone6plus) {	
+					margin: .2rem 1.2rem;
 				}
 				
 				@media screen and (max-device-width: $iphone6) {				

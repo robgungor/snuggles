@@ -279,9 +279,9 @@ main {
         margin-bottom: .65em; } }
   main #message-selection nav {
     text-align: center; }
-    @media screen and (min-device-width: 414px) {
+    @media screen and (max-device-width: 414px) {
       main #message-selection nav button.bubble {
-        margin: 0rem .6rem; } }
+        margin: .2rem 1.2rem; } }
     @media screen and (max-device-width: 375px) {
       main #message-selection nav button.bubble {
         margin: 0rem .6rem; } }
