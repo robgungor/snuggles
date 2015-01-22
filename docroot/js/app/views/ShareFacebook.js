@@ -21,39 +21,79 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
             // Renders the view's template to the UI
             render: function() {
                 
+               var self = this;
+
+                self.$el = $('#sharing');
                 // Setting the view's template using the template method
-                this.template = _.template(template, {shareMethod:'Facebook'});
+                self.template = _.template(template, {shareMethod:'Facebook'});
 
                 // Dynamically updates the UI with the view's template
-                this.$el.html(this.template);
+                self.$el.html(self.template);
+
+                $('.share-result').hide();
+                
+
+                $('#ok').on("click", function(e){
+                    self.onOKClick(e);
+                });
+
+                $('#ok-after').on("click", function(e){
+                    self.onOKAfterClick(e);
+                });
               
                 return this;
             },
             
-            share: function(){
-               
+            share: function(mId){
+
+                this.render();                
+                
+                $('#main-loading-spinner').fadeOut(300);
+                $('#sharing').fadeIn();
+
+                
             },
+
+            onOKClick: function(e){
+                e.preventDefault();
+                this.postToFacebook();
+
+                $('.share-in').fadeOut();
+                $('.share-result').fadeIn();
+            },
+
+            onOKAfterClick: function(e){
+                e.preventDefault();
+               
+                this.$el.fadeOut(200);
+                $('main').fadeIn();
+            },
+
             postToFacebook : function () {
+                var self = this;
                 var obj = {
                     /*display: 'touch',*/
                     method: 'feed',
                     //link: this._fbPost.link,
-                    link: "http://host-d.oddcast.com/fbrd.html?ocu=" +encodeURIComponent(this._fbPost.link),
-                    picture: this._fbPost.picture, 
-                    name: this._fbPost.name, 
-                    caption: this._fbPost.caption, 
-                    description: this._fbPost.description
+                    link: "http://host-d.oddcast.com/fbrd.html?ocu=" +encodeURIComponent(self.model.getMessageLink()),
+                    picture: self.model.settings.get('FACEBOOK_POST_IMAGE_URL'), 
+                    name: self.model.settings.get('FACEBOOK_POST_NAME'), 
+                    caption: self.model.settings.get('FACEBOOK_POST_CAPTION'), 
+                    description: self.model.settings.get('FACEBOOK_POST_DESCRIPTION')
                 };
                 FB.ui(obj, function(event){
                     OC_ET.event("edfbc");
-                    if(window.postedToFacebook)
-                        postedToFacebook(event);
+                    if(window.postedToFacebook){
+                        self.onPostedToFacebook(event);
+                    }
+                        
                 });
             },
-            start: function(){
 
+            onPostedToFacebook: function(event){
+                $('.share-in').fadeOut();
+                $('.share-result').fadeIn();
             }
-           
 
         });
 

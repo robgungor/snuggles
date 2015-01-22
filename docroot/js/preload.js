@@ -68,9 +68,9 @@
             },
             loadJavascripts: function(firstFile, callback){
                 var self = this,
-                    filesToLoad = ['//connect.facebook.net/en_US/fbds.js',
-                                    '//'+OC_CONFIG.baseURL+'/includes/facebookconnectV2.js',
-                                    '//platform.twitter.com/widgets.js',
+                    filesToLoad = [//'//connect.facebook.net/en_US/fbds.js',
+                                    //'//'+OC_CONFIG.baseURL+'/includes/facebookconnectV2.js',
+                                    //'//platform.twitter.com/widgets.js',
                                     
                                     ],
                     filesTotal;
@@ -92,6 +92,8 @@
 
                 filesTotal = filesToLoad.length+1;
                 self.loadJS(firstFile, onJSLoaded);
+                
+
             },  
             loadFonts: function(callback){
               var self = this;

@@ -4,10 +4,11 @@
 // Include Mobile Specific JavaScript files here (or inside of your Mobile router)
 require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.validateAll"],
   function($, Backbone, MobileRouter) {
-  	// for main bg    
+  	
+  // for main bg    
     
     //$('#main-bg-container').css({'opacity':'1'});
-  	$('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});
+    $('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});
 
     clearInterval(window.preloadTimer);
 
@@ -17,7 +18,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
     }, 300);
     
     // do this on timeout to add a pause for animation
-  	setTimeout(function(){
+    setTimeout(function(){
 
       $('main').fadeIn(0);
       $('main').css({'opacity':'1'});
@@ -26,16 +27,35 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
       $('#landing').css({'opacity':'0'});
       setTimeout(function(){ $('#landing').hide(); }, 400);
 
-  	}, 800);
+    }, 800);
 
-    // FB.init({
-    //     appId: _wsSettings.fbcApplicationKey,
-    //     status: true,
-    //     cookie: true
-    // });
+    
 
     // Instantiates a new Mobile Router instance
     new MobileRouter();
+
+    var loadJS =  function(file, callback) {
+        
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src = file;
+
+      if (script.readyState) {  // IE
+        script.onreadystatechange = function() {
+          if (script.readyState == "loaded" || script.readyState == "complete") {
+            script.onreadystatechange = null;
+            callback();
+          }
+        };
+      } else {  // Other Browsers
+        script.onload = function() {
+          callback();
+        };
+        document.getElementsByTagName("head")[0].appendChild(script);
+      }
+    };  
+
 
     // fb and twitter laoding
     window.twttr = (function (d,s,id) {
@@ -52,15 +72,27 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
       });
     });
 
-    // facebook api loading in... 
-    // (function(d, debug){
-    //   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-    //   if (d.getElementById(id)) {return;}
-    //   js = d.createElement('script'); js.id = id; js.async = true;
-    //   js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
-    //   ref.parentNode.insertBefore(js, ref);
-    // }(document, /*debug*/ false));
+    //facebook api loading in... 
+    (function(d, debug){
+      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js#xfbml=1&appId=173540005994564";
+      ref.parentNode.insertBefore(js, ref);
 
+      js.onload = function(){
+        console.log("FB LOADED");
+          loadJS("//"+OC_CONFIG.baseURL+"/includes/facebookconnectV2.js", function(){
+            fbcSwitchAlertMode();
+            fbcVersion = 'v2.0';    
+            fbcSetFormat('json')
+              //fbcSetFlashObjectId('fbcReceiver');
+            fbcInitialize();
+          });
+      }
+    }(document, /*debug*/ false));
+
+    
      /* ++++++++++++++++++++++++++++++++++++++++++++
       FACEBOOK TRACKING CODE +++++++++++++++++++++++ 
      +++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -75,22 +107,16 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
     //             _fbq.loaded = true;
     //         }
     //     })();
-
-
-    //     <script type="text/javascript" src="//{baseURL}/includes/facebookconnectV2.js"></script>
-    // <script type="text/javascript">
-    //     fbcSwitchAlertMode();
-    //     fbcVersion = 'v2.0';
-    // </script>
-    // <script type="text/javascript">
-    //     fbcSetFormat('json')
-    // </script>
+  console.log('OC_CONFIG.fbcApplicationKey: '+OC_CONFIG.fbcAppKey);
+   
+    
+  
     window.fbAsyncInit = function()
     {
         FB.init
         (
             {
-                 appId: OC_CONFIG.fbcApplicationKey,
+                 appId: '173540005994564',
                  status: true,
                  cookie: true
             }
@@ -117,10 +143,8 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
       }
     }
 
-    $(function(){
-      //fbcSetFlashObjectId('fbcReceiver');
-      //fbcInitialize();
-    })
+     
+ 
 
   }
 

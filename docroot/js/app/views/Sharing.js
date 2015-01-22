@@ -41,8 +41,9 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'vie
           shareFacebookInit: function(){
               var self = this;            
               // we'll go ahead and get the mID even though we won't use it yet
-              self.getMID();
-              self.facebookShare.start();
+              //self.getMID();
+             //self.facebookShare.start();
+              self.getMID(self.facebookShare);
           },          
           
           shareTwitterInit: function(){
