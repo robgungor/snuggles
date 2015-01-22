@@ -21,8 +21,7 @@ body {
 
     &.loaded{
         background: url(../img/common/main-bg.jpg) no-repeat top left;
-        background-size: cover;
-        background-attachment: fixed;
+        background-size: 115%;        
     }
 }
 
