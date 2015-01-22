@@ -5,7 +5,8 @@
 	text-align: center;
 	height: 100vh;	
 	z-index: 1;
-
+	top: 0;
+	
 	.share-in, .share-result{
 		background: transparent;
 		top: 50%;
@@ -45,7 +46,7 @@
 			color: rgba(0, 99, 169, 0.86);
 		}
 	}
-	
+
 	h2{
 		color: #00569c;
 		font-size: 1.3em;

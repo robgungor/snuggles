@@ -21,7 +21,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
 
       $('main').fadeIn(0);
       $('main').css({'opacity':'1'});
-      
+      $('main').addClass('loaded');
       //fadeOut is overloading CPU I think
       $('#landing').css({'opacity':'0'});
       setTimeout(function(){ $('#landing').hide(); }, 400);

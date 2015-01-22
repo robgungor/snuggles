@@ -1,6 +1,6 @@
 main{
 	width: 90vw;
-	height: 100vh;
+	// height: 100vh;
 	top: 0;
 	left: 0;
 	z-index: 10;	
@@ -13,6 +13,9 @@ main{
 	display: none;
 	overflow-y: scroll;
 
+	&.loaded{
+		position: relative;
+	}
 	@media screen and (max-device-width: $iphone6) {			
 		
 		
@@ -28,7 +31,7 @@ main{
 	
 
 	header{
-		height: 13%;
+		height: 13vh;
 		position: relative;	
 
 		.logo{
@@ -151,6 +154,7 @@ main{
 			font-size: .9em;
 			margin-top: .5em;
 			margin-bottom: .5em;
+			height: auto;
 
 			@media screen and (min-width: $iphone6plus) {	
 				margin-bottom: .65em;			
@@ -285,5 +289,6 @@ ul.ui-autocomplete{
     z-index: 0;
     top: 0;
 	left: 0;
+	display: none;
 }
 

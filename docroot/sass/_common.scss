@@ -20,8 +20,9 @@ body {
     min-height:100vh;
 
     &.loaded{
-        background: url(../img/common/main-bg.jpg) no-repeat top left;
-        background-size: 115%;        
+        background: url(../img/common/main-bg.jpg) no-repeat;
+        background-size: cover;
+        background-attachment: fixed;     
     }
 }
 

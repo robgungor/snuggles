@@ -32,8 +32,9 @@ body {
   width: 100vw;
   min-height: 100vh; }
   body.loaded {
-    background: url(../img/common/main-bg.jpg) no-repeat top left;
-    background-size: 115%; }
+    background: url(../img/common/main-bg.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed; }
 
 a:link {
   color: white; }
@@ -161,7 +162,6 @@ nav.share, nav.visit {
 
 main {
   width: 90vw;
-  height: 100vh;
   top: 0;
   left: 0;
   z-index: 10;
@@ -173,6 +173,8 @@ main {
   padding-top: 0;
   display: none;
   overflow-y: scroll; }
+  main.loaded {
+    position: relative; }
   @media screen and (max-device-width: 414px) {
     main {
       font-size: 1.2em;
@@ -180,7 +182,7 @@ main {
       padding: 4vw;
       padding-top: 0; } }
   main header {
-    height: 13%;
+    height: 13vh;
     position: relative; }
     main header .logo {
       bottom: -12%;
@@ -262,7 +264,8 @@ main {
     text-align: center;
     font-size: .9em;
     margin-top: .5em;
-    margin-bottom: .5em; }
+    margin-bottom: .5em;
+    height: auto; }
     @media screen and (min-width: 414px) {
       main #message-selection header {
         margin-bottom: .65em; } }
@@ -337,7 +340,8 @@ ul.ui-autocomplete {
   position: fixed;
   z-index: 0;
   top: 0;
-  left: 0; }
+  left: 0;
+  display: none; }
 
 #sharing {
   background: transparent;
@@ -345,7 +349,8 @@ ul.ui-autocomplete {
   width: 100%;
   text-align: center;
   height: 100vh;
-  z-index: 1; }
+  z-index: 1;
+  top: 0; }
   #sharing .share-in, #sharing .share-result {
     background: transparent;
     top: 50%;
