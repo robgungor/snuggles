@@ -29,11 +29,11 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
                     
                     self.render();
 
-                    $( "#vname" ).autocomplete({
+                    $( "#tname" ).autocomplete({
                       source: data,
                       minLength: 0,
                       select: function( event, ui ) {
-                        $('#vname').val(ui.item.value); 
+                        $('#tname').val(ui.item.value); 
                       }
                     });
 
@@ -52,11 +52,11 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
                     
                     self.render();
 
-                    $( "#vname" ).autocomplete({
+                    $( "#tname" ).autocomplete({
                       source: data,
                       minLength: 0,
                       select: function( event, ui ) {
-                        $('#vname').val(ui.item.value); 
+                        $('#tname').val(ui.item.value); 
                       }
                     });
                   }
@@ -70,13 +70,20 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
               'click .email'  : 'onEmailShareClick',
               'click .fb'     : 'onFbShareClick',
               'click .twitter': 'onTwitterShareClick',
-
+              'change input'  : 'onInputChange',
               //'click .bubble':'onVideoSelectClick',              
               'mousedown .bubble':'onVideoSelectClick',   
 
               'orientationchange':'onOrientationChange'
             },            
 
+            onInputChange: function(e){
+                this.model.set({
+                  'toName':$('#tname').val(),
+                  'fromName':$('#fname').val()
+                });
+                console.log('oninputchange: '+$('#tname').val());
+            },
 
             // Renders the view's template to the UI
             render: function() {

@@ -42,6 +42,34 @@ define(["jquery", "backbone","collections/Audios", "models/Settings"],
                 url += encodeURIComponent( self.settings.get('TWITTER_DEFAULT_TEXT') );
                 
                 return url;              
+            },
+            getSelectedName: function(){
+
+                //return names.find(this.get('toName')) else return 'default'
+            },
+            fetchVideoLink: function(cb){
+                $.ajax({
+                  //crossDomain: false,
+                  //headers: {'X-Requested-With': 'XMLHttpRequest'},
+                  type: type,
+                  data: {
+                    video: 'video_'+this.get('selectedVideo')+'_'+this.getSelectedName(),
+                    from: this.get('fromName'),
+                    to: this.get('toName')
+                  },
+                  url: config.baseURL+'/api_misc/1281/api.php?video=video_1_bill&from=Viren&to=Jody',
+                  async: true,
+                  dataType : 'text',
+                  beforeSend: function(xhr, opts){
+                    
+                  
+                  },
+                  complete: function(data, textStatus, errorThrown) { 
+                   
+                    //console.log(data.responseText); 
+                    if(cb!=undefined)cb(data.responseText);  
+                  }
+              })
             }
 
         });
