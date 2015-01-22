@@ -38,8 +38,12 @@
 		color: #ffffff;
 		font-size: 1.375em;
 		margin-top: -6%;
+		margin-top: -25px;
 		float: left;
-		width: 100%;
+		width: 60%;
+		margin-top: -6%;
+		padding: 20%;
+		padding-top: 0;
 	}
 
 	.landing-logo{		
@@ -58,14 +62,16 @@
 	}
 	
 	.landing-oddcast-logo{
+		
 		position: absolute;
-		right: 12px;
-		bottom: 33px;
-		width: 100px;
+		left: 50%;
+		margin-left: -70px;
+		bottom: 111px;
+		width: 140px;
 
 		img{
 			width: 100%;
-			max-width: 104px;
+			max-width: 140px;
 		}
 	}
 
