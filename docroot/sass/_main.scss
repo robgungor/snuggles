@@ -16,11 +16,11 @@ main{
 	&.loaded{
 		position: relative;
 	}
-	@media screen and (max-device-width: $iphone6plus) {			
+	@media screen and (max-device-width: $iphone6plus) {					
 		font-size: 1.2em;
-		width: 92vw;
-		padding: 4vw;
-		padding-top: 0;	
+		width: 82vw;
+		padding: 9vw;
+		padding-top: 0;
 	}
 	@media screen and (max-device-width: $iphone6) {			
 		font-size: 1.1em;
@@ -35,7 +35,9 @@ main{
 	header{
 		height: 13vh;
 		position: relative;	
-
+		@media screen and (max-device-width: $iphone6plus) {	
+			height: 12vh;
+		}
 		.logo{
 			bottom: -12%;
 			position: absolute;
@@ -171,7 +173,12 @@ main{
 
 
 				@media screen and (max-device-width: $iphone6plus) {	
-					margin: .2rem 1.2rem;
+					margin: 0.2rem .75rem;
+					-webkit-transform: scale(1.25);
+					transform: scale(1.25);
+					-ms-transform: scale(1.25);					
+					padding-bottom: 17px;
+
 				}
 				
 				@media screen and (max-device-width: $iphone6) {				
