@@ -7,7 +7,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
   	// for main bg    
     
     //$('#main-bg-container').css({'opacity':'1'});
-  	$('body').addClass('loaded');
+  	$('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});
 
     clearInterval(window.preloadTimer);
 

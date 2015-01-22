@@ -112,7 +112,7 @@ nav.share, nav.visit{
         @media only screen and (max-device-width : 320px) {
             width: 18vw;
             height: 18vw;
-        }
+        }        
 
         &:active{
             border: none;
@@ -172,11 +172,14 @@ nav.share, nav.visit{
 }
 
 .oddcast-logo{
-    width: 32vw;
-    left: 30%;
+
+    width: 130px;
+    left: 50%;
     position: relative;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-left: -65px;
+    float: left;
+    clear: both;
 }
 
 

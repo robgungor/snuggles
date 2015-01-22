@@ -16,18 +16,20 @@ main{
 	&.loaded{
 		position: relative;
 	}
-	@media screen and (max-device-width: $iphone6) {			
-		
-		
-	}
-
 	@media screen and (max-device-width: $iphone6plus) {			
 		font-size: 1.2em;
 		width: 92vw;
 		padding: 4vw;
-		padding-top: 0;
-		
+		padding-top: 0;	
 	}
+	@media screen and (max-device-width: $iphone6) {			
+		font-size: 1.1em;
+		width: 87vw;
+		padding: 6vw;
+		padding-top: 0;
+	}
+
+	
 	
 
 	header{
@@ -169,11 +171,11 @@ main{
 
 
 				@media screen and (min-device-width: $iphone6plus) {	
-				
+					margin: 0rem .6rem;
 				}
 				
-				@media screen and (max-device-width: $break-small) {				
-				
+				@media screen and (max-device-width: $iphone6) {				
+					margin: 0rem .6rem;
 				}
 
 				&:active, &.selected{
