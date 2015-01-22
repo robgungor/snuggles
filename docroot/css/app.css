@@ -154,7 +154,8 @@ nav.share, nav.visit {
   width: 32vw;
   left: 30%;
   position: relative;
-  margin-top: 10px; }
+  margin-top: 10px;
+  margin-bottom: 10px; }
 
 main {
   width: 90vw;
@@ -162,21 +163,20 @@ main {
   top: 0;
   left: 0;
   z-index: 10;
-  margin-left: 2.5vh;
+  margin-left: 0;
   top: 0;
   position: absolute;
   left: 0;
+  padding: 5vw;
+  padding-top: 0;
   display: none;
   overflow-y: scroll; }
-  @media screen and (max-device-width: 375px) {
-    main {
-      width: 90vw;
-      margin-left: 2.5vh; } }
   @media screen and (max-device-width: 414px) {
     main {
       font-size: 1.2em;
-      width: 88vw;
-      margin-left: 3.25vh; } }
+      width: 92vw;
+      padding: 4vw;
+      padding-top: 0; } }
   main header {
     height: 13%;
     position: relative; }

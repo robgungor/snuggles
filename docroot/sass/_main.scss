@@ -3,23 +3,27 @@ main{
 	height: 100vh;
 	top: 0;
 	left: 0;
-	z-index: 10;
-	margin-left: 2.5vh;	
+	z-index: 10;	
+	margin-left: 0;
 	top: 0;
 	position: absolute;
 	left: 0;
+	padding: 5vw;
+	padding-top: 0;
 	display: none;
 	overflow-y: scroll;
-	
+
 	@media screen and (max-device-width: $iphone6) {			
-		width: 90vw;
-		margin-left: 2.5vh;	
+		
+		
 	}
 
-	@media screen and (max-device-width: $iphone6plus) {	
+	@media screen and (max-device-width: $iphone6plus) {			
 		font-size: 1.2em;
-		width: 88vw;
-		margin-left: 3.25vh;
+		width: 92vw;
+		padding: 4vw;
+		padding-top: 0;
+		
 	}
 	
 
