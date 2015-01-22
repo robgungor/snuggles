@@ -30,8 +30,11 @@ body {
   height: 100%;
   height: 100vh;
   width: 100vw;
-  min-height: 100vh;
-  overflow: hidden; }
+  min-height: 100vh; }
+  body.loaded {
+    background: url(../img/common/main-bg.jpg) no-repeat top left;
+    background-size: cover;
+    background-attachment: fixed; }
 
 a:link {
   color: white; }

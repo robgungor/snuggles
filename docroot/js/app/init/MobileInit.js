@@ -6,8 +6,9 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
   function($, Backbone, MobileRouter) {
   	// for main bg    
     
-    $('#main-bg-container').css({'opacity':'1'});
-  	
+    //$('#main-bg-container').css({'opacity':'1'});
+  	$('body').addClass('loaded');
+
     clearInterval(window.preloadTimer);
 
     document.getElementById("loading-bar-fill").style.width = '253px';
