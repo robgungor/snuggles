@@ -96,7 +96,7 @@ button {
 nav.share, nav.visit {
   width: calc(38vw - 5px);
   margin: auto;
-  min-width: 176px; }
+  min-width: 159px; }
   nav.share button, nav.visit button {
     list-style: none;
     float: left;
