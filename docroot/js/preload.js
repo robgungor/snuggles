@@ -158,8 +158,7 @@
                           'img/landing/button-email@2x.png',
                           'img/landing/button-email-active@2x.png',
                           'img/landing/button-fb@2x.png',
-                          'img/landing/button-fb-active@2x.png',
-                          'img/landing/bubble-button-long-bg@2x.png',
+                          'img/landing/button-fb-active@2x.png',                          
                           'img/landing/button-twitter@2x.png',
                           'img/landing/button-twitter-active@2x.png',                          
                           'img/common/snuggle-logo@2x.png',
@@ -184,7 +183,7 @@
                     
                     var imagesLeft = imagesTotal-imagesToLoad.length;                    
                     self.imagesPercentLoaded = (imagesLeft/imagesTotal);
-                     alert('loaded images: '+imagesToLoad.length);
+                    
                     if(imagesToLoad.length > 0) loadNextImage();
                     else callback();
                 }
@@ -194,7 +193,9 @@
                     
                     // call the notify_complete function when the image has loaded
                     img.onload = onImageLoaded;
-                    alert('loadNextImage: '+imagesToLoad[0]);
+                    // let's ignore errors and move on
+                    img.onerror = onImageLoaded;
+
                     // load the image
                     img.src = imagesToLoad[0];                    
                 };
@@ -268,7 +269,7 @@
           //   };
 
           // }
-          alert('preloading');
+          
           Preloader.initView();
 
           Preloader.loadFiles(production, filesToLoad, function() {
@@ -276,9 +277,8 @@
             
             if(!production && window.require) {
               Preloader.loadImages(function(){ 
-                 alert('images loaded');
-                require([filesToLoad["dev-init"]], function(init){
-                   alert('inited');
+
+                require([filesToLoad["dev-init"]], function(init){                
                   Preloader.loaded();});  
               });
                           
