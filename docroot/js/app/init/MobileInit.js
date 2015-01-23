@@ -6,7 +6,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
   function($, Backbone, MobileRouter) {
   	
   // for main bg    
-    
+    alert('mobile init');
     //$('#main-bg-container').css({'opacity':'1'});
     $('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});
 
