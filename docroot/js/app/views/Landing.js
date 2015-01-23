@@ -21,7 +21,7 @@ define(["jquery",
             initialize: function() {
                 var self = this;
 
-                self.model.set({'selectedVideo':'1'});
+                self.model.set({'selectedVideo':'1', 'autoplay':''});
 
                 self.sharing = new Sharing({model:this.model});
                 
@@ -152,12 +152,12 @@ define(["jquery",
                     vidName = this.model.get('selectedVideo');
 
                 // show loading state
-                $('#main-loading-spinner').fadeIn();
+                //$('#main-loading-spinner').fadeIn();
                 //$('#video-loading-spinner').show();
 
                 // pause current video
                 //$("#video-player")[0].pause();
-              
+                this.model.set({'autoplay':'autoplay'});
                 // render the new video
                 $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
                 
@@ -174,15 +174,27 @@ define(["jquery",
                 
                 var $video = $($parent.find("video#video-player").get(0));
                 // on pause of video
-                $video.on('pause', function(){self.onVideoPaused();});                
+                $video.on('paused', function(){
+                  console.log('PAUSED');
+                  self.onVideoPaused();
+                });                
                 // on end of video
                 $video.on('ended', function(){self.onVideoEnded();});
 
                 $video.on('playing', function(){
                    // hide loading state
                   $('#main-loading-spinner').fadeOut();
+                  console.log('playing');
                   //$('#video-loading-spinner').fadeOut();
                 });
+
+                $video.on('play', function(){
+                   // hide loading state
+                  // $('#main-loading-spinner').fadeOut();
+                  console.log('play');
+                  //$('#video-loading-spinner').fadeOut();
+                });
+                
 
                 // play the video
                 $video.get(0).play();
@@ -192,6 +204,7 @@ define(["jquery",
                 var video = $('.'+this.model.get('selectedVideo')).find("video#video-player").get(0);                
                 // if we aren't in full screen, assume the video is ended... 
                 if (!video.webkitDisplayingFullscreen) this.onVideoEnded(); 
+
             },
 
             onVideoEnded: function(){
