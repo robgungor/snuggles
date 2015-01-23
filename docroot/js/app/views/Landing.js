@@ -21,7 +21,7 @@ define(["jquery",
             initialize: function() {
                 var self = this;
 
-                self.model.set({'selectedVideo':'nutshell'});
+                self.model.set({'selectedVideo':'1'});
 
                 self.sharing = new Sharing({model:this.model});
                 
