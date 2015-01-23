@@ -161,12 +161,7 @@
                           'img/landing/button-fb-active@2x.png',
                           'img/landing/bubble-button-long-bg@2x.png',
                           'img/landing/button-twitter@2x.png',
-                          'img/landing/button-twitter-active@2x.png',
-                          'img/video_preview/hearts.jpg',
-                          'img/video_preview/kisses.jpg',
-                          'img/video_preview/love-you-forever.jpg',
-                          'img/video_preview/snug-you-this-much.jpg',
-                          'img/video_preview/super-snuggle.jpg',
+                          'img/landing/button-twitter-active@2x.png',                          
                           'img/common/snuggle-logo@2x.png',
                           'img/common/oddcast-logo@2x.png',
                           'img/common/snuggledotcom-logo@2x.png'
