@@ -61,7 +61,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               var videoId = self.model.get('videoId');
               // videoLink has be
 
-              var onGotVideoLink: function(link){
+              var onGotVideoLink = function(link){
                 if(shareView){
                   // we are sharing
                   self.getMID(shareView);
