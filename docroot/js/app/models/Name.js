@@ -19,8 +19,6 @@ define(["jquery", "backbone"],
             },
 
             parse: function(response) {
-                //var allNames = response.allNames;
-                console.log('new Name: '+response.spelling);
                 return response;
             },
     

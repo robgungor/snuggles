@@ -11,58 +11,18 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
             sharing: null,
             // View constructor
             initialize: function() {
-                this.model.set({'selectedVideo':'nutshell'});
-                this.sharing = new Sharing({model:this.model});
-                this.loadNameList();             
-            },
-
-            loadNameList: function(){
                 var self = this;
 
+                self.model.set({'selectedVideo':'nutshell'});
+
+                self.sharing = new Sharing({model:this.model});
+                
                 self.render();
-
-                var data = [{id:'Robert',value:'Robert'},
-                {id:'Rubin',value:'Rubin'},
-                {id:'Rambit',value:'Rambit'},
-                {id:'Rogan',value:'Rogan'},
-                {id:'Rick',value:'Rick'}];                
-                    
-                    self.render();
-
-                    $( "#tname" ).autocomplete({
-                      source: data,
-                      minLength: 0,
-                      select: function( event, ui ) {
-                        $('#tname').val(ui.item.value); 
-                      }
-                    });
-
-                      return;
-
-                 $.ajax({
-                  url: "xml/names.xml",
-                  dataType: "xml",
-                  success: function( xmlResponse ) {
-                    var data = $( "name", xmlResponse ).map(function() {
-                      return {
-                        value: $( this ).text(),
-                        id: $( this ).text()
-                      };
-                    }).get();
-                    
-                    self.render();
-
-                    $( "#tname" ).autocomplete({
-                      source: data,
-                      minLength: 0,
-                      select: function( event, ui ) {
-                        $('#tname').val(ui.item.value); 
-                      }
-                    });
-                  }
-                });
+                
+                self.listenTo(self.model.names, 'add sync', self.onNameListLoaded);         
             },
 
+            
             // View Event Handlers
             events: {
               'click .poster-image': 'onVideoPreviewClick',
@@ -75,19 +35,12 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
               'mousedown .bubble':'onVideoSelectClick',   
 
               'orientationchange':'onOrientationChange'
-            },            
+            },     
 
-            onInputChange: function(e){
-                this.model.set({
-                  'toName':$('#tname').val(),
-                  'fromName':$('#fname').val()
-                });
-                console.log('oninputchange: '+$('#tname').val());
-            },
 
             // Renders the view's template to the UI
             render: function() {
-                
+                var self = this;
                 // Setting the view's template using the template method
                 this.template = _.template(template, {});
 
@@ -101,6 +54,39 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
                 $('#video-loading-spinner').hide();
                 return this;
             },
+
+            onNameListLoaded: function(data){
+                var self = this;
+                console.log('the name list has loaded');
+
+                $( "#tname" ).autocomplete({                  
+                  source: function(request, response) {
+                      var results = $.ui.autocomplete.filter(self.model.names.dropDownNames, request.term);
+                                        
+                      results = _.filter(results, function(name) {
+                          // return only results with the same first character
+                          return name.id.charAt(0).toLowerCase() == request.term.charAt(0).toLowerCase();
+                      });
+                      // only show 5 results
+                      response(results.slice(0, 5));
+                  },
+                  minLength: 0,
+                  select: function( event, ui ) {
+                    $('#tname').val(ui.item.value); 
+                  }
+                });
+            },
+       
+
+            onInputChange: function(e){
+                var self = this;
+                self.model.set({
+                  'toName':$('#tname').val(),
+                  'fromName':$('#fname').val()
+                });
+                console.log('oninputchange: '+$('#tname').val());
+            },
+
             // on click of a thumbnail
             onVideoPreviewClick: function(e) {
                 // prevent default actions

@@ -14,7 +14,7 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
             initialize: function(options) {                
                                
                 this.settings   = new Settings({config:options.config});
-                this.names      = new Names([], options.config);
+                this.names      = new Names([], {config:options.config});
                 this.config     = options.config;
             },
 
