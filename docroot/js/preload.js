@@ -166,7 +166,7 @@
                           'img/common/oddcast-logo@2x.png',
                           'img/common/snuggledotcom-logo@2x.png'
                         ]);
-                      alert('loading images');
+                     
                     // } else{
                     //   imagesToLoad.push.apply(imagesToLoad, 
                     //     [ 'img/landing/share-a-snug-logo.png',
@@ -184,7 +184,7 @@
                     
                     var imagesLeft = imagesTotal-imagesToLoad.length;                    
                     self.imagesPercentLoaded = (imagesLeft/imagesTotal);
-                   
+                     alert('loaded images: '+imagesToLoad.length);
                     if(imagesToLoad.length > 0) loadNextImage();
                     else callback();
                 }
@@ -194,7 +194,7 @@
                     
                     // call the notify_complete function when the image has loaded
                     img.onload = onImageLoaded;
-
+                    alert('loadNextImage: '+imagesToLoad[0]);
                     // load the image
                     img.src = imagesToLoad[0];                    
                 };
@@ -268,8 +268,9 @@
           //   };
 
           // }
-          Preloader.initView();
           alert('preloading');
+          Preloader.initView();
+
           Preloader.loadFiles(production, filesToLoad, function() {
             
             
