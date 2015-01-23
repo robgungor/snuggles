@@ -166,7 +166,7 @@
                           'img/common/oddcast-logo@2x.png',
                           'img/common/snuggledotcom-logo@2x.png'
                         ]);
-
+                      alert('loading images');
                     // } else{
                     //   imagesToLoad.push.apply(imagesToLoad, 
                     //     [ 'img/landing/share-a-snug-logo.png',
@@ -274,8 +274,10 @@
             
             if(!production && window.require) {
               Preloader.loadImages(function(){ 
-                
-                require([filesToLoad["dev-init"]], function(init){Preloader.loaded();});  
+                 alert('images loaded');
+                require([filesToLoad["dev-init"]], function(init){
+                   alert('inited');
+                  Preloader.loaded();});  
               });
                           
             }
