@@ -1,6 +1,6 @@
-// MainView.js
+// LandingView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'views/ShareTwitter', 'views/ShareEmail', 'views/ShareFacebook', "utils/OC_Utils", "utils/OC_MessageSaver"],
+define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'views/ShareTwitter', 'views/ShareEmail', 'views/ShareFacebook', "utils/OC_Utils", "utils/OC_MessageSaver"],
 
     function($, Backbone, Model, template, ShareTwitter, ShareEmail, ShareFacebook, OC_Utils, OC_MessageSaver){
         
@@ -55,7 +55,28 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html", 'vie
               var self = this;
               self.getMID(self.emailShare);
           },
-        
+          
+          getVideoLink: function(shareView){
+              var self = this;
+              var videoId = self.model.get('videoId');
+              // videoLink has be
+
+              var onGotVideoLink: function(link){
+                if(shareView){
+                  // we are sharing
+                  self.getMID(shareView);
+                }else{
+                  // we are previewing
+                  
+                }
+              }
+              if( !OC_Utils.isUndefined(videoId) ) {
+                onGotVideoLink(videoId);
+              } else {
+
+              }
+          },
+
           getMID: function(shareView){
               var self = this;
               var mId = self.model.get('mId');              

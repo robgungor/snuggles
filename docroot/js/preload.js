@@ -140,24 +140,24 @@
                 var self = this,
                     imagesToLoad = ['img/common/main-bg.jpg',
                                     'img/video_preview/super-snuggle.jpg',                                    
-                                    'img/main/input-bg.jpg',
-                                    'img/main/video-spinner-bg.jpg'
+                                    'img/landing/input-bg.jpg',
+                                    'img/landing/video-spinner-bg.jpg'
                                     ],
                     imagesTotal;
                                             
                     //if (window.devicePixelRatio == 2) {
                       //retina images
                       imagesToLoad.push.apply(imagesToLoad, 
-                        [ 'img/main/share-a-snug-logo@2x.png',
-                          'img/main/bubble-button-bg@2x.png',
-                          'img/main/bubble-button-bg-active@2x.png',
-                          'img/main/button-email@2x.png',
-                          'img/main/button-email-active@2x.png',
-                          'img/main/button-fb@2x.png',
-                          'img/main/button-fb-active@2x.png',
-                          'img/main/bubble-button-long-bg@2x.png',
-                          'img/main/button-twitter@2x.png',
-                          'img/main/button-twitter-active@2x.png',
+                        [ 'img/landing/share-a-snug-logo@2x.png',
+                          'img/landing/bubble-button-bg@2x.png',
+                          'img/landing/bubble-button-bg-active@2x.png',
+                          'img/landing/button-email@2x.png',
+                          'img/landing/button-email-active@2x.png',
+                          'img/landing/button-fb@2x.png',
+                          'img/landing/button-fb-active@2x.png',
+                          'img/landing/bubble-button-long-bg@2x.png',
+                          'img/landing/button-twitter@2x.png',
+                          'img/landing/button-twitter-active@2x.png',
                           'img/video_preview/hearts.jpg',
                           'img/video_preview/kisses.jpg',
                           'img/video_preview/love-you-forever.jpg',
@@ -170,12 +170,12 @@
 
                     // } else{
                     //   imagesToLoad.push.apply(imagesToLoad, 
-                    //     [ 'img/main/share-a-snug-logo.png',
-                    //       'img/main/customize-and-share.png',
-                    //       'img/main/bubble-button-bg.png',
-                    //       'img/main/bubble-button-long-bg.png',
-                    //       'img/main/button-fb.png',
-                    //       'img/main/button-twitter.png'                          
+                    //     [ 'img/landing/share-a-snug-logo.png',
+                    //       'img/landing/customize-and-share.png',
+                    //       'img/landing/bubble-button-bg.png',
+                    //       'img/landing/bubble-button-long-bg.png',
+                    //       'img/landing/button-fb.png',
+                    //       'img/landing/button-twitter.png'                          
                     //     ]);
                     // }       
 

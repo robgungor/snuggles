@@ -5,7 +5,7 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
     function($, Backbone, Names, Settings) {
 
         // Creates a new Backbone Model class object
-        var Main = Backbone.Model.extend({
+        var App = Backbone.Model.extend({
             
             config: null,
             settings: null,
@@ -44,30 +44,38 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
                 return url;              
             },
             getSelectedName: function(){
-
-                //return names.find(this.get('toName')) else return 'default'
+                return this.names.getNameBySpelling(this.get('toName'));                
             },
             fetchVideoLink: function(cb){
+                var self = this;
+                // forcing this now, remove
+                self.set({'selectedVideo': 1});
                 $.ajax({
                   //crossDomain: false,
                   //headers: {'X-Requested-With': 'XMLHttpRequest'},
-                  type: type,
+                  type: 'GET',
                   data: {
-                    video: 'video_'+this.get('selectedVideo')+'_'+this.getSelectedName(),
-                    from: this.get('fromName'),
-                    to: this.get('toName')
+                    video: 'video_'+self.get('selectedVideo')+'_'+self.getSelectedName(),
+                    from: self.get('fromName'),
+                    to: self.get('toName')
                   },
-                  url: config.baseURL+'/api_misc/1281/api.php?video=video_1_bill&from=Viren&to=Jody',
+                  url: '//host.oddcast.com/api_misc/1281/api.php',
+                  // ?video=video_'+
+                  //           self.get('selectedVideo')+'_'+
+                  //           self.getSelectedName()+
+                  //           '&from='+self.get('fromName')+
+                  //           '&to='+self.get('toName'),
                   async: true,
-                  dataType : 'text',
+                  dataType : 'xml',
                   beforeSend: function(xhr, opts){
                     
                   
                   },
                   complete: function(data, textStatus, errorThrown) { 
-                   
-                    //console.log(data.responseText); 
-                    if(cb!=undefined)cb(data.responseText);  
+                    console.log(data.responseText); 
+                    var url = $(data.responseText).attr('URL');
+                    self.set({'videoURL':url});
+                    if(cb!=undefined)cb(url);  
                   }
               })
             }
@@ -75,7 +83,7 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
         });
 
         // Returns the Model class
-        return Main;
+        return App;
 
     }
 

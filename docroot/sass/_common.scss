@@ -43,7 +43,7 @@ button{
     
     &.bubble {
         font-family: $font-family, sans-serif;
-        background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
+        background: url(../img/landing/bubble-button-bg@2x.png) no-repeat;
         color: #d747b8;
         width: 140px;
         height: 45px;
@@ -78,7 +78,7 @@ button{
         }
 
         &:active, &.selected{
-            background: url(../img/main/bubble-button-bg-active@2x.png) no-repeat;              
+            background: url(../img/landing/bubble-button-bg-active@2x.png) no-repeat;              
             background-size: 100%;
             background-position-y: -1px;
             padding-bottom: 8px;
@@ -121,10 +121,10 @@ nav.share, nav.visit{
         }
 
         &.fb{
-            background-image: url('../img/main/button-fb@2x.png');
+            background-image: url('../img/landing/button-fb@2x.png');
 
             &:active{
-                background-image: url('../img/main/button-fb-active@2x.png');
+                background-image: url('../img/landing/button-fb-active@2x.png');
             }
         }
         
@@ -137,18 +137,18 @@ nav.share, nav.visit{
         }
 
         &.twitter{
-            background-image: url('../img/main/button-twitter@2x.png');
+            background-image: url('../img/landing/button-twitter@2x.png');
 
             &:active{
-                background-image: url('../img/main/button-twitter-active@2x.png');
+                background-image: url('../img/landing/button-twitter-active@2x.png');
             }
         }
 
         &.email{
-            background-image: url('../img/main/button-email@2x.png');
+            background-image: url('../img/landing/button-email@2x.png');
 
             &:active{
-                background-image: url('../img/main/button-email-active@2x.png');
+                background-image: url('../img/landing/button-email-active@2x.png');
             }
         }
 
@@ -158,7 +158,7 @@ nav.share, nav.visit{
 
 .loading-spinner{
     z-index: 200;
-    background: url(../img/main/video-spinner-bg.jpg);
+    background: url(../img/landing/video-spinner-bg.jpg);
     background-size: cover;
     width: 100%;
     padding: 0;
@@ -168,7 +168,11 @@ nav.share, nav.visit{
 
 #main-loading-spinner{
     display: none;
-    top: 32%;
+    top: 0;
+    height: 100vh;
+    opacity: .8;
+    padding-bottom: 0;
+    background: #ffffff;
 }
 
 .oddcast-logo{

@@ -1,6 +1,6 @@
-// MainView.js
+// LandingView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
+define(["jquery", "backbone", "models/App", "text!templates/sharing.html",],
 
     function($, Backbone, Model, template){
         

@@ -58,7 +58,7 @@ button {
   -webkit-tap-highlight-color: transparent; }
   button.bubble {
     font-family: "VAG Rounded W01 Bold", sans-serif;
-    background: url(../img/main/bubble-button-bg@2x.png) no-repeat;
+    background: url(../img/landing/bubble-button-bg@2x.png) no-repeat;
     color: #d747b8;
     width: 140px;
     height: 45px;
@@ -89,7 +89,7 @@ button {
         margin: 0;
         margin-bottom: -8px; } }
     button.bubble:active, button.bubble.selected {
-      background: url(../img/main/bubble-button-bg-active@2x.png) no-repeat;
+      background: url(../img/landing/bubble-button-bg-active@2x.png) no-repeat;
       background-size: 100%;
       background-position-y: -1px;
       padding-bottom: 8px;
@@ -124,25 +124,25 @@ nav.share, nav.visit {
       outline: none;
       -webkit-tap-highlight-color: transparent; }
     nav.share button.fb, nav.visit button.fb {
-      background-image: url("../img/main/button-fb@2x.png"); }
+      background-image: url("../img/landing/button-fb@2x.png"); }
       nav.share button.fb:active, nav.visit button.fb:active {
-        background-image: url("../img/main/button-fb-active@2x.png"); }
+        background-image: url("../img/landing/button-fb-active@2x.png"); }
     nav.share button.instagram, nav.visit button.instagram {
       background-image: url("../img/common/button-instagram@2x.png"); }
       nav.share button.instagram:active, nav.visit button.instagram:active {
         background-image: url("../img/common/button-instagram-active@2x.png"); }
     nav.share button.twitter, nav.visit button.twitter {
-      background-image: url("../img/main/button-twitter@2x.png"); }
+      background-image: url("../img/landing/button-twitter@2x.png"); }
       nav.share button.twitter:active, nav.visit button.twitter:active {
-        background-image: url("../img/main/button-twitter-active@2x.png"); }
+        background-image: url("../img/landing/button-twitter-active@2x.png"); }
     nav.share button.email, nav.visit button.email {
-      background-image: url("../img/main/button-email@2x.png"); }
+      background-image: url("../img/landing/button-email@2x.png"); }
       nav.share button.email:active, nav.visit button.email:active {
-        background-image: url("../img/main/button-email-active@2x.png"); }
+        background-image: url("../img/landing/button-email-active@2x.png"); }
 
 .loading-spinner {
   z-index: 200;
-  background: url(../img/main/video-spinner-bg.jpg);
+  background: url(../img/landing/video-spinner-bg.jpg);
   background-size: cover;
   width: 100%;
   padding: 0;
@@ -151,7 +151,11 @@ nav.share, nav.visit {
 
 #main-loading-spinner {
   display: none;
-  top: 32%; }
+  top: 0;
+  height: 100vh;
+  opacity: .8;
+  padding-bottom: 0;
+  background: #ffffff; }
 
 .oddcast-logo {
   width: 130px;
@@ -162,7 +166,7 @@ nav.share, nav.visit {
   float: left;
   clear: both; }
 
-main {
+main#landing {
   width: 90vw;
   top: 0;
   left: 0;
@@ -177,57 +181,59 @@ main {
   overflow-y: scroll;
   padding-bottom: 0;
   min-height: 100vh; }
-  main.loaded {
+  main#landing.loaded {
     position: relative; }
-  main .snuggle-logo {
+  main#landing .snuggle-logo {
     float: left;
     position: absolute;
     bottom: 15px;
     left: 15px;
     width: 91px; }
-  main .oddcast-logo {
-    position: absolute;
-    bottom: 10px; }
   @media screen and (max-device-width: 414px) {
-    main {
+    main#landing {
       font-size: 1.2em;
       width: 82vw;
-      padding: 0 9vw; } }
+      padding: 0 9vw; }
+      main#landing .oddcast-logo {
+        position: absolute;
+        bottom: 10px; } }
   @media screen and (max-device-width: 375px) {
-    main {
+    main#landing {
       font-size: 1.1em;
       width: 87vw;
-      padding: 0 6vw; } }
-  main header {
+      padding: 0 6vw; }
+      main#landing .oddcast-logo {
+        position: relative; } }
+  main#landing header {
     height: 13vh;
     position: relative; }
     @media screen and (max-device-width: 414px) {
-      main header {
+      main#landing header {
         height: 12vh; } }
-    main header .logo {
+    main#landing header .logo {
       bottom: -12%;
       position: absolute;
       width: 62%;
       height: auto; }
-    main header .caption {
+    main#landing header .caption {
       position: absolute;
       right: 30px;
       bottom: 10%;
       width: 33%;
       height: auto; }
-  main #video-preview {
+  main#landing #video-preview {
     position: relative;
     padding-bottom: 58%; }
-    main #video-preview .poster-image {
+    main#landing #video-preview .poster-image {
       z-index: 100;
       position: absolute;
       width: 100%;
       opacity: 0; }
-      main #video-preview .poster-image img {
+      main#landing #video-preview .poster-image img {
         width: 100%; }
-    main #video-preview video {
+    main#landing #video-preview video {
       width: 100%; }
-    main #video-preview #video-container {
+    main#landing #video-preview #video-container {
       position: absolute;
       top: 0;
       width: 100%;
@@ -237,49 +243,49 @@ main {
       -moz-transition: opacity 500ms ease-out 0;
       -o-transition: opacity 500ms ease-out 0;
       transition: opacity 500ms ease-out 0; }
-      main #video-preview #video-container.active {
+      main#landing #video-preview #video-container.active {
         z-index: 101;
         opacity: 1; }
-  main .form-container {
+  main#landing .form-container {
     margin-top: 5px; }
-    main .form-container form {
+    main#landing .form-container form {
       text-align: right; }
-      main .form-container form .ui-helper-hidden-accessible {
+      main#landing .form-container form .ui-helper-hidden-accessible {
         display: none; }
-      main .form-container form input {
+      main#landing .form-container form input {
         width: calc(100% - 2.7em);
         height: 10.25vw;
         margin-bottom: .25em;
         font-family: "VAG Rounded W01 Bold", sans-serif;
         color: #fff;
-        background: url(../img/main/input-bg.jpg) no-repeat left;
+        background: url(../img/landing/input-bg.jpg) no-repeat left;
         background-size: 100%;
         border: none;
         padding-top: .1em;
         font-size: .98em;
         text-align: center; }
-        main .form-container form input:-webkit-autofill {
-          background: url(../img/main/input-bg.jpg) no-repeat left; }
-      main .form-container form label {
+        main#landing .form-container form input:-webkit-autofill {
+          background: url(../img/landing/input-bg.jpg) no-repeat left; }
+      main#landing .form-container form label {
         font-size: .9em;
         color: #1eafeb; }
-      main .form-container form aside {
+      main#landing .form-container form aside {
         font-size: 10px;
         width: calc(100% - 4.7em);
         text-align: center;
         padding-left: 14%;
         color: #f360d6; }
-      main .form-container form ::-webkit-input-placeholder {
+      main#landing .form-container form ::-webkit-input-placeholder {
         color: #ffffff; }
-      main .form-container form :-moz-placeholder {
+      main#landing .form-container form :-moz-placeholder {
         color: #ffffff; }
-      main .form-container form ::-moz-placeholder {
+      main#landing .form-container form ::-moz-placeholder {
         color: #ffffff; }
-      main .form-container form :-ms-input-placeholder {
+      main#landing .form-container form :-ms-input-placeholder {
         color: #ffffff; }
-      main .form-container form textarea:focus, main .form-container form input:focus, main .form-container form *:focus {
+      main#landing .form-container form textarea:focus, main#landing .form-container form input:focus, main#landing .form-container form *:focus {
         outline: 0; }
-  main #message-selection header {
+  main#landing #message-selection header {
     color: #1eafeb;
     text-align: center;
     font-size: .9em;
@@ -287,58 +293,60 @@ main {
     margin-bottom: .5em;
     height: auto; }
     @media screen and (min-width: 414px) {
-      main #message-selection header {
+      main#landing #message-selection header {
         margin-bottom: .65em; } }
-  main #message-selection nav {
+  main#landing #message-selection nav {
     text-align: center; }
     @media screen and (max-device-width: 414px) {
-      main #message-selection nav button.bubble {
+      main#landing #message-selection nav button.bubble {
         margin: 0.2rem .75rem;
         -webkit-transform: scale(1.25);
         transform: scale(1.25);
         -ms-transform: scale(1.25);
-        padding-bottom: 17px; } }
+        padding-bottom: 17px; }
+        main#landing #message-selection nav button.bubble:active, main#landing #message-selection nav button.bubble.selected {
+          padding-bottom: 8px; } }
     @media screen and (max-device-width: 375px) {
-      main #message-selection nav button.bubble {
+      main#landing #message-selection nav button.bubble {
         margin: 0rem .6rem; } }
-  main #sharing-nav {
+  main#landing #sharing-nav {
     text-align: center;
     margin-top: -15px; }
-    main #sharing-nav aside {
+    main#landing #sharing-nav aside {
       color: #1eafeb;
       font-size: 0.9em; }
       @media only screen and (max-device-width: 414px) {
-        main #sharing-nav aside {
+        main#landing #sharing-nav aside {
           padding: 14px 3.5% 0px 0px; } }
       @media only screen and (max-device-width: 320px) {
-        main #sharing-nav aside {
+        main#landing #sharing-nav aside {
           padding: 14px 0% 0px 0px;
           font-size: 0.875em; } }
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    main header, main section {
+    main#landing header, main#landing section {
       max-width: 72%;
       margin: auto; }
-    main #video-preview {
+    main#landing #video-preview {
       padding: 0;
       padding-bottom: 42%; }
-      main #video-preview #video-loading-spinner {
+      main#landing #video-preview #video-loading-spinner {
         padding-bottom: 58%; }
-    main form {
+    main#landing form {
       font-size: 1.5em; }
-      main form .form-row {
+      main#landing form .form-row {
         padding: 0; }
-      main form input {
+      main#landing form input {
         height: 7.75vw;
         margin-bottom: .25em; }
-    main #message-selection {
+    main#landing #message-selection {
       -webkit-transform: scale(1.5);
       margin-top: 59px; }
-    main #sharing-nav {
+    main#landing #sharing-nav {
       margin-top: 56px; }
-      main #sharing-nav aside {
+      main#landing #sharing-nav aside {
         font-size: 1.4em;
         padding-left: 50px; }
-      main #sharing-nav button {
+      main#landing #sharing-nav button {
         max-width: 80px;
         max-height: 80px; } }
 

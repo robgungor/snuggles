@@ -1,6 +1,6 @@
-// MainView.js
+// LandingView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
+define(["jquery", "backbone", "models/App", "text!templates/sharing.html",],
 
     function($, Backbone, Model, template){
         
@@ -73,7 +73,7 @@ define(["jquery", "backbone", "models/Main", "text!templates/sharing.html",],
                 //var here_link = "<a href='http://"+_wsSettings.baseURL +"/"+_wsSettings.appDirectory+"?mId="+isaac_mId+"'>here</a>";
                 var here_link = "here (http://"+this.model.config.baseURL +"/"+this.model.config.appDirectory+"?mId="+this.model.get('mId')+")";
                 
-                var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Valentine from Snuggle&";
+                var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Valentine%E2%80%99s Day Snug&";
                 mail_href_msg += "body=Hi%2C%0D%0A%0D%0ASomeone wants to make your holidays merry and bright!%0D%0A%0D%0A";
                 mail_href_msg += "Click "+here_link+" to see your Note from the Nutcracker!%0D%0A%0D%0A";
                 mail_href_msg += "Privacy Policy (http://content.oddcast.com/host/nutcracker/privacy.php)";

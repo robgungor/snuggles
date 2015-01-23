@@ -1,6 +1,6 @@
 // Collection.js
 // -------------
-define(["jquery","backbone","models/Main"],
+define(["jquery","backbone","models/App"],
 
   function($, Backbone, Model) {
 

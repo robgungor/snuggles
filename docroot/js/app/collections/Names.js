@@ -35,7 +35,7 @@ define(["jquery","backbone","models/Name",],
                 var spellings = $(this).attr("allNames").split('|');
                 // there are multiple spellings per name, but make them individual objects for future iteration
                 _.each(spellings, function(val){
-                    
+
                     parsed.push({
                         'name'    : actualName,
                         'spelling': val.toLowerCase()
@@ -51,11 +51,8 @@ define(["jquery","backbone","models/Name",],
 
         getNameBySpelling: function(spelling){
             spelling = spelling.toLowerCase();
-            console.log('getting name by spelling before: '+spelling);
-
             var n = this.findWhere({'spelling': spelling});
-            console.log('getting name by spelling: '+n);
-            return n != 'undefined' && n != null ? n : {name:'default'};
+            return n != 'undefined' && n != null ? n.get('name').toLowerCase() : 'default';
         }   
 
 

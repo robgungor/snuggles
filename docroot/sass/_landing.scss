@@ -1,4 +1,4 @@
-main{
+main#landing{
 	width: 90vw;
 	// height: 100vh;
 	top: 0;
@@ -26,20 +26,25 @@ main{
 		left: 15px;
 		width: 91px;
 	}
-	.oddcast-logo{
-		position: absolute;
-		bottom: 10px;
-	}
+	
 
 	@media screen and (max-device-width: $iphone6plus) {					
 		font-size: 1.2em;
 		width: 82vw;
-		padding: 0 9vw;		
+		padding: 0 9vw;	
+		.oddcast-logo{
+			position: absolute;
+			bottom: 10px;
+		}	
 	}
 	@media screen and (max-device-width: $iphone6) {			
 		font-size: 1.1em;
 		width: 87vw;
 		padding: 0 6vw;		
+
+		.oddcast-logo{
+			position: relative;			
+		}	
 	}
 
 	header{
@@ -124,7 +129,7 @@ main{
 				margin-bottom: .25em;
 				font-family: $font-family, sans-serif;
 				color: #fff;
-				background: url(../img/main/input-bg.jpg) no-repeat left;
+				background: url(../img/landing/input-bg.jpg) no-repeat left;
 				background-size: 100%;		
 				border: none;
 				padding-top: .1em;
@@ -132,7 +137,7 @@ main{
 				text-align: center;		
 				
 				&:-webkit-autofill{
-					background: url(../img/main/input-bg.jpg) no-repeat left;
+					background: url(../img/landing/input-bg.jpg) no-repeat left;
 				}
 			}
 
@@ -188,16 +193,16 @@ main{
 					transform: scale(1.25);
 					-ms-transform: scale(1.25);					
 					padding-bottom: 17px;
-
+					&:active, &.selected{
+						padding-bottom: 8px;
+					}	
 				}
 				
 				@media screen and (max-device-width: $iphone6) {				
 					margin: 0rem .6rem;
 				}
 
-				&:active, &.selected{
 				
-				}
 			}
 		}
 	}

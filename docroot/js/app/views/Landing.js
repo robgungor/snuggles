@@ -1,13 +1,21 @@
-// MainView.js
+// LandingView.js
 // -------
-define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!templates/video-preview.html", "utils/OC_Utils", "utils/OC_MessageSaver", "views/Sharing", "jqueryui"],
+define(["jquery", 
+        "backbone", 
+        "models/App", 
+        "text!templates/landing.html", 
+        "text!templates/video-preview.html", 
+        "utils/OC_Utils", 
+        "utils/OC_MessageSaver", 
+        "views/Sharing", 
+        "jqueryui"],
 
     function($, Backbone, Model, template, previewTemplate, OC_Utils, OC_MessageSaver, Sharing){
         
         var View = Backbone.View.extend({
 
             // The DOM Element associated with this view
-            el: "main",
+            el: "main#landing",
             sharing: null,
             // View constructor
             initialize: function() {
@@ -80,31 +88,87 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
 
             onInputChange: function(e){
                 var self = this;
+                self.updateInputValues();     
+            },
+
+            updateInputValues: function(){
+                var self = this;
                 self.model.set({
                   'toName':$('#tname').val(),
                   'fromName':$('#fname').val()
-                });
-                console.log('oninputchange: '+$('#tname').val());
+                });   
             },
-
             // on click of a thumbnail
             onVideoPreviewClick: function(e) {
                 // prevent default actions
                 e.preventDefault();
+                this.loadAndPlayVideo();
+                
+            },
 
-                // play video 
-                this.playVideo();
+            loadAndPlayVideo: function() {
+                var self = this;
+
+                self.updateInputValues();
+
+                // use local callback for scope
+                var onGotPreviewVideoLink = function(){
+
+                  self.playVideo();
+                }
+                self.model.fetchVideoLink(onGotPreviewVideoLink);
+                //lock the screen
+                $('#main-loading-spinner').fadeIn();
+            },
+
+            onGotPreviewVideoLink: function(data) {
+              
+              console.log('onGotPreviewVideoLink: '+data);              
+              
+                var self = this,
+                    $currentVid = $($('.video-wrapper')[0]),
+                    vidURL = this.model.get('videoURL');
+
+                // pause current video
+                $("#video-player")[0].pause();
+              
+                // render the new video
+                $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
+                
+                var $nextVidWrap = $('.video-wrapper.'+vidName);        
+
+                self.playVideo($nextVidWrap);   
+                
+                // wait for it to play, remove the previous
+                $nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
+
+                // update video selection nav
             },
 
             // play video
             playVideo: function($parent) {                
-                var self = this;
+                var self = this,                 
+                    $currentVid = $($('.video-wrapper')[0]),
+                    vidName = this.model.get('selectedVideo');
 
                 // show loading state
-                $('#video-loading-spinner').show();
+                $('#main-loading-spinner').fadeIn();
+                //$('#video-loading-spinner').show();
+
+                // pause current video
+                //$("#video-player")[0].pause();
+              
+                // render the new video
+                $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
+                
+                var $nextVidWrap = $('.video-wrapper.vid'+vidName);        
+                                
+                // wait for it to play, remove the previous
+                $nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
 
                 // we do this so we don't reference an old video that is still hanging
-                $parent = $parent || self.$el;                
+                var $parent = $nextVidWrap || self.$el;
+
                 // show the container of the player
                 $parent.find("#video-container").addClass('active');
                 
@@ -116,7 +180,8 @@ define(["jquery", "backbone", "models/Main", "text!templates/main.html", "text!t
 
                 $video.on('playing', function(){
                    // hide loading state
-                  $('#video-loading-spinner').fadeOut();
+                  $('#main-loading-spinner').fadeOut();
+                  //$('#video-loading-spinner').fadeOut();
                 });
 
                 // play the video
