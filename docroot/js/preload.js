@@ -269,6 +269,7 @@
 
           // }
           Preloader.initView();
+          alert('preloading');
           Preloader.loadFiles(production, filesToLoad, function() {
             
             
