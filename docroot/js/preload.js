@@ -139,7 +139,11 @@
             loadImages: function(callback){
                 var self = this,
                     imagesToLoad = ['img/common/main-bg.jpg',
-                                    'img/video_preview/super-snuggle.jpg',                                    
+                                    'img/video_preview/1.jpg',                                    
+                                    'img/video_preview/2.jpg',
+                                    'img/video_preview/3.jpg',
+                                    'img/video_preview/4.jpg',
+                                    'img/video_preview/5.jpg',
                                     'img/landing/input-bg.jpg',
                                     'img/landing/video-spinner-bg.jpg'
                                     ],
