@@ -1,20 +1,20 @@
 // Model.js
 // --------
-define(["jquery", "backbone","collections/Audios", "models/Settings"],
+define(["jquery", "backbone","collections/Names",  "models/Settings"],
 
-    function($, Backbone, Audios, Settings) {
+    function($, Backbone, Names, Settings) {
 
         // Creates a new Backbone Model class object
         var Main = Backbone.Model.extend({
-
-            audios: null,
+            
             config: null,
             settings: null,
+            names: null,
             // Model Constructor
             initialize: function(options) {                
-                // loads in and parses list of audios from the server
-                this.audios     = new Audios([],options.config);
+                               
                 this.settings   = new Settings({config:options.config});
+                this.names      = new Names([], options.config);
                 this.config     = options.config;
             },
 
