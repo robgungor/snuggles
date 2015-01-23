@@ -102,7 +102,7 @@ define(["jquery",
             onVideoPreviewClick: function(e) {
                 // prevent default actions
                 e.preventDefault();
-                this.loadAndPlayVideo();
+                //this.loadAndPlayVideo();
                 
             },
 
