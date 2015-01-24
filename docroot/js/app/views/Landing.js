@@ -40,6 +40,8 @@ define(["jquery",
               'click .fb'     : 'onFbShareClick',
               'click .twitter': 'onTwitterShareClick',
               'change input'  : 'onInputChange',
+              'keypress input'  : 'onInputChange',
+              
               //'click .bubble':'onVideoSelectClick',              
               'mousedown .bubble':'onVideoSelectClick',   
 
@@ -65,8 +67,7 @@ define(["jquery",
             },
 
             onNameListLoaded: function(data){
-                var self = this;
-                console.log('the name list has loaded');
+                var self = this;                
 
                 $( "#tname" ).autocomplete({                  
                   source: function(request, response) {
@@ -90,33 +91,29 @@ define(["jquery",
             onInputChange: function(e){
                 var self = this;
                 // only do this on save. 
-
+                self.model.set({'hasChanged':true});
                 self.updateInputValues();     
             },
 
             updateInputValues: function(){
                 var self = this;
-                var toName = self.model.get('toName');
-                var fromName = self.model.get('fromName');
-                var inToName = $('#tname').val();
-                var inFromName = $('#fname').val();
+                
+                var toName = $('#tname').val();
+                var fromName = $('#fname').val();
 
-                self.model.set({'hasChanged':true});
-                if(inToName.length < 1)   inToName = "Valentine";
-                if(inFromName.length < 1) inFromName = "Your Valentine";
+                if(toName.length < 1)   toName = "Valentine";
+                if(fromName.length < 1) fromName = "Your Valentine";
 
                 self.model.set({
-                  'toName':inToName,
-                  'fromName':inFromName
-                });  
-
-                // if the new values have changed we return true
-                return toName != this.model.get('toName') &&  fromName != self.model.get('fromName'); 
+                  'toName':toName,
+                  'fromName':fromName
+                });                  
             },
             // on click of a thumbnail
             onVideoPreviewClick: function(e) {
                 // prevent default actions
                 e.preventDefault();
+                console.log('hasChangeD: '+this.model.get('hasChanged'));
                 if( this.model.get('hasChanged') )this.loadAndPlayVideo();
                 else this.playVideo();
                 
@@ -134,7 +131,6 @@ define(["jquery",
                 }
                 
                 self.model.fetchVideoLink(onGotPreviewVideoLink);
-                
 
                 //lock the screen
                 $('#main-loading-spinner').fadeIn();
@@ -146,22 +142,14 @@ define(["jquery",
                 var self = this,                 
                     $currentVid = $($('.video-wrapper')[0]),
                     vidName = this.model.get('selectedVideo');
-
-                // show loading state
-                //$('#main-loading-spinner').fadeIn();
-                //$('#video-loading-spinner').show();
-
-                // pause current video
-                //$("#video-player")[0].pause();
-                this.model.set({'autoplay':'autoplay'});
+             
+                self.model.set({'autoplay':'autoplay'});
+                
                 // render the new video
                 $('#video-preview').html(_.template(previewTemplate, this.model.toJSON()));
                 
                 var $nextVidWrap = $('.video-wrapper.vid'+vidName);        
-                                
-                // wait for it to play, remove the previous
-                //$nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
-
+                                               
                 // we do this so we don't reference an old video that is still hanging
                 var $parent = $nextVidWrap || self.$el;
 
@@ -179,7 +167,6 @@ define(["jquery",
                 $video.on('playing', function(){
                    // hide loading state
                   $('#main-loading-spinner').hide();                  
-                  //$('#video-loading-spinner').fadeOut();
                 });
 
                 $video.on('play', function(){
@@ -215,7 +202,7 @@ define(["jquery",
             
             onVideoSelectClick: function(e) {
                 e.preventDefault();
-                $(document.body).addClass('postloaded');
+                //if($(e.currentTarget).hasClass('selected')) return;
 
                 var self = this,
                     $currentVid = $($('.video-wrapper')[0]),
@@ -230,10 +217,6 @@ define(["jquery",
                 self.updateSelectedButton();
 
                 if( this.model.get('hasChanged') )self.loadAndPlayVideo();
-                else self.playVideo();
-                //self.loadAndPlayVideo();
-
-               
                      
             },
 

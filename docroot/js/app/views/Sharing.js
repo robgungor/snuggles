@@ -52,25 +52,11 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               var self = this;
               self.getVideoLink(self.emailShare);
           },        
-          
-          updateInputValues: function(){
-                var self = this;               
-                var toName = this.model.get('toName');
-                var fromName = this.model.get('fromName');
-
-                self.model.set({
-                  'toName':$('#tname').val(),
-                  'fromName':$('#fname').val()
-                });  
-
-                // if the new values have changed we return true
-                return toName != this.model.get('toName') &&  fromName != this.model.get('fromName'); 
-          },
-          
+                  
           getVideoLink: function(shareView){
               var self = this;              
               var videoURL = self.model.get('videoURL');
-              var hasChanged = self.updateInputValues();              
+              var hasChanged = self.model.get('hasChanged');
 
               var onGotVideoLink = function(link){
                   self.getMID(shareView);            
@@ -92,7 +78,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               $('main').fadeOut();
               $('#main-loading-spinner').fadeIn(500);
 
-              if( !OC_Utils.isUndefined(mId) ) {
+              if( !OC_Utils.isUndefined(mId) && !self.model.get('hasChanged') ) {
                 // if we have an mId, reuse it
                 if(shareView) shareView.share.apply(shareView, [mId]);
               } else {
