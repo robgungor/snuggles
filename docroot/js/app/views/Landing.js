@@ -88,15 +88,23 @@ define(["jquery",
 
             onInputChange: function(e){
                 var self = this;
-                self.updateInputValues();     
+                // only do this on save. 
+
+                //self.updateInputValues();     
             },
 
             updateInputValues: function(){
                 var self = this;
+                var toName = self.model.get('toName');
+                var fromName = self.model.get('fromName');
+
                 self.model.set({
                   'toName':$('#tname').val(),
                   'fromName':$('#fname').val()
-                });   
+                });  
+
+                // if the new values have changed we return true
+                return toName != this.model.get('toName') &&  fromName != self.model.get('fromName'); 
             },
             // on click of a thumbnail
             onVideoPreviewClick: function(e) {
@@ -227,7 +235,7 @@ define(["jquery",
                 this.model.set({'selectedVideo':vidName});
                  // update video selection nav
                 self.updateSelectedButton();
-                
+
                 self.loadAndPlayVideo();
 
                

@@ -13,14 +13,37 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 	    //NOTE saveMessage
 		saveMessage : function (model, extraData, callback){
 			
-			console.log('saving message: '+model.get('selectedVideo'));
-			var audio = model.audios.getAudioByName(model.get('selectedVideo'));
+			console.log('saving message: '+model.get('selectedVideo'));			
 	        
 			var strExtraData = "";
 			for (var prop in extraData) {
 				strExtraData += prop +"=" +encodeURIComponent(extraData[prop]) +"&amp;";
 			}
-		  
+			// 		  	<player>
+			//   <params>
+			//     <door>1217</door>
+			//     <client>217</client>
+			//     <topic>0</topic>
+			//     <mode>embed</mode>
+			//     <appType>workshop</appType>
+			//   </params>
+			//   <assets>
+			//     <video tempid="101" name="" length="25" vidid="0">http://host-vd.oddcast.com/ccs7/tmp/APS/video/78/a8/78a82268761cbdca394578e91d409b84/78a82268761cbdca394578e91d409b84.webm</video>    
+			//     <bg tempid="24" name="">http://host-vd.oddcast.com/ccs7/tmp/APS/video/4f/35/4f35bab759cbef8a638269bf358b7b48/thumbnailSquare.jpg</bg>
+			//   </assets>
+			//   <scenes>
+			//     <scene>
+			//       <video>
+			//         <tempid>101</tempid>
+			//       </video>
+			//       <bg>
+			//         <tempid>24</tempid>
+			//       </bg>
+			//       <id>1</id>
+			//     </scene>
+			//   </scenes>
+			//   <extradata>bgPos=0%2C0%2C1%2C0&amp;</extradata>
+			// </player>
 			var xml = "";
 			xml += '<player>\n';
 			xml += '  <params>\n';
@@ -30,26 +53,22 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			xml += '    <mode>embed</mode>\n';
 			xml += '    <appType>workshop</appType>\n';
 			xml += '  </params>\n';
-			xml += '  <assets>\n';	       
-	        xml += '    <avatar modelId="28370" tempid="1" type="2D" is3d="0">oh/28370/0/74453/0/0/0/0/0/0/0/0/ohv2.swf?cs=</avatar>\n'; //isaac	
-	        xml += '    <audio type="prerec" id="'+audio.get('id')+'" name="'+audio.get('name')+'">'+audio.get('url')+'</audio>\n';//isaac
+			xml += '  <assets>\n';
+			xml += '    <video tempid="101" name="" length="25" vidid="0">'+model.get('videoURL')+'</video>';	       	        
 			xml += '  </assets>\n';
-			xml += '  <scenes>\n';
+
+			xml += '<scenes>\n';
 			xml += '    <scene>\n';
-	        xml += '      <fb_scene_id>null</fb_scene_id>\n';       //isaac
-	        xml += '      <avatar>\n';                              //isaac
-	        xml += '        <tempid>1</tempid>\n';                  //isaac
-	        xml += '        <x>0.00</x>\n';                         //isaac
-	        xml += '        <y>0.00</y>\n';                         //isaac
-	        xml += '        <scale>100.00</scale>\n';               //isaac
-	        xml += '      </avatar>\n';                             //isaac
-	        xml += '      <audio><id>'+audio.get('id')+'</id></audio>\n';         //isaac
-	///        xml += '      <bg><id>56849</id></bg>\n';               //isaac
-	        xml += '      <id>1</id>\n';                            //isaac
-	        
+			xml += '      <video>\n';
+			xml += '        <tempid>101</tempid>\n';
+			xml += '      </video>\n';
+			// xml += '      <bg>\n';
+			// xml += '        <tempid>24</tempid>\n';
+			// xml += '      </bg>\n';
+			xml += '      <id>1</id>\n';
 			xml += '    </scene>\n';
 			xml += '  </scenes>\n';
-			xml += '  <extradata>bgPos=0%2E0%2C0%2E0%2C1%2E000%2C0%2E0</extradata>\n'; //' +strExtraData +'
+			xml += '  <extradata></extradata>\n'; //' +strExtraData +'
 			xml += '</player>\n';
 
 			var tmp;			

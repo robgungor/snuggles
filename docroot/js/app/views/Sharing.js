@@ -76,8 +76,8 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
                   self.getMID(shareView);            
               }
 
-              if( !OC_Utils.isUndefined(videoURL) && !hasChanged ) {
-                  onGotVideoLink(videoId);
+              if( videoURL.indexOf('http') < 0 && !hasChanged ) {
+                  onGotVideoLink(videoURL);
               } else {
                   self.model.fetchVideoLink(onGotVideoLink);
               }
