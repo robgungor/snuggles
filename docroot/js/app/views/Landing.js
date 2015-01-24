@@ -185,9 +185,9 @@ define(["jquery",
                 // show the container of the player
                 $parent.find("#video-container").addClass('active');
                 
-                var $video = $($parent.find("video#video-player").get(0));
+                var $video = $($parent.find("video#video-player")[0]);
                 // on pause of video
-                $video.on('paused', function(){
+                $video.on('pause', function(){
                   console.log('PAUSED');
                   self.onVideoPaused();
                 });                
@@ -196,15 +196,13 @@ define(["jquery",
 
                 $video.on('playing', function(){
                    // hide loading state
-                  $('#main-loading-spinner').fadeOut();
-                  console.log('playing');
+                  $('#main-loading-spinner').fadeOut();                  
                   //$('#video-loading-spinner').fadeOut();
                 });
 
                 $video.on('play', function(){
                    // hide loading state
                   // $('#main-loading-spinner').fadeOut();
-                  console.log('play');
                   //$('#video-loading-spinner').fadeOut();
                 });
                 
@@ -238,7 +236,7 @@ define(["jquery",
                 $("#video-player")[0].pause();
                 // set the selected video name to the model
                 this.model.set({'selectedVideo':vidName});
-                
+
                  // update video selection nav
                 self.updateSelectedButton();
 
