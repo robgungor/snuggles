@@ -351,7 +351,7 @@ main#landing {
         max-height: 80px; } }
 
 ul.ui-autocomplete {
-  max-width: calc(94% - 60px);
+  max-width: calc(84% - 60px);
   background: #d0e4ef;
   -moz-box-shadow: inset 0 0 10px #000000;
   -webkit-box-shadow: inset 0 0 10px #000000;

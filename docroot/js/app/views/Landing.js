@@ -97,10 +97,15 @@ define(["jquery",
                 var self = this;
                 var toName = self.model.get('toName');
                 var fromName = self.model.get('fromName');
+                var inToName = $('#tname').val();
+                var inFromName = $('#fname').val();
 
+                if(inToName.length < 1)   inToName = "Valentine";
+                if(inFromName.length < 1) inFromName = "Your Valentine";
+                
                 self.model.set({
-                  'toName':$('#tname').val(),
-                  'fromName':$('#fname').val()
+                  'toName':inToName,
+                  'fromName':inFromName
                 });  
 
                 // if the new values have changed we return true
