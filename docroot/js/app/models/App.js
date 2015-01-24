@@ -49,8 +49,7 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
             },
             fetchVideoLink: function(cb){
                 var self = this;
-                // forcing this now, remove
-                self.set({'selectedVideo': 1});
+                                
                 $.ajax({
                   //crossDomain: false,
                   //headers: {'X-Requested-With': 'XMLHttpRequest'},
@@ -60,12 +59,7 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
                     from: self.get('fromName'),
                     to: self.get('toName')
                   },
-                  url: '//host.oddcast.com/api_misc/1281/api.php',
-                  // ?video=video_'+
-                  //           self.get('selectedVideo')+'_'+
-                  //           self.getSelectedName()+
-                  //           '&from='+self.get('fromName')+
-                  //           '&to='+self.get('toName'),
+                  url: '//host.oddcast.com/api_misc/1281/api.php',                 
                   async: true,
                   dataType : 'xml',
                   beforeSend: function(xhr, opts){

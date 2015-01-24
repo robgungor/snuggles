@@ -102,7 +102,7 @@ define(["jquery",
 
                 if(inToName.length < 1)   inToName = "Valentine";
                 if(inFromName.length < 1) inFromName = "Your Valentine";
-                
+
                 self.model.set({
                   'toName':inToName,
                   'fromName':inFromName
@@ -238,6 +238,7 @@ define(["jquery",
                 $("#video-player")[0].pause();
                 // set the selected video name to the model
                 this.model.set({'selectedVideo':vidName});
+                
                  // update video selection nav
                 self.updateSelectedButton();
 
