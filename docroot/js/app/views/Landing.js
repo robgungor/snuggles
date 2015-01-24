@@ -122,44 +122,23 @@ define(["jquery",
             loadAndPlayVideo: function() {
                 var self = this;
 
-                self.updateInputValues();
+                var hasChanged = self.updateInputValues();
 
                 // use local callback for scope
-                var onGotPreviewVideoLink = function(){
-
-                  self.playVideo();
+                var onGotPreviewVideoLink = function(){                  
+                  self.embedAndPlayVideo();
                 }
-                self.model.fetchVideoLink(onGotPreviewVideoLink);
+                
+                if(hasChanged) self.model.fetchVideoLink(onGotPreviewVideoLink);
+                else self.playVideo();
+
                 //lock the screen
                 $('#main-loading-spinner').fadeIn();
             },
-
-            onGotPreviewVideoLink: function(data) {
-              
-              console.log('onGotPreviewVideoLink: '+data);              
-              
-                var self = this,
-                    $currentVid = $($('.video-wrapper')[0]),
-                    vidURL = this.model.get('videoURL');
-
-                // pause current video
-                $("#video-player")[0].pause();
-              
-                // render the new video
-                $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
-                
-                var $nextVidWrap = $('.video-wrapper.'+vidName);        
-
-                self.playVideo($nextVidWrap);   
-                
-                // wait for it to play, remove the previous
-                $nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
-
-                // update video selection nav
-            },
+           
 
             // play video
-            playVideo: function($parent) {                
+            embedAndPlayVideo: function($parent) {                
                 var self = this,                 
                     $currentVid = $($('.video-wrapper')[0]),
                     vidName = this.model.get('selectedVideo');
@@ -172,12 +151,12 @@ define(["jquery",
                 //$("#video-player")[0].pause();
                 this.model.set({'autoplay':'autoplay'});
                 // render the new video
-                $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
+                $('#video-preview').html(_.template(previewTemplate, this.model.toJSON()));
                 
                 var $nextVidWrap = $('.video-wrapper.vid'+vidName);        
                                 
                 // wait for it to play, remove the previous
-                $nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
+                //$nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
 
                 // we do this so we don't reference an old video that is still hanging
                 var $parent = $nextVidWrap || self.$el;
@@ -185,10 +164,9 @@ define(["jquery",
                 // show the container of the player
                 $parent.find("#video-container").addClass('active');
                 
-                var $video = $($parent.find("video#video-player")[0]);
+                var $video = $("#video-player");
                 // on pause of video
-                $video.on('pause', function(){
-                  console.log('PAUSED');
+                $video.on('pause', function(){                  
                   self.onVideoPaused();
                 });                
                 // on end of video
@@ -211,10 +189,17 @@ define(["jquery",
                 $video.get(0).play();
             },
             
+            playVideo: function(){
+                var $video = $("#video-player");
+                $("#video-container").addClass('active');
+                $video.get(0).play();
+            },
+
             onVideoPaused: function(){              
                 var video = $('.'+this.model.get('selectedVideo')).find("video#video-player").get(0);                
                 // if we aren't in full screen, assume the video is ended... 
-                if (!video.webkitDisplayingFullscreen) this.onVideoEnded(); 
+                //if (!video.webkitDisplayingFullscreen) 
+                  this.onVideoEnded(); 
 
             },
 
