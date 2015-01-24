@@ -22,12 +22,13 @@ define(["jquery",
                 var self = this;
 
                 self.model.set({'selectedVideo':'1', 'autoplay':''});
-
+                self.model.set({'hasChanged':true});
                 self.sharing = new Sharing({model:this.model});
                 
                 self.render();
                 
-                self.listenTo(self.model.names, 'add sync', self.onNameListLoaded);         
+                self.listenTo(self.model.names, 'add sync', self.onNameListLoaded);   
+
             },
 
             
@@ -90,7 +91,7 @@ define(["jquery",
                 var self = this;
                 // only do this on save. 
 
-                //self.updateInputValues();     
+                self.updateInputValues();     
             },
 
             updateInputValues: function(){
@@ -100,6 +101,7 @@ define(["jquery",
                 var inToName = $('#tname').val();
                 var inFromName = $('#fname').val();
 
+                self.model.set({'hasChanged':true});
                 if(inToName.length < 1)   inToName = "Valentine";
                 if(inFromName.length < 1) inFromName = "Your Valentine";
 
@@ -115,22 +117,24 @@ define(["jquery",
             onVideoPreviewClick: function(e) {
                 // prevent default actions
                 e.preventDefault();
-                this.loadAndPlayVideo();
+                if( this.model.get('hasChanged') )this.loadAndPlayVideo();
+                else this.playVideo();
                 
             },
 
             loadAndPlayVideo: function() {
                 var self = this;
 
-                var hasChanged = self.updateInputValues();
+               self.updateInputValues();
 
                 // use local callback for scope
                 var onGotPreviewVideoLink = function(){                  
                   self.embedAndPlayVideo();
+                  self.model.set({'hasChanged':false});
                 }
                 
-                if(hasChanged) self.model.fetchVideoLink(onGotPreviewVideoLink);
-                else self.playVideo();
+                self.model.fetchVideoLink(onGotPreviewVideoLink);
+                
 
                 //lock the screen
                 $('#main-loading-spinner').fadeIn();
@@ -174,7 +178,7 @@ define(["jquery",
 
                 $video.on('playing', function(){
                    // hide loading state
-                  $('#main-loading-spinner').fadeOut();                  
+                  $('#main-loading-spinner').hide();                  
                   //$('#video-loading-spinner').fadeOut();
                 });
 
@@ -225,7 +229,9 @@ define(["jquery",
                  // update video selection nav
                 self.updateSelectedButton();
 
-                self.loadAndPlayVideo();
+                if( this.model.get('hasChanged') )self.loadAndPlayVideo();
+                else self.playVideo();
+                //self.loadAndPlayVideo();
 
                
                      
