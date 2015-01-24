@@ -225,18 +225,12 @@ define(["jquery",
                 $("#video-player")[0].pause();
                 // set the selected video name to the model
                 this.model.set({'selectedVideo':vidName});
-                // render the new video
-                $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
-                
-                var $nextVidWrap = $('.video-wrapper.'+vidName);        
-
-                self.playVideo($nextVidWrap);   
-                
-                // wait for it to play, remove the previous
-                $nextVidWrap.find('#video-player').on('playing', function(){$currentVid.remove();});
-
-                // update video selection nav
+                 // update video selection nav
                 self.updateSelectedButton();
+                
+                self.loadAndPlayVideo();
+
+               
                      
             },
 

@@ -40,41 +40,49 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
          
           shareFacebookInit: function(){
               var self = this;            
-              // we'll go ahead and get the mID even though we won't use it yet
-              //self.getMID();
-             //self.facebookShare.start();
-              self.getMID(self.facebookShare);
+              self.getVideoLink(self.facebookShare);
           },          
           
           shareTwitterInit: function(){
               var self = this;
-              self.getMID(self.twitterShare);
+              self.getVideoLink(self.twitterShare);
           },
           
           shareEmailInit: function(){
               var self = this;
-              self.getMID(self.emailShare);
+              self.getVideoLink(self.emailShare);
+          },        
+          
+          updateInputValues: function(){
+                var self = this;               
+                var toName = this.model.get('toName');
+                var fromName = this.model.get('fromName');
+
+                self.model.set({
+                  'toName':$('#tname').val(),
+                  'fromName':$('#fname').val()
+                });  
+
+                // if the new values have changed we return true
+                return toName != this.model.get('toName') &&  fromName != this.model.get('fromName'); 
           },
           
           getVideoLink: function(shareView){
-              var self = this;
-              var videoId = self.model.get('videoId');
-              // videoLink has be
+              var self = this;              
+              var videoURL = self.model.get('videoURL');
+              var hasChanged = self.updateInputValues();              
 
               var onGotVideoLink = function(link){
-                if(shareView){
-                  // we are sharing
-                  self.getMID(shareView);
-                }else{
-                  // we are previewing
-                  
-                }
+                  self.getMID(shareView);            
               }
-              if( !OC_Utils.isUndefined(videoId) ) {
-                onGotVideoLink(videoId);
-              } else {
 
+              if( !OC_Utils.isUndefined(videoURL) && !hasChanged ) {
+                  onGotVideoLink(videoId);
+              } else {
+                  self.model.fetchVideoLink(onGotVideoLink);
               }
+              //lock the screen
+              $('#main-loading-spinner').fadeIn();
           },
 
           getMID: function(shareView){
