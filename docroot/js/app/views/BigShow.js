@@ -14,6 +14,7 @@ define(["jquery", "backbone", "models/Message", "text!templates/big-show.html", 
             var self = this;
 
             self.listenTo(self.model, 'change', self.onMessageDataLoaded);
+            self.$el.fadeIn();
           },
             
           // View Event Handlers

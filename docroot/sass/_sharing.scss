@@ -6,6 +6,7 @@
 	height: 100vh;	
 	z-index: 1;
 	top: 0;
+	display: none;
 
 	.share-in, .share-result {
 		background: transparent;
@@ -13,10 +14,12 @@
 		position: absolute;
 		margin-top: -100px;
 		width: 100%;
+		display: none;
 	}
 	
 	.share-result {
 		margin-top: -200px;
+		display: none;
 	}
 
 	h1 {
@@ -72,6 +75,59 @@
 		
 		img {
 			width: 100%;
+		}
+	}
+	nav{
+
+		button{
+			position: absolute;
+			top: 50%;
+			width: 26px;
+			height: 30px;
+			border: 0;
+			margin-top: -15px;
+			outline: none;
+
+				&#move-right{
+					background: url('../img/common/arrow-right@2x.png') no-repeat;
+					background-size: 100%;
+					right: 3px;
+				}
+				&#move-left{
+					background: url('../img/common/arrow-left@2x.png') no-repeat;
+					background-size: 100%;
+					left: 3px;
+				}
+			}
+
+	}
+	#friend-wrap {
+		position: absolute;
+		left: 35px;
+		width: 305px;
+		overflow: scroll-x;
+		height: 527px;
+
+		#friend-container {
+			position: absolute;
+
+			.col {
+				float: left;
+				width: 85px;
+				margin-right: 25px;
+			}
+
+			.friend {
+				float: left;
+				margin-bottom: 25px;
+				-moz-border-radius: 5px;
+				-webkit-border-radius: 5px;
+				border-radius: 5px; /* future proofing */
+				-khtml-border-radius: 5px; /* for old Konqueror browsers */
+				height: 85px;
+				width: 100%;
+				background-size: cover;
+			}
 		}
 	}
 }

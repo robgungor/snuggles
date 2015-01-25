@@ -36,6 +36,8 @@ define(["jquery",
                   self.$el.css({'display':'block', 'opacity':'1'});
                   self.$el.addClass('loaded');                  
                 }, 300);
+
+                self.updateInputValues();
             },
             
             // View Event Handlers

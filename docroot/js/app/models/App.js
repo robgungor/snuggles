@@ -10,6 +10,7 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
             config: null,
             settings: null,
             names: null,
+            friends: null,
             // Model Constructor
             initialize: function(options) {                
                                

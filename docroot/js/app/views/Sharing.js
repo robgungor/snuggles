@@ -39,7 +39,8 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
           },           
          
           shareFacebookInit: function(){
-              var self = this;            
+              var self = this;        
+              self.facebookShare.login();    
               self.getVideoLink(self.facebookShare);
           },          
           

@@ -75,25 +75,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
       });
     });
 
-    //facebook api loading in... 
-    (function(d, debug){
-      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-      if (d.getElementById(id)) {return;}
-      js = d.createElement('script'); js.id = id; js.async = true;
-      js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js#xfbml=1&appId=173540005994564";
-      ref.parentNode.insertBefore(js, ref);
-
-      js.onload = function(){
-        console.log("FB LOADED");
-          loadJS("//"+OC_CONFIG.baseURL+"/includes/facebookconnectV2.js", function(){
-            fbcSwitchAlertMode();
-            fbcVersion = 'v2.0';    
-            fbcSetFormat('json')
-              //fbcSetFlashObjectId('fbcReceiver');
-            fbcInitialize();
-          });
-      }
-    }(document, /*debug*/ false));
+   
 
     
      /* ++++++++++++++++++++++++++++++++++++++++++++
@@ -112,37 +94,37 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
     //     })();
   
   
-    window.fbAsyncInit = function()
-    {
-        FB.init
-        (
-            {
-                 appId: '173540005994564',
-                 status: true,
-                 cookie: true
-            }
-        );
-    }
-    var fbcLogin_cb;
-    var ua = navigator.userAgent.toLowerCase();
+    // window.fbAsyncInit = function()
+    // {
+    //     FB.init
+    //     (
+    //         {
+    //              appId: '173540005994564',
+    //              status: true,
+    //              cookie: true
+    //         }
+    //     );
+    // }
+    // var fbcLogin_cb;
+    // var ua = navigator.userAgent.toLowerCase();
 
-    //call fbcLogin if the connectState is 0
-    window.fbcReceiver = new function(){
-      return {
-        fbcSetConnectState: function(result){
-          //console.log("fbcSetConnectState: " +result);
-          if(result>0)
-            fbcGetAccessToken();
-        },
-        fbcSetAccessToken: function(result){
-          if(fbcLogin_cb !=null){
-            fbcLogin_cb();
-            fbcLogin_cb=null;
-          }
-          //console.log("fbcSetAccessToken: " +result);
-        }
-      }
-    }
+    // //call fbcLogin if the connectState is 0
+    // window.fbcReceiver = new function(){
+    //   return {
+    //     fbcSetConnectState: function(result){
+    //       //console.log("fbcSetConnectState: " +result);
+    //       if(result>0)
+    //         fbcGetAccessToken();
+    //     },
+    //     fbcSetAccessToken: function(result){
+    //       if(fbcLogin_cb !=null){
+    //         fbcLogin_cb();
+    //         fbcLogin_cb=null;
+    //       }
+    //       //console.log("fbcSetAccessToken: " +result);
+    //     }
+    //   }
+    // }
 
      
  

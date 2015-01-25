@@ -50,6 +50,7 @@ define(["jquery","backbone","models/Name",],
         },
 
         getNameBySpelling: function(spelling){
+            if(spelling == undefined) return 'default';
             spelling = spelling.toLowerCase();
             var n = this.findWhere({'spelling': spelling});
             return n != 'undefined' && n != null ? n.get('name').toLowerCase() : 'default';
