@@ -7,7 +7,7 @@ define(["jquery", "backbone", "models/Message", "text!templates/big-show.html", 
         var Sharing = Backbone.View.extend({
 
           // The DOM Element associated with this view
-          //el: "sharing",
+          el: "div#big-show",
          
           // View constructor
           initialize: function() {
@@ -22,6 +22,7 @@ define(["jquery", "backbone", "models/Message", "text!templates/big-show.html", 
           },            
 
           onMessageDataLoaded: function(data){
+            console.log("LOADED: "+data);
             window.Preloader.loaded();
             
             this.render();
