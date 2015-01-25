@@ -16,17 +16,19 @@
 		
 		img { 
 			width: 100%;
-			max-width: 350px;
+			max-width: 330px;
 			margin-top: -28%;		
 		}
 		
 		h1 {
 			font-size: 1.2em;
 			color: #00569c;
+			margin-top: -13px;
 		}
 	}
 
 	video {
+		margin-top: 60px;
 		width: 100%;
 	}
 
@@ -43,10 +45,18 @@
 		bottom: 10px;
 	}	
 
-	button{
-		width: 60%;
-		padding-bottom: 9%;
-		background: url('img/big_show/create-your-own@2x.png') no-repeat left;
+	button {
+		width: 84%;
+		background-color: transparent;
+		padding-bottom: 15%;
+		background: url("../img/big_show/create-your-own@2x.png") no-repeat;
+		outline: none;
 		background-size: 100%;
+		border: none;
+		margin-top: 40px;
+
+		&:active {
+			background: url("../img/big_show/create-your-own-active@2x.png") no-repeat;
+		}
 	}
 }

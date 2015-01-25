@@ -181,12 +181,14 @@ nav.share, nav.visit {
   position: absolute; }
   #big-show header img {
     width: 100%;
-    max-width: 350px;
+    max-width: 330px;
     margin-top: -28%; }
   #big-show header h1 {
     font-size: 1.2em;
-    color: #00569c; }
+    color: #00569c;
+    margin-top: -13px; }
   #big-show video {
+    margin-top: 60px;
     width: 100%; }
   #big-show .snuggle-logo {
     float: left;
@@ -198,10 +200,16 @@ nav.share, nav.visit {
     position: absolute;
     bottom: 10px; }
   #big-show button {
-    width: 60%;
-    padding-bottom: 9%;
-    background: url("img/big_show/create-your-own@2x.png") no-repeat left;
-    background-size: 100%; }
+    width: 84%;
+    background-color: transparent;
+    padding-bottom: 15%;
+    background: url("../img/big_show/create-your-own@2x.png") no-repeat;
+    outline: none;
+    background-size: 100%;
+    border: none;
+    margin-top: 40px; }
+    #big-show button:active {
+      background: url("../img/big_show/create-your-own-active@2x.png") no-repeat; }
 
 main#landing {
   width: 90vw;
