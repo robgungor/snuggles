@@ -209,7 +209,8 @@ nav.share, nav.visit {
     border: none;
     margin-top: 40px; }
     #big-show button:active {
-      background: url("../img/big_show/create-your-own-active@2x.png") no-repeat; }
+      background: url("../img/big_show/create-your-own-active@2x.png") no-repeat;
+      background-size: 100%; }
 
 main#landing {
   width: 90vw;
