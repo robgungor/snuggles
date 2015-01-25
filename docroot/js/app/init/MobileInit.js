@@ -7,31 +7,36 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
   	
   // for main bg        
     //$('#main-bg-container').css({'opacity':'1'});
-    $('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});
+    $('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});   
 
-    clearInterval(window.preloadTimer);
+    var QueryString = function () {
+        // This function is anonymous, is executed immediately and 
+        // the return value is assigned to QueryString!
+        var query_string = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            // If first entry with this name
+            if (typeof query_string[pair[0]] === "undefined") {
+                query_string[pair[0]] = pair[1];
+                // If second entry with this name
+            } else if (typeof query_string[pair[0]] === "string") {
+                var arr = [query_string[pair[0]], pair[1]];
+                query_string[pair[0]] = arr;
+                // If third or later entry with this name
+            } else {
+                query_string[pair[0]].push(pair[1]);
+            }
+        }
+        return query_string;
+    }();
 
-    document.getElementById("loading-bar-fill").style.width = '253px';
-    setTimeout(function(){
-      document.getElementById("loading-heart").style.opacity = '1';
-    }, 300);
-    
-    // do this on timeout to add a pause for animation
-    setTimeout(function(){
-
-      $('main').fadeIn(0);
-      $('main').css({'opacity':'1'});
-      $('main').addClass('loaded');
-      //fadeOut is overloading CPU I think
-      $('#loading').css({'opacity':'0'});
-      setTimeout(function(){ $('#loading').hide(); }, 400);
-
-    }, 800);
-
-    
+    OC_CONFIG.messageId = QueryString['mId'];
 
     // Instantiates a new Mobile Router instance
     new MobileRouter();
+
 
     var loadJS =  function(file, callback) {
         
@@ -106,9 +111,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
     //             _fbq.loaded = true;
     //         }
     //     })();
-  console.log('OC_CONFIG.fbcApplicationKey: '+OC_CONFIG.fbcAppKey);
-   
-    
+  
   
     window.fbAsyncInit = function()
     {

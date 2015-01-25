@@ -29,20 +29,28 @@ define(["jquery",
                 
                 self.listenTo(self.model.names, 'add sync', self.onNameListLoaded);   
 
+                window.Preloader.loaded();
+                //fade in
+                setTimeout(function(){
+                  
+                  self.$el.show();
+                  self.$el.css({'opacity':'1'});
+                  self.$el.addClass('loaded');                  
+
+                }, 800);
             },
 
             
             // View Event Handlers
             events: {
               'click .poster-image': 'onVideoPreviewClick',
-
               'click .email'  : 'onEmailShareClick',
               'click .fb'     : 'onFbShareClick',
               'click .twitter': 'onTwitterShareClick',
+
               'change input'  : 'onInputChange',
               'keypress input'  : 'onInputChange',
-              
-              //'click .bubble':'onVideoSelectClick',              
+                            
               'mousedown .bubble':'onVideoSelectClick',   
 
               'orientationchange':'onOrientationChange'

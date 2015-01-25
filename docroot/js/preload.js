@@ -5,10 +5,10 @@
         // ---------------
         //  Tip: Set to true to turn on "production" mode
         var production = false,
-          filesToLoad,
+          filesToLoad;
 
           //App Helper Methods
-          Preloader = {
+          window.Preloader = {
             // estimated amounts: helps with percentage of loading bar
             imagesEstimatedK: 513,
             cssEstimatedK: 22,
@@ -221,7 +221,20 @@
             loaded: function(){
                 
                 var self = this;
+                clearInterval(window.preloadTimer);
 
+                document.getElementById("loading-bar-fill").style.width = '253px';
+                setTimeout(function(){
+                  document.getElementById("loading-heart").style.opacity = '1';
+                }, 300);
+                
+                // do this on timeout to add a pause for animation
+                setTimeout(function(){      
+                  //fadeOut is overloading CPU I think
+                  $('#loading').css({'opacity':'0'});
+                  setTimeout(function(){ $('#loading').hide(); }, 400);
+
+                }, 800);
                 //clearInterval(self.timer);
                                     
                 // document.getElementById("loading-bar-fill").style.width = '253px';
@@ -279,7 +292,8 @@
               Preloader.loadImages(function(){ 
 
                 require([filesToLoad["dev-init"]], function(init){                
-                  Preloader.loaded();});  
+                //  Preloader.loaded();
+                });  
               });
                           
             }
