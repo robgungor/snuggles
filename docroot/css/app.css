@@ -528,31 +528,36 @@ ul.ui-autocomplete {
       background: url("../img/common/arrow-left@2x.png") no-repeat;
       background-size: 100%;
       left: 3px; }
-  #sharing #friend-wrap {
-    position: absolute;
-    left: 35px;
-    width: 305px;
-    overflow: hidden;
-    overflow-x: scroll;
-    height: 527px; }
-    #sharing #friend-wrap #friend-container {
-      position: absolute; }
-      #sharing #friend-wrap #friend-container .col {
-        float: left;
-        width: 85px;
-        margin-right: 25px; }
-      #sharing #friend-wrap #friend-container .friend {
-        float: left;
-        margin-bottom: 25px;
-        -moz-border-radius: 5px;
-        -webkit-border-radius: 5px;
-        border-radius: 5px;
-        /* future proofing */
-        -khtml-border-radius: 5px;
-        /* for old Konqueror browsers */
-        height: 85px;
-        width: 100%;
-        background-size: cover; }
+  #sharing #friend-selection {
+    margin-top: 50px; }
+    #sharing #friend-selection #friend-wrap {
+      position: absolute;
+      left: 35px;
+      width: calc(100vw - 70px);
+      overflow: hidden;
+      overflow-x: scroll;
+      height: 527px; }
+      #sharing #friend-selection #friend-wrap #friend-container {
+        position: absolute; }
+        #sharing #friend-selection #friend-wrap #friend-container .page {
+          float: left;
+          width: calc(100vw - 45px); }
+          #sharing #friend-selection #friend-wrap #friend-container .page .col {
+            float: left;
+            width: calc(33vw - 40px);
+            margin-right: 25px; }
+          #sharing #friend-selection #friend-wrap #friend-container .page .friend {
+            float: left;
+            margin-bottom: 25px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            /* future proofing */
+            -khtml-border-radius: 5px;
+            /* for old Konqueror browsers */
+            width: 100%;
+            background-size: cover;
+            padding-bottom: 100%; }
 
 @media only screen and (orientation: landscape) {
   #landscape-blocker {

@@ -8,6 +8,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
             // The DOM Element associated with this view
             //el: "sharing",
+            thumbPageIndex: 0,
 
             // View constructor
             initialize: function() {   
@@ -23,7 +24,9 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 'click #sharing-nav .email': 'onEmailShareClick',
                 'click .friend':'onFriendClick',
                 'click #move-right':'onRightClick',
-                'click #move-left':'onLeftClick'
+                'click #move-left':'onLeftClick',
+                'swipe-left':'onSwipeRight',
+                'swipe-right':'onSwipeLeft',
             },            
 
             // Renders the view's template to the UI
@@ -52,26 +55,42 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             },
             
             renderFriends: function() {
-                var col = 0, row = 0, index = -1, prevCol;
-                var $colEl = $('<div class="col"></div>');
+                var self = this, col = 0, row = 0, index = -1, page = 0, prevCol,
+                    $colEl = $('<div class="col"></div>'),
+                    $pageEl = $('<div class="page"></div>');
 
-                _.each(this.model.get('friends'), function(friend) {                    
-                   var f = _.template(friendTemplate, friend.toJSON());                   
-                   index++;
-                   row = index % 5;
-                   col = Math.floor(index / 5);
+                _.each(self.model.get('friends'), function(friend) {                    
+                    var f = _.template(friendTemplate, friend.toJSON());                   
+                    index++;
+                    row = index % 5;
+                    col = Math.floor(index / 5);
+                    page = col % 3;
+
+                    if(row == 0) {
+                        $colEl = $('<div class="col"></div>');
+                    }
+
+                    if( page == 0 & col > prevCol  ){
+                        $pageEl = $('<div class="page"></div>');
+                        $('#friend-container').append($pageEl);
+                    }
+                    prevCol = col;
                    
-                   if(col > prevCol) $colEl = $('<div class="col"></div>');
-                   
-                   prevCol = col;
-                   //console.log("index: "+index+"; col: "+col+" ; row: "+row);
-                   
-                   // Dynamically updates the UI with the view's template
-                   $colEl.append(f);
-                   $('#friend-container').append($colEl);
+                    // Dynamically updates the UI with the view's template
+                    $pageEl.append($colEl);
+                    $colEl.append(f);
                 })
+                
+                self.onResize();
+            },
+            
+            onResize: function(){
+                var perPage    = 9,
+                    total       = this.model.get('friends').length;
 
-                $('#friend-container').css({'width':col*293});
+                var totalPages = Math.floor(total/perPage);
+                var $container = $('#friend-container');
+                $container.css({'width':totalPages * $container.find('.page').width() });
             },
 
             share: function(mId){
@@ -118,7 +137,15 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 $('main').fadeIn();
             },
 
+            onSwipeLeft: function(e){
+                this.shiftThumbs('left');
+            },
+            onSwipeRight: function(e){
+                this.shiftThumbs('right');
+            },
             onLeftClick : function(e){
+                this.shiftThumbs('left');
+                return;
                 console.log('onLeftClick');
                 var pageW = ($('.col').width()+25) *3;
                 var targX = Math.min($('#friend-container').position().left + pageW, 0);
@@ -127,6 +154,8 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
             onRightClick : function(e){
                 
+                this.shiftThumbs('right');
+                return;
                 var pageW = ($('.col').width()+25) *3;
                 console.log('onRightClick: '+pageW);
                 var targX = Math.max($('#friend-container').position().left - pageW, -($('#friend-container').width()-pageW));
@@ -134,35 +163,40 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 $('#friend-container').animate({ 'left' :  targX}, 500);
             },
 
-            shiftThumbs : function( e ) {
+            shiftThumbs : function( direction ) {
         
                 // e.preventDefault();
 
-                // var $button    = $(this),
-                //     direction  = $button.attr('data-direction'),
-                //     $container = $('#thumb-container'),
-                //     $wrap      = $('#thumb-wrap'),
-                //     targX     = 0,
-                //     pageW     = Math.ceil($wrap.width())+16,
-                //     perPage    = 4;
-
+                var self       = this,
+                    $container = $('#friend-container'),
+                    $wrap      = $('#friend-wrap'),
+                    targX     = 0,
+                    pageW     = Math.ceil($wrap.width())+16,
+                    perPage    = 9;
+                var total = this.model.get('friends').length;
                 // // the first thumb on the last page, the total-the remainder of the total divided by the amount per page, -1 for zero indexing
-                // var lastPageIndex = Theater.getCurrentModel().content_total-1 -(perPage- ((Theater.getCurrentModel().content_total-1)% perPage));
+
+                var totalPages = Math.floor(total/perPage);
+                var lastPageIndex = totalPages-1;//total-1 -(perPage- ((total-1)% perPage));
                 
-                // // set our thumb index to go to
-                // Theater.thumbPageIndex = direction === 'right' ? Math.min(Theater.thumbPageIndex + perPage, lastPageIndex) : Math.max(Theater.thumbPageIndex - perPage, 0);
+                // set our thumb index to go to
+                self.thumbPageIndex = direction === 'right' ? Math.min(self.thumbPageIndex + 1, lastPageIndex) : Math.max(self.thumbPageIndex - 1, 0);
+                console.log('thumbPageIndex: '+self.thumbPageIndex);
 
-                // // find our target via the thumb position
-                // targX = -$($('#thumb-container').find('.card')[Theater.thumbPageIndex]).position().left;
+                // find our target via the thumb position
+                targX = -$($container.find('.page')[self.thumbPageIndex]).position().left;
 
-                // Theater.thumbsTargetX = Math.ceil(targX);
+                self.thumbsTargetX = Math.ceil(targX);
 
-                // // on complete update the arrows
-                // $container.animate({ 'left' : Theater.thumbsTargetX }, 500);
+                // on complete update the arrows
+                $container.animate({ 'left' : self.thumbsTargetX }, 300);
 
-                // Theater.updateThumbNavArrows();
+                self.updateNavArrows();
             },
 
+            updateNavArrows: function(){
+
+            },
 
             postToFacebook : function (friendID) {
                 var self = this;

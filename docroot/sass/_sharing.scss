@@ -101,33 +101,41 @@
 			}
 
 	}
-	#friend-wrap {
-		position: absolute;
-		left: 35px;
-		width: 305px;
-		overflow: hidden;
-		overflow-x: scroll;
-		height: 527px;
+	#friend-selection{
+		margin-top: 50px;
 
-		#friend-container {
+		#friend-wrap {
 			position: absolute;
+			left: 35px;
+			width: calc(100vw - 70px);
+			overflow: hidden;
+			overflow-x: scroll;
+			height: 527px;
 
-			.col {
-				float: left;
-				width: 85px;
-				margin-right: 25px;
-			}
+			#friend-container {
+				position: absolute;
+				.page{
+					float: left;
+					width: calc(100vw - 45px);
 
-			.friend {
-				float: left;
-				margin-bottom: 25px;
-				-moz-border-radius: 5px;
-				-webkit-border-radius: 5px;
-				border-radius: 5px; /* future proofing */
-				-khtml-border-radius: 5px; /* for old Konqueror browsers */
-				height: 85px;
-				width: 100%;
-				background-size: cover;
+					.col {
+						float: left;					
+						width: calc(33vw - 40px);
+						margin-right: 25px;
+					}
+
+					.friend {
+						float: left;
+						margin-bottom: 25px;
+						-moz-border-radius: 5px;
+						-webkit-border-radius: 5px;
+						border-radius: 5px; /* future proofing */
+						-khtml-border-radius: 5px; /* for old Konqueror browsers */					
+						width: 100%;
+						background-size: cover;
+						padding-bottom: 100%;
+					}
+				}
 			}
 		}
 	}

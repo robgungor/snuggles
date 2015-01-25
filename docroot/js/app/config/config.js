@@ -15,6 +15,8 @@ require.config({
 
       "jqueryui": "../libs/jqueryui-large",
       
+      "jquerymobile": "../libs/jquery.mobile.custom.min",
+
       "underscore": "../libs/lodash",
 
       "backbone": "../libs/backbone",
@@ -29,7 +31,10 @@ require.config({
 
   // Sets the configuration for your third party scripts that are not AMD compatible
   shim: {
-     
+    
+    // jQuery Mobile
+    "jquerymobile": ["jquery"],
+
      //"jqueryui":["jquery"],
      'jqueryui': {
         exports: '$',

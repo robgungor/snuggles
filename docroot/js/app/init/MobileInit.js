@@ -9,6 +9,11 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
     //$('#main-bg-container').css({'opacity':'1'});
     $('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});   
 
+    $.mobile.linkBindingEnabled = false;
+
+    // Disabling this will prevent jQuery Mobile from handling hash changes
+    $.mobile.hashListeningEnabled = false;
+    
     var QueryString = function () {
         // This function is anonymous, is executed immediately and 
         // the return value is assigned to QueryString!
