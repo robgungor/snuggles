@@ -17,7 +17,9 @@ define(["jquery", "backbone", "models/App", "models/Message", "views/Landing", "
             routes: {
                 
                 // When there is no hash bang on the url, the home method is called
-                "": "index"
+                "": "index",
+                "landing":"landing",
+                "bigshow":"bigshow"
 
             },
 
@@ -47,6 +49,8 @@ define(["jquery", "backbone", "models/App", "models/Message", "views/Landing", "
             },
 
             landing: function() {
+                //hacky but it brute
+                //$('#bigshow').html();
                  // Instantiates a new view which will render the header text to the page                
                 new LandingView({model:new AppModel({config:OC_CONFIG})});
             },

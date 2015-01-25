@@ -10,9 +10,9 @@ define(["jquery",
         "views/Sharing", 
         "jqueryui"],
 
-    function($, Backbone, Model, template, previewTemplate, OC_Utils, OC_MessageSaver, Sharing){
+    function($, Backbone, Model, template, previewTemplate, OC_Utils, OC_MessageSaver, Sharing) {
         
-        var View = Backbone.View.extend({
+        var Landing = Backbone.View.extend( {
 
             // The DOM Element associated with this view
             el: "main#landing",
@@ -21,25 +21,22 @@ define(["jquery",
             initialize: function() {
                 var self = this;
 
-                self.model.set({'selectedVideo':'1', 'autoplay':''});
-                self.model.set({'hasChanged':true});
-                self.sharing = new Sharing({model:this.model});
+                self.model.set( {'selectedVideo':'1', 'autoplay':''} );
+                self.model.set( {'hasChanged':true} );
+                self.sharing = new Sharing( {model:this.model} );
                 
                 self.render();
                 
                 self.listenTo(self.model.names, 'add sync', self.onNameListLoaded);   
 
                 window.Preloader.loaded();
+
                 //fade in
-                setTimeout(function(){
-                  
-                  self.$el.show();
-                  self.$el.css({'opacity':'1'});
+                setTimeout(function() {                  
+                  self.$el.css({'display':'block', 'opacity':'1'});
                   self.$el.addClass('loaded');                  
-
-                }, 800);
+                }, 300);
             },
-
             
             // View Event Handlers
             events: {
@@ -55,7 +52,6 @@ define(["jquery",
 
               'orientationchange':'onOrientationChange'
             },     
-
 
             // Renders the view's template to the UI
             render: function() {
@@ -74,7 +70,7 @@ define(["jquery",
                 return this;
             },
 
-            onNameListLoaded: function(data){
+            onNameListLoaded: function(data) {
                 var self = this;                
 
                 $( "#tname" ).autocomplete({                  
@@ -96,14 +92,14 @@ define(["jquery",
             },
        
 
-            onInputChange: function(e){
+            onInputChange: function(e) {
                 var self = this;
                 // only do this on save. 
                 self.model.set({'hasChanged':true});
                 self.updateInputValues();     
             },
 
-            updateInputValues: function(){
+            updateInputValues: function() {
                 var self = this;
                 
                 var toName = $('#tname').val();
@@ -144,7 +140,6 @@ define(["jquery",
                 $('#main-loading-spinner').fadeIn();
             },
            
-
             // play video
             embedAndPlayVideo: function($parent) {                
                 var self = this,                 
@@ -166,13 +161,13 @@ define(["jquery",
                 
                 var $video = $("#video-player");
                 // on pause of video
-                $video.on('pause', function(){                  
+                $video.on('pause', function() {                  
                   self.onVideoPaused();
                 });                
                 // on end of video
-                $video.on('ended', function(){self.onVideoEnded();});
+                $video.on('ended', function() { self.onVideoEnded(); } );
 
-                $video.on('playing', function(){
+                $video.on('playing', function() {
                    // hide loading state
                   $('#main-loading-spinner').hide();                  
                 });
@@ -188,13 +183,13 @@ define(["jquery",
                 $video.get(0).play();
             },
             
-            playVideo: function(){
+            playVideo: function() {
                 var $video = $("#video-player");
                 $("#video-container").addClass('active');
                 $video.get(0).play();
             },
 
-            onVideoPaused: function(){              
+            onVideoPaused: function() {              
                 var video = $('.'+this.model.get('selectedVideo')).find("video#video-player").get(0);                
                 // if we aren't in full screen, assume the video is ended... 
                 //if (!video.webkitDisplayingFullscreen) 
@@ -202,7 +197,7 @@ define(["jquery",
 
             },
 
-            onVideoEnded: function(){
+            onVideoEnded: function() {
               // show poster image/thumbnail
               $('.poster-image').css({opacity:1});
               $("#video-container").removeClass('active');
@@ -228,7 +223,7 @@ define(["jquery",
                      
             },
 
-            updateSelectedButton: function(){
+            updateSelectedButton: function() {
               var self = this;
 
               // deselect previous button
@@ -237,28 +232,24 @@ define(["jquery",
               $('button[data-video-name='+self.model.get('selectedVideo')+']').addClass('selected');
             },
 
-            onEmailShareClick: function(e){              
+            onEmailShareClick: function(e) {              
               var self = this;              
               self.sharing.shareEmailInit();
             },
 
-            onFbShareClick: function(e){
+            onFbShareClick: function(e) {
               var self = this;
               self.sharing.shareFacebookInit();
             },
 
-            onTwitterShareClick: function(e){
+            onTwitterShareClick: function(e) {
               var self = this;        
               self.sharing.shareTwitterInit();
             },
-
-            
-
-
         });
 
-        // Returns the View class
-        return View;
+        // Returns the Landing class
+        return Landing;
 
     }
 

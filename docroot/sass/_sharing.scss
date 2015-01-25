@@ -1,4 +1,4 @@
-#sharing{
+#sharing {
 	background: transparent;
 	position: absolute;
 	width: 100%;
@@ -7,7 +7,7 @@
 	z-index: 1;
 	top: 0;
 
-	.share-in, .share-result{
+	.share-in, .share-result {
 		background: transparent;
 		top: 50%;
 		position: absolute;
@@ -15,11 +15,11 @@
 		width: 100%;
 	}
 	
-	.share-result{
+	.share-result {
 		margin-top: -200px;
 	}
 
-	h1{
+	h1 {
 		color: #ffffff;
 		font-size: 2.25em;
 		display: block;		
@@ -40,6 +40,7 @@
 		&:before { 
 			top: 0px; left: 0px;
 		 }
+
 		&:after  { 
 			top: 0px;
 			left: 0px;
@@ -47,26 +48,29 @@
 		}
 	}
 
-	h2{
+	h2 { 
 		color: #00569c;
 		font-size: 1.3em;
 		padding: 30px;
 	}
-	nav{
+
+	nav {
 		width: calc(38vw - 5px);
         margin: auto;
 	}
 	
-	.oddcast-logo{
+	.oddcast-logo {
 		bottom: 10px;
 		position: absolute;
 	}	
-	a.snuggledotcom-logo{
+
+	a.snuggledotcom-logo {
 		display: block;
 		width: 170px;
 		margin: auto;
 		margin-top: 15px;
-		img{
+		
+		img {
 			width: 100%;
 		}
 	}

@@ -26,31 +26,31 @@ define(['backbone', 'underscore'], function(Backbone, _) {
     },
 
     getXmlNode : function (xml, tag, i){
-      var index = 0;
-      if(i){
-        index = i;
-      }
+		var index = 0;
+		if(i){
+			index = i;
+		}
 
-      var tmp;
-      try{
-        tmp = xml.getElementsByTagName(tag);
-        if(tmp.length>index)
-          return tmp[index];
-      }catch(e){
-        errorCaught(e, xml);
-      }
+		var tmp;
+		try{
+			tmp = xml.getElementsByTagName(tag);
+			if(tmp.length>index)
+			  return tmp[index];
+			}catch(e){
+			errorCaught(e, xml);
+		}
 
-      return null;
+		return null;
     },
 
     getXmlNodeValue : function (node){
-      try{
-        return node.childNodes[0].nodeValue;
-      }catch(e){
-        errorCaught(e, node);
-      }
+		try{
+			return node.childNodes[0].nodeValue;
+		}catch(e){
+			errorCaught(e, node);
+		}
 
-      return null;
+		return null;
     },
 
     getXmlNodeAttribute : function (xml, attribute){

@@ -35,8 +35,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
     OC_CONFIG.messageId = QueryString['mId'];
 
     // Instantiates a new Mobile Router instance
-    new MobileRouter();
-
+    window.router = new MobileRouter();
 
     var loadJS =  function(file, callback) {
         

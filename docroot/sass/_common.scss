@@ -32,7 +32,7 @@ a:visited {     color: white;}
 a:hover {       color: white;}
 a:active {      color: white;}
 
-button{
+button, a{
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -40,52 +40,51 @@ button{
 	-ms-user-select: none;
 	user-select: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+button.bubble {
+    font-family: $font-family, sans-serif;
+    background: url(../img/landing/bubble-button-bg@2x.png) no-repeat;
+    color: #d747b8;
+    width: 140px;
+    height: 45px;
+    border: 0;
+    outline: none;
+    background-position-y: -1px;
+    line-height: 0px;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    margin: 0.2rem .6rem;   
+    padding-bottom: 13px;
+    font-size: .8rem;
+    background-size: 100%;
+    vertical-align: top;
+
+
+    @media screen and (min-device-width: $iphone6plus) {    
+        -webkit-transform: scale(1.4);
+        transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        margin: 0.2rem 1.2rem;
+        padding-bottom: 17px;
+    }
     
-    &.bubble {
-        font-family: $font-family, sans-serif;
-        background: url(../img/landing/bubble-button-bg@2x.png) no-repeat;
-        color: #d747b8;
-        width: 140px;
-        height: 45px;
-        border: 0;
-        outline: none;
-        background-position-y: -1px;
-        line-height: 0px;
-        -webkit-transform: scale(1.2);
-        transform: scale(1.2);
-        -ms-transform: scale(1.2);
-        margin: 0.2rem .6rem;   
-        padding-bottom: 13px;
-        font-size: .8rem;
+    @media screen and (max-device-width: $break-small) {                
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -ms-transform: scale(1);
+        margin: 0;
+        margin-bottom: -8px;
+    }
+
+    &:active, &.selected{
+        background: url(../img/landing/bubble-button-bg-active@2x.png) no-repeat;              
         background-size: 100%;
-        vertical-align: top;
-
-
-        @media screen and (min-device-width: $iphone6plus) {    
-            -webkit-transform: scale(1.4);
-            transform: scale(1.35);
-            -ms-transform: scale(1.35);
-            margin: 0.2rem 1.2rem;
-            padding-bottom: 17px;
-        }
-        
-        @media screen and (max-device-width: $break-small) {                
-            -webkit-transform: scale(1);
-            transform: scale(1);
-            -ms-transform: scale(1);
-            margin: 0;
-            margin-bottom: -8px;
-        }
-
-        &:active, &.selected{
-            background: url(../img/landing/bubble-button-bg-active@2x.png) no-repeat;              
-            background-size: 100%;
-            background-position-y: -1px;
-            padding-bottom: 8px;
-            height: 45px;
-            -webkit-tap-highlight-color: transparent;           
-            -webkit-tap-highlight-color: rgba(0,0,0,0);
-        }
+        background-position-y: -1px;
+        padding-bottom: 8px;
+        height: 45px;
+        -webkit-tap-highlight-color: transparent;           
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
 }
 

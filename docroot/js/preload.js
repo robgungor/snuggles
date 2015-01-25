@@ -163,7 +163,9 @@
                           'img/landing/button-twitter-active@2x.png',                          
                           'img/common/snuggle-logo@2x.png',
                           'img/common/oddcast-logo@2x.png',
-                          'img/common/snuggledotcom-logo@2x.png'
+                          'img/common/snuggledotcom-logo@2x.png',
+                          'img/big_show/create-your-own@2x.png',
+                          'img/big_show/create-your-own-active@2x.png'
                         ]);
                      
                     // } else{

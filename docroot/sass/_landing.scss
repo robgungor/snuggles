@@ -1,6 +1,5 @@
-main#landing{
+main#landing {
 	width: 90vw;
-	// height: 100vh;
 	top: 0;
 	left: 0;
 	z-index: 10;	
@@ -15,11 +14,11 @@ main#landing{
 	padding-bottom: 0;
 	min-height: 100vh;
 
-	&.loaded{
+	&.loaded {
 		position: relative;
 	}
 	
-	.snuggle-logo{
+	.snuggle-logo {
 		float: left;
 		position: absolute;
 		bottom: 15px;
@@ -28,39 +27,48 @@ main#landing{
 	}
 	
 
-	@media screen and (max-device-width: $iphone6plus) {					
+	@media screen 
+	and (max-device-width: $iphone6plus) 
+	{					
 		font-size: 1.2em;
 		width: 82vw;
 		padding: 0 9vw;	
-		.oddcast-logo{
+
+		.oddcast-logo {
 			position: absolute;
 			bottom: 10px;
 		}	
 	}
-	@media screen and (max-device-width: $iphone6) {			
+	@media screen 
+	and (max-device-width: $iphone6) 
+	{			
 		font-size: 1.1em;
 		width: 87vw;
 		padding: 0 6vw;		
 
-		.oddcast-logo{
+		.oddcast-logo {
 			position: relative;			
 		}	
 	}
 
-	header{
+	header {
 		height: 13vh;
 		position: relative;	
-		@media screen and (max-device-width: $iphone6plus) {	
+		
+		@media screen 
+		and (max-device-width: $iphone6plus) 
+		{	
 			height: 12vh;
 		}
-		.logo{
+
+		.logo {
 			bottom: -12%;
 			position: absolute;
 			width: 62%;
 			height: auto;
 		}
 
-		.caption{
+		.caption {
 			position: absolute;
 			right: 30px;
 			bottom: 10%;
@@ -69,34 +77,26 @@ main#landing{
 		}
 	}
 
-	#video-preview{
+	#video-preview {
 		position: relative;
 		padding-bottom: 58%;
 
-		#video-loading-spinner{
-			
-		}
-
-		.video-wrapper{
-			// display: none;
-
-		}
-
-		.poster-image{
+		.poster-image {
 			z-index: 100;
 			position: absolute;			
 			width: 100%;
 			opacity: 0;
-			img{
+			
+			img {
 				width: 100%;
 			}
 		}
 
-		video{
+		video {
 			width: 100%;
 		}
 
-		#video-container{
+		#video-container {
 			position: absolute;
 			top: 0;			
 			width: 100%;
@@ -107,23 +107,23 @@ main#landing{
 	        -o-transition: opacity 500ms ease-out 0;
 	        transition: opacity 500ms ease-out 0;
 
-			&.active{
+			&.active {
 				z-index: 101;
 				opacity: 1;
 			}
 		}
 	}
-	.form-container{
+	.form-container {
 		margin-top: 5px;
 
-		form{
+		form {
 			text-align: right;				
 
-			.ui-helper-hidden-accessible{
+			.ui-helper-hidden-accessible {
 				display: none;
 			}
 			
-			input{			
+			input {			
 				width: calc(100% - 2.7em);
 				height: 10.25vw;
 				margin-bottom: .25em;
@@ -136,17 +136,17 @@ main#landing{
 				font-size: .98em;
 				text-align: center;		
 				
-				&:-webkit-autofill{
+				&:-webkit-autofill {
 					background: url(../img/landing/input-bg.jpg) no-repeat left;
 				}
 			}
 
-			label{
+			label {
 				font-size: .9em;
 				color: $light-blue;
 			}
 
-			aside{			
+			aside {			
 				font-size: 10px;
 				width: calc(100% - 4.7em);
 				text-align: center;
@@ -154,12 +154,12 @@ main#landing{
 				color: #f360d6;
 			}
 
-			::-webkit-input-placeholder{ color: #ffffff;}
-			:-moz-placeholder{ color: #ffffff;}
-			::-moz-placeholder{ color: #ffffff;}
-			:-ms-input-placeholder{ color: #ffffff;}
+			::-webkit-input-placeholder { color: #ffffff;}
+			:-moz-placeholder { color: #ffffff;}
+			::-moz-placeholder { color: #ffffff;}
+			:-ms-input-placeholder { color: #ffffff;}
 			
-			textarea:focus, input:focus, *:focus{
+			textarea:focus, input:focus, *:focus {
 			    outline: 0;
 			}
 		}
@@ -167,7 +167,7 @@ main#landing{
 
 	#message-selection {
 		
-		header{
+		header {
 			color: $light-blue;
 			text-align: center;
 			font-size: .9em;
@@ -185,15 +185,14 @@ main#landing{
 
 			button.bubble {
 				
-
-
 				@media screen and (max-device-width: $iphone6plus) {	
 					margin: 0.2rem .75rem;
 					-webkit-transform: scale(1.25);
 					transform: scale(1.25);
 					-ms-transform: scale(1.25);					
 					padding-bottom: 17px;
-					&:active, &.selected{
+					
+					&:active, &.selected {
 						padding-bottom: 8px;
 					}	
 				}
@@ -201,17 +200,15 @@ main#landing{
 				@media screen and (max-device-width: $iphone6) {				
 					margin: 0rem .6rem;
 				}
-
-				
 			}
 		}
 	}
 
-	#sharing-nav{		
+	#sharing-nav {		
 		text-align: center;
 		margin-top: -15px;
 
-		aside{
+		aside {
 			color: $light-blue;						
 			font-size: 0.9em;
 			
@@ -231,16 +228,16 @@ main#landing{
 	and (max-device-width : 1024px) 
 	and (orientation : portrait)
 	{ 
-		header, section{
+		header, section {
 			max-width: 72%;
 			margin: auto;
 		}
 
-		#video-preview{
+		#video-preview {
 			padding: 0;
 			padding-bottom: 42%;
 
-			#video-loading-spinner{
+			#video-loading-spinner {
 				padding-bottom: 58%;
 			}
 		}
@@ -248,30 +245,30 @@ main#landing{
 		form {
 			font-size: 1.5em;
 
-			.form-row{
+			.form-row {
 				padding: 0;
 			}
 
-			input{
+			input {
 				height: 7.75vw;
 				margin-bottom: .25em;
 			}
 		}
 
-		#message-selection{
+		#message-selection {
 			-webkit-transform: scale(1.5);
 			margin-top: 59px;			
 		}
 
-		#sharing-nav{
+		#sharing-nav {
 			margin-top: 56px;
 
-			aside{
+			aside {
 				font-size: 1.4em;
 				padding-left: 50px;
 			}
 
-			button{
+			button {
 				max-width: 80px;
 				max-height: 80px;
 			}
@@ -279,7 +276,7 @@ main#landing{
 	}
 }
 
-ul.ui-autocomplete{	
+ul.ui-autocomplete {	
 	max-width: calc(84% - 60px);
 	background: #d0e4ef;
 	-moz-box-shadow:    inset 0 0 10px #000000;
@@ -288,17 +285,17 @@ ul.ui-autocomplete{
    	border-radius: 6px;
    	z-index: 100;
 
-	li{
+	li {
 		list-style: none;
 		padding: 1px .8em;
 		
-		a{
+		a {
 			color: $light-blue;
 		}
 	}
 }
 
-#main-bg-container{
+#main-bg-container {
     background: url(../img/common/main-bg.jpg) no-repeat top left;
     background-size: cover;
     background-attachment: fixed;
