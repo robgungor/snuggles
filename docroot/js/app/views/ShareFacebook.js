@@ -64,7 +64,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                    if(col > prevCol) $colEl = $('<div class="col"></div>');
                    
                    prevCol = col;
-                   console.log("index: "+index+"; col: "+col+" ; row: "+row);
+                   //console.log("index: "+index+"; col: "+col+" ; row: "+row);
                    
                    // Dynamically updates the UI with the view's template
                    $colEl.append(f);

@@ -532,6 +532,7 @@ ul.ui-autocomplete {
     position: absolute;
     left: 35px;
     width: 305px;
+    overflow: hidden;
     overflow-x: scroll;
     height: 527px; }
     #sharing #friend-wrap #friend-container {
