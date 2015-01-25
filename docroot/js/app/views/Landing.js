@@ -219,7 +219,7 @@ define(["jquery",
                  // update video selection nav
                 self.updateSelectedButton();
 
-                if( this.model.get('hasChanged') )self.loadAndPlayVideo();
+                self.loadAndPlayVideo();
                      
             },
 
