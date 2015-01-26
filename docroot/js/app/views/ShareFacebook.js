@@ -25,8 +25,8 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 'click .friend':'onFriendClick',
                 'click #move-right':'onRightClick',
                 'click #move-left':'onLeftClick',
-                'swipe-left':'onSwipeRight',
-                'swipe-right':'onSwipeLeft',
+                'swipe':'onSwipe',
+                'dragEnd':'onSwipe'                
             },            
 
             // Renders the view's template to the UI
@@ -59,6 +59,8 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     $colEl = $('<div class="col"></div>'),
                     $pageEl = $('<div class="page"></div>');
 
+                $('#friend-container').empty();
+
                 _.each(self.model.get('friends'), function(friend) {                    
                     var f = _.template(friendTemplate, friend.toJSON());                   
                     index++;
@@ -90,7 +92,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
                 var totalPages = Math.floor(total/perPage);
                 var $container = $('#friend-container');
-                $container.css({'width':totalPages * $container.find('.page').width() });
+                $container.css({'width':totalPages * ($container.find('.page').width()-25) });
             },
 
             share: function(mId){
@@ -136,66 +138,94 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 this.$el.fadeOut(200);
                 $('main').fadeIn();
             },
+            shifting: null,
 
-            onSwipeLeft: function(e){
-                this.shiftThumbs('left');
+            onSwipe: function(e){ 
+                var self = this;               
+                var direction = e.swipestart.coords[0] > e.swipestop.coords[0] ? 'right' : 'left';
+                // let's only do this once per second
+                if(self.shifting) clearTimeout(self.shifting);
+                self.shifting = setTimeout(function(){ self.shiftThumbs(direction);}, 1000);  
             },
-            onSwipeRight: function(e){
-                this.shiftThumbs('right');
+            
+            // update the current page index according to where the thumbs are in X position
+            updateCurrentPageIndex: function() {
+                var $container = $('#friend-wrap');
+                
+                // update current page by X position (if they swiped a big swipe)
+                var curX = $container.scrollLeft();
+                
+                var candidates = [],
+                    pageIndex = 0;
+
+                $container.find('.page').each(function(){
+                    var x = $(this).position().left;     
+                    pageIndex ++;
+
+                    if( Math.abs( x-curX ) <= $(this).width() && x != 0){
+                        candidates.push({$el:$(this), index:pageIndex});
+                    }
+                });
+
+                _.sortBy(candidates, function(obj){
+                    return obj.$el.position().left;
+                });
+                
+                var targX = $(candidates[0].$el).position().left;                                
+                self.thumbPageIndex = candidates[0].index;    
+                console.log('updateCurrentPageIndex: '+self.thumbPageIndex);    
+                return self.thumbPageIndex;        
             },
+
             onLeftClick : function(e){
                 this.shiftThumbs('left');
-                return;
-                console.log('onLeftClick');
-                var pageW = ($('.col').width()+25) *3;
-                var targX = Math.min($('#friend-container').position().left + pageW, 0);
-                $('#friend-container').animate({ 'left' : targX}, 500);
             },
 
             onRightClick : function(e){
-                
-                this.shiftThumbs('right');
-                return;
-                var pageW = ($('.col').width()+25) *3;
-                console.log('onRightClick: '+pageW);
-                var targX = Math.max($('#friend-container').position().left - pageW, -($('#friend-container').width()-pageW));
-                console.log('targX: '+targX);
-                $('#friend-container').animate({ 'left' :  targX}, 500);
+                this.shiftThumbs('right');            
             },
 
             shiftThumbs : function( direction ) {
         
-                // e.preventDefault();
+                var self        = this,
+                    $container  = $('#friend-container'),
+                    $wrap       = $('#friend-wrap'),
+                    targX       = 0,
+                    pageW       = Math.ceil($wrap.width())+16,
+                    perPage     = 9;
 
-                var self       = this,
-                    $container = $('#friend-container'),
-                    $wrap      = $('#friend-wrap'),
-                    targX     = 0,
-                    pageW     = Math.ceil($wrap.width())+16,
-                    perPage    = 9;
                 var total = this.model.get('friends').length;
-                // // the first thumb on the last page, the total-the remainder of the total divided by the amount per page, -1 for zero indexing
-
                 var totalPages = Math.floor(total/perPage);
-                var lastPageIndex = totalPages-1;//total-1 -(perPage- ((total-1)% perPage));
+                var lastPageIndex = totalPages-1;
                 
+                self.thumbPageIndex = self.updateCurrentPageIndex();
+                console.log('thumbPageIndex before: '+self.thumbPageIndex);
                 // set our thumb index to go to
                 self.thumbPageIndex = direction === 'right' ? Math.min(self.thumbPageIndex + 1, lastPageIndex) : Math.max(self.thumbPageIndex - 1, 0);
                 console.log('thumbPageIndex: '+self.thumbPageIndex);
 
                 // find our target via the thumb position
-                targX = -$($container.find('.page')[self.thumbPageIndex]).position().left;
+                targX = $($container.find('.page')[self.thumbPageIndex]).position().left;
 
                 self.thumbsTargetX = Math.ceil(targX);
 
                 // on complete update the arrows
-                $container.animate({ 'left' : self.thumbsTargetX }, 300);
+                $wrap.animate({ 'scrollLeft' : self.thumbsTargetX }, 300);
 
                 self.updateNavArrows();
             },
 
             updateNavArrows: function(){
+                var self = this,
+                    perPage    = 9;
+                var totalFriends = this.model.get('friends').length;
+                var totalPages = Math.floor(totalFriends/perPage);
+                var lastPageIndex = totalPages-1;
+                if( self.thumbPageIndex < 1 ) $('#move-left').hide();
+                else $('#move-left').show();
 
+                if( self.thumbPageIndex > lastPageIndex-1 ) $('#move-right').hide();
+                else $('#move-right').show();
             },
 
             postToFacebook : function (friendID) {

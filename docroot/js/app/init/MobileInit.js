@@ -2,7 +2,7 @@
 // -------------
 
 // Include Mobile Specific JavaScript files here (or inside of your Mobile router)
-require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.validateAll"],
+require(["jquery", "backbone", "routers/MobileRouter", "jqueryui","jquerymobile","backbone.validateAll"],
   function($, Backbone, MobileRouter) {
   	
   // for main bg        
@@ -13,7 +13,7 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui", "backbone.val
 
     // Disabling this will prevent jQuery Mobile from handling hash changes
     $.mobile.hashListeningEnabled = false;
-    
+
     var QueryString = function () {
         // This function is anonymous, is executed immediately and 
         // the return value is assigned to QueryString!
