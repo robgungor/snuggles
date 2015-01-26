@@ -336,9 +336,9 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             This function is called when the user logs out or is not already logged in to facebook. The callback function fbcSetConnectState is called with the userId of 0.
             */
             onNotConnected: function() {
-                this.userId = 0;    
-                console.log('onNotConnected'); 
-                this.login();       
+                //this.userId = 0;    
+                // console.log('onNotConnected'); 
+                // this.login();       
             },
 
             /*
