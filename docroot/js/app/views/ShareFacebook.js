@@ -25,6 +25,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 'click .friend':'onFriendClick',
                 'click #move-right':'onRightClick',
                 'click #move-left':'onLeftClick',
+                'click #back': 'onBackClick',
                 'swipe':'onSwipe',
                 'dragEnd':'onSwipe'                
             },            
@@ -115,6 +116,8 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var self = this;
                 var friendID = $(e.currentTarget).attr('data-id');
                 self.postToFacebook(friendID);
+                $('#friend-selection').fadeOut();
+                $('.share-result').fadeIn();
             },
 
             onGotFriendsInfo : function(result){
@@ -162,7 +165,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     var x = $(this).position().left;     
                     pageIndex ++;
 
-                    if( Math.abs( x-curX ) <= $(this).width() && x != 0){
+                    if( Math.abs( x-curX ) <= $(this).width() ){
                         candidates.push({$el:$(this), index:pageIndex});
                     }
                 });
@@ -185,6 +188,11 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 this.shiftThumbs('right');            
             },
 
+            onBackClick : function(e) {
+                this.$el.fadeOut(200);
+                $('main').fadeIn();
+            },
+
             shiftThumbs : function( direction ) {
         
                 var self        = this,
@@ -196,21 +204,22 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
                 var total = this.model.get('friends').length;
                 var totalPages = Math.floor(total/perPage);
-                var lastPageIndex = totalPages-1;
+                var lastPageIndex = totalPages-2;
                 
-                self.thumbPageIndex = self.updateCurrentPageIndex();
-                console.log('thumbPageIndex before: '+self.thumbPageIndex);
+                //self.thumbPageIndex = self.updateCurrentPageIndex();
+               
                 // set our thumb index to go to
                 self.thumbPageIndex = direction === 'right' ? Math.min(self.thumbPageIndex + 1, lastPageIndex) : Math.max(self.thumbPageIndex - 1, 0);
-                console.log('thumbPageIndex: '+self.thumbPageIndex);
+                
 
                 // find our target via the thumb position
-                targX = $($container.find('.page')[self.thumbPageIndex]).position().left;
+                targX = -$($container.find('.page')[self.thumbPageIndex]).position().left;
 
                 self.thumbsTargetX = Math.ceil(targX);
 
                 // on complete update the arrows
-                $wrap.animate({ 'scrollLeft' : self.thumbsTargetX }, 300);
+                //$wrap.animate({ 'scrollLeft' : self.thumbsTargetX }, 300);
+                $container.animate({ 'left' : self.thumbsTargetX }, 300);
 
                 self.updateNavArrows();
             },

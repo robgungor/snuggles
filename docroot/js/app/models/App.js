@@ -60,7 +60,7 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
                     from: self.get('fromName'),
                     to: self.get('toName')
                   },
-                  url: '//host.oddcast.com/api_misc/1281/api.php',                 
+                  url: '//'+self.config.baseURL+'/api_misc/1281/api.php',                 
                   async: true,
                   dataType : 'xml',
                   beforeSend: function(xhr, opts){
