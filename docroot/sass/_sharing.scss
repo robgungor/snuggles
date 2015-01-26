@@ -114,13 +114,13 @@
 			border: 0;
 			margin-left: -40px;
 		}
-		
+
 		#friend-wrap {
 			position: absolute;
 			left: 35px;
 			width: calc(100vw - 70px);
 			overflow: hidden;
-			overflow-x: scroll;
+			//overflow-x: scroll;
 			height: calc(100vh - 146px);
 			margin-top: 15px;
 

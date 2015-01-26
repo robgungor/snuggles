@@ -544,7 +544,6 @@ ul.ui-autocomplete {
       left: 35px;
       width: calc(100vw - 70px);
       overflow: hidden;
-      overflow-x: scroll;
       height: calc(100vh - 146px);
       margin-top: 15px; }
       @media screen and (min-device-width: 414px) {
