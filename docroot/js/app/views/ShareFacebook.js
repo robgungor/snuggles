@@ -108,7 +108,8 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
                 $('#main-loading-spinner').fadeOut(300);
                 $('#sharing').fadeIn();
-
+                $('#friend-selection').fadeIn();
+                $('.share-result').fadeOut();
                 //self.getConnectState();
             },
             
