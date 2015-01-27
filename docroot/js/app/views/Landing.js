@@ -174,28 +174,38 @@ define(["jquery",
                 // on end of video
                 $video.on('ended', function() { self.onVideoEnded(); } );
 
-                $video.get(0).on('playing', function() {
+                $video.on('playing', function() {
                    // hide loading state
+                   console.log('on playing');
                   $('#main-loading-spinner').hide();                  
                 });
 
                 $video.on('play', function(){
                    // hide loading state
+                   console.log('on play');
                   $('#main-loading-spinner').fadeOut();
                   //$('#video-loading-spinner').fadeOut();
                 });
-                $video.get(0).on('loadstart', function(){
+                $video.on('loadstart', function(){
                    // hide loading state
+                   console.log('on loadstart');
                   $('#main-loading-spinner').fadeOut();
                   //$('#video-loading-spinner').fadeOut();
                 });
                 
+
+                $video.get(0).addEventListener('loadeddata', function() {
+                   // Video is loaded and can be played
+                    $video.get(0).play();
+                    $('#main-loading-spinner').hide();
+                }, false);
                 $video.get(0).oncanplay = function() {
                     alert("Can start playing video");
                     $video.get(0).play();
                     $('#main-loading-spinner').hide();
                 };
                 var checkLoad = function() {
+                  console.log('checkLoad: '+$video.get(0).readyState);
                     if ($video.get(0).readyState === 4) {
                         $video.get(0).play();
                         $('#main-loading-spinner').hide();
