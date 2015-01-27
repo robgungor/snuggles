@@ -213,7 +213,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 });
 
                 _.sortBy(candidates, function(obj){                    
-                    return $el.position().left;
+                    return obj.$el.position().left;
                 });
                 
                 var targX = $(candidates[0].$el).position().left;                                
