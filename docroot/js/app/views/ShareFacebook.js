@@ -208,12 +208,12 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     pageIndex ++;
                    
                     if( Math.abs( x-curX ) <= $(this).width() ){                        
-                        candidates.push({$el:$(this), index:pageIndex, diff:Math.abs( x-curX )});
+                        candidates.push({$el:$(this), index:pageIndex});
                     }
                 });
 
                 _.sortBy(candidates, function(obj){                    
-                    return obj.diff;//$el.position().left;
+                    return $el.position().left;
                 });
                 
                 var targX = $(candidates[0].$el).position().left;                                
