@@ -120,7 +120,7 @@
 			left: 35px;
 			width: calc(100vw - 70px);
 			overflow: hidden;
-			//overflow-x: scroll;
+			overflow-x: scroll;
 			height: calc(100vh - 146px);
 			margin-top: 15px;
 
@@ -136,7 +136,13 @@
 				.page{
 					float: left;
 					width: calc(100vw - 45px);
-
+					
+					@media screen 
+					and (min-device-width: $iphone6plus) 
+					{									
+						width: calc(100vw - 79px);
+					}
+					
 					.col {
 						float: left;					
 						width: calc(33vw - 40px);

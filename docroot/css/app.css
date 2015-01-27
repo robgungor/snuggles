@@ -544,6 +544,7 @@ ul.ui-autocomplete {
       left: 35px;
       width: calc(100vw - 70px);
       overflow: hidden;
+      overflow-x: scroll;
       height: calc(100vh - 146px);
       margin-top: 15px; }
       @media screen and (min-device-width: 414px) {
@@ -555,6 +556,9 @@ ul.ui-autocomplete {
         #sharing #friend-selection #friend-wrap #friend-container .page {
           float: left;
           width: calc(100vw - 45px); }
+          @media screen and (min-device-width: 414px) {
+            #sharing #friend-selection #friend-wrap #friend-container .page {
+              width: calc(100vw - 79px); } }
           #sharing #friend-selection #friend-wrap #friend-container .page .col {
             float: left;
             width: calc(33vw - 40px);

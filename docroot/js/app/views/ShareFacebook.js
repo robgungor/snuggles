@@ -9,6 +9,10 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             // The DOM Element associated with this view
             //el: "sharing",
             thumbPageIndex: 0,
+            shifting: null,
+            scrolling: false,
+            animating: false,
+            currentSwipeDirection: 'none',
 
             // View constructor
             initialize: function() {   
@@ -25,7 +29,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 'click .friend':'onFriendClick',
                 'click #move-right':'onRightClick',
                 'click #move-left':'onLeftClick',
-                'click #back': 'onBackClick',
+                'click #back': 'onBackClick',                
                 'swipe':'onSwipe',
                 'dragEnd':'onSwipe'                
             },            
@@ -51,6 +55,9 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 $('#ok-after').on("click", function(e){
                     self.onOKAfterClick(e);
                 });
+
+                $('#friend-wrap').on('scrollstop', function(e){ self.onScrollStop(e); });
+                $('#friend-wrap').on('scroll', function(e){ self.onScroll(e); });
               
                 return this;
             },
@@ -99,18 +106,12 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             share: function(mId){
                 var self = this;
                           
-                
-                // if(self.model.get('FBId') != undefined){
-                //     self.getFriendsInfo();
-                // } else {
-                //     self.login();
-                // }
-
                 $('#main-loading-spinner').fadeOut(300);
                 $('#sharing').fadeIn();
                 $('#friend-selection').fadeIn();
                 $('.share-result').fadeOut();
-                //self.getConnectState();
+
+                self.updateNavArrows();
             },
             
             onFriendClick: function(e) {                
@@ -141,46 +142,8 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                
                 this.$el.fadeOut(200);
                 $('main').fadeIn();
-            },
-            shifting: null,
-
-            onSwipe: function(e){ 
-                var self = this;               
-                var direction = e.swipestart.coords[0] > e.swipestop.coords[0] ? 'right' : 'left';
-                // let's only do this once per second
-                if(self.shifting) clearTimeout(self.shifting);
-                self.shifting = setTimeout(function(){ self.shiftThumbs(direction);}, 1000);  
-            },
+            },            
             
-            // update the current page index according to where the thumbs are in X position
-            updateCurrentPageIndex: function() {
-                var $container = $('#friend-wrap');
-                
-                // update current page by X position (if they swiped a big swipe)
-                var curX = $container.scrollLeft();
-                
-                var candidates = [],
-                    pageIndex = 0;
-
-                $container.find('.page').each(function(){
-                    var x = $(this).position().left;     
-                    pageIndex ++;
-
-                    if( Math.abs( x-curX ) <= $(this).width() ){
-                        candidates.push({$el:$(this), index:pageIndex});
-                    }
-                });
-
-                _.sortBy(candidates, function(obj){
-                    return obj.$el.position().left;
-                });
-                
-                var targX = $(candidates[0].$el).position().left;                                
-                self.thumbPageIndex = candidates[0].index;    
-                console.log('updateCurrentPageIndex: '+self.thumbPageIndex);    
-                return self.thumbPageIndex;        
-            },
-
             onLeftClick : function(e){
                 this.shiftThumbs('left');
             },
@@ -193,6 +156,69 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 this.$el.fadeOut(200);
                 $('main').fadeIn();
             },
+            onScrollStop: function(e) {
+                
+                var self = this;
+                                
+                self.scrolling = false;
+
+                if( self.animating  ) return;
+
+                if(self.currentSwipeDirection != undefined && self.currentSwipeDirection != 'none') {
+                    self.shiftThumbs(self.currentSwipeDirection);
+                } else {
+                    self.thumbPageIndex = self.updateCurrentPageIndex();
+                    var targX = $($('#friend-container').find('.page')[self.thumbPageIndex]).position().left;
+                    self.thumbsTargetX = Math.ceil(targX);                   
+                    self.animating = true;
+                    $('#friend-wrap').animate({ 'scrollLeft' : self.thumbsTargetX }, 300, function(){ 
+                        self.animating = false;
+                        self.updateNavArrows();
+                    });
+                    
+                }
+            },
+            
+            onScroll: function(e) {
+                this.scrolling = true;
+            },
+            
+            onSwipe: function(e){ 
+                var self = this;               
+                var direction = e.swipestart.coords[0] > e.swipestop.coords[0] ? 'right' : 'left'; 
+                self.currentSwipeDirection = direction;
+                if(! this.scrolling ) self.shiftThumbs(direction);
+            },
+
+            
+            // update the current page index according to where the thumbs are in X position
+            updateCurrentPageIndex: function() {
+                var $container = $('#friend-container');
+                
+                // update current page by X position (if they swiped a big swipe)
+                var curX = $('#friend-wrap').scrollLeft();
+                
+                var candidates = [],
+                    pageIndex = 0;
+
+                $container.find('.page').each(function(){
+                    var x = $(this).position().left;     
+                    pageIndex ++;
+                   
+                    if( Math.abs( x-curX ) <= $(this).width() ){                        
+                        candidates.push({$el:$(this), index:pageIndex});
+                    }
+                });
+
+                _.sortBy(candidates, function(obj){                    
+                    return obj.$el.position().left;
+                });
+                
+                var targX = $(candidates[0].$el).position().left;                                
+                self.thumbPageIndex = candidates[0].index;    
+                
+                return self.thumbPageIndex;        
+            },           
 
             shiftThumbs : function( direction ) {
         
@@ -204,23 +230,25 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     perPage     = 9;
 
                 var total = this.model.get('friends').length;
-                var totalPages = Math.floor(total/perPage);
-                var lastPageIndex = totalPages-2;
+                var totalPages = $container.find('.page').length;//Math.floor(total/perPage);
+                var lastPageIndex = totalPages-1;
                 
-                //self.thumbPageIndex = self.updateCurrentPageIndex();
+                self.thumbPageIndex = self.updateCurrentPageIndex();
                
                 // set our thumb index to go to
                 self.thumbPageIndex = direction === 'right' ? Math.min(self.thumbPageIndex + 1, lastPageIndex) : Math.max(self.thumbPageIndex - 1, 0);
                 
 
                 // find our target via the thumb position
-                targX = -$($container.find('.page')[self.thumbPageIndex]).position().left;
+                targX = $($container.find('.page')[self.thumbPageIndex]).position().left;
 
                 self.thumbsTargetX = Math.ceil(targX);
 
                 // on complete update the arrows
-                //$wrap.animate({ 'scrollLeft' : self.thumbsTargetX }, 300);
-                $container.animate({ 'left' : self.thumbsTargetX }, 300);
+                $wrap.animate({ 'scrollLeft' : self.thumbsTargetX }, 300);
+                //$container.animate({ 'left' : self.thumbsTargetX }, 300);
+                
+                self.currentSwipeDirection = 'none';
 
                 self.updateNavArrows();
             },
@@ -229,12 +257,12 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var self = this,
                     perPage    = 9;
                 var totalFriends = this.model.get('friends').length;
-                var totalPages = Math.floor(totalFriends/perPage);
-                var lastPageIndex = totalPages-1;
+                var totalPages = $('#friend-container').find('.page').length;//Math.floor(totalFriends/perPage);
+                var lastPageIndex = totalPages;
                 if( self.thumbPageIndex < 1 ) $('#move-left').hide();
                 else $('#move-left').show();
 
-                if( self.thumbPageIndex > lastPageIndex-1 ) $('#move-right').hide();
+                if( self.thumbPageIndex > lastPageIndex-2 ) $('#move-right').hide();
                 else $('#move-right').show();
             },
 
