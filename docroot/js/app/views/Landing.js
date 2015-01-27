@@ -214,11 +214,11 @@ define(["jquery",
                 //     $video.get(0).play();
                 //     $('#main-loading-spinner').hide();
                 // }, false);
-                // $video.get(0).oncanplay = function() {
-                //     //alert("Can start playing video");
-                //     $video.get(0).play();
-                //     $('#main-loading-spinner').hide();
-                // };
+                $video.get(0).oncanplay = function() {
+                    //alert("Can start playing video");
+                    $video.get(0).play();
+                    $('#main-loading-spinner').hide();
+                };
                 // var checkLoad = function() {
                 //   console.log('checkLoad: '+$video.get(0).readyState);
                 //     if ($video.get(0).readyState === 4) {
