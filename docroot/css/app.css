@@ -514,6 +514,9 @@ ul.ui-autocomplete {
       width: 100%; }
   #sharing #friend-selection {
     margin-top: 50px; }
+    @media screen and (min-device-width: 414px) {
+      #sharing #friend-selection {
+        margin-top: 30px; } }
     #sharing #friend-selection nav button {
       position: absolute;
       top: 50%;
@@ -532,7 +535,7 @@ ul.ui-autocomplete {
         left: 3px; }
     #sharing #friend-selection #back {
       position: absolute;
-      bottom: 44px;
+      bottom: 31px;
       width: 80px;
       height: 25px;
       background: url("../img/common/back-button@2x.png") no-repeat;
