@@ -198,6 +198,8 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 // update current page by X position (if they swiped a big swipe)
                 var curX = $('#friend-wrap').scrollLeft();
                 
+                if (curX == 0) return 0;
+
                 var candidates = [],
                     pageIndex = 0;
 
@@ -206,12 +208,12 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     pageIndex ++;
                    
                     if( Math.abs( x-curX ) <= $(this).width() ){                        
-                        candidates.push({$el:$(this), index:pageIndex});
+                        candidates.push({$el:$(this), index:pageIndex, diff:Math.abs( x-curX )});
                     }
                 });
 
                 _.sortBy(candidates, function(obj){                    
-                    return obj.$el.position().left;
+                    return obj.diff;//$el.position().left;
                 });
                 
                 var targX = $(candidates[0].$el).position().left;                                
@@ -234,18 +236,22 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var lastPageIndex = totalPages-1;
                 
                 self.thumbPageIndex = self.updateCurrentPageIndex();
-               
+                
                 // set our thumb index to go to
                 self.thumbPageIndex = direction === 'right' ? Math.min(self.thumbPageIndex + 1, lastPageIndex) : Math.max(self.thumbPageIndex - 1, 0);
-                
 
                 // find our target via the thumb position
                 targX = $($container.find('.page')[self.thumbPageIndex]).position().left;
 
                 self.thumbsTargetX = Math.ceil(targX);
-
+                self.animating = true;
                 // on complete update the arrows
-                $wrap.animate({ 'scrollLeft' : self.thumbsTargetX }, 300);
+                $wrap.animate({ 'scrollLeft' : self.thumbsTargetX }, 300, function(){
+                    // set a timeout to avoid onScrollStop
+                    setTimeout(function(){
+                        self.animating = false;
+                    }, 100);
+                });
                 //$container.animate({ 'left' : self.thumbsTargetX }, 300);
                 
                 self.currentSwipeDirection = 'none';
