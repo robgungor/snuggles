@@ -186,10 +186,21 @@ define(["jquery",
                 });
                 
                 $video.get(0).oncanplay = function() {
-                    ///alert("Can start playing video");
+                    alert("Can start playing video");
                     $video.get(0).play();
                     $('#main-loading-spinner').hide();
                 };
+                var checkLoad = function() {
+                    if ($video.get(0).readyState === 4) {
+                        $video.get(0).play();
+                        $('#main-loading-spinner').hide();
+                    } else {
+                        setTimeout(checkLoad, 100);
+                    }
+                }
+
+                checkLoad();
+
 
                 // play the video
                 $video.get(0).play();
