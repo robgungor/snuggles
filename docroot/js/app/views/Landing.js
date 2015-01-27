@@ -155,6 +155,8 @@ define(["jquery",
              
                 self.model.set({'autoplay':'autoplay'});
                 
+                $('#video-preview').empty();
+
                 // render the new video
                 $('#video-preview').html(_.template(previewTemplate, this.model.toJSON()));
                 
@@ -217,7 +219,7 @@ define(["jquery",
                 checkLoad();
 
                 $video.get(0).load();
-                
+
                 // play the video
                 $video.get(0).play();
             },
