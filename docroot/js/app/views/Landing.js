@@ -25,7 +25,7 @@ define(["jquery",
                 self.model.set( {'hasChanged':true} );
                 self.sharing = new Sharing( {model:this.model} );
                 
-                self.model.set({'videoURL':'http://host-vd.oddcast.com/ccs7/tmp/APS/video/75/c6/75c622f1465ba12c3d297fe22ac056fb/75c622f1465ba12c3d297fe22ac056fb.mp4'});
+                //self.model.set({'videoURL':'http://host-vd.oddcast.com/ccs7/tmp/APS/video/75/c6/75c622f1465ba12c3d297fe22ac056fb/75c622f1465ba12c3d297fe22ac056fb.mp4'});
 
                 self.render();
                 
@@ -121,9 +121,9 @@ define(["jquery",
             onVideoPreviewClick: function(e) {
                 // prevent default actions
                 e.preventDefault();
-                this.playVideo();
-                return;
-                
+                // this.playVideo();
+                // return;
+
                 console.log('hasChangeD: '+this.model.get('hasChanged'));
                 if( this.model.get('hasChanged') )this.loadAndPlayVideo();
                 else this.playVideo();
@@ -185,6 +185,11 @@ define(["jquery",
                   //$('#video-loading-spinner').fadeOut();
                 });
                 
+                $video.get(0).oncanplay = function() {
+                    alert("Can start playing video");
+                    $video.get(0).play();
+                    $('#main-loading-spinner').hide();
+                };
 
                 // play the video
                 $video.get(0).play();
