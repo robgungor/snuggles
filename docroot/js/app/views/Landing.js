@@ -174,12 +174,17 @@ define(["jquery",
                 // on end of video
                 $video.on('ended', function() { self.onVideoEnded(); } );
 
-                $video.on('playing', function() {
+                $video.get(0).on('playing', function() {
                    // hide loading state
                   $('#main-loading-spinner').hide();                  
                 });
 
                 $video.on('play', function(){
+                   // hide loading state
+                  $('#main-loading-spinner').fadeOut();
+                  //$('#video-loading-spinner').fadeOut();
+                });
+                $video.get(0).on('loadstart', function(){
                    // hide loading state
                   $('#main-loading-spinner').fadeOut();
                   //$('#video-loading-spinner').fadeOut();
