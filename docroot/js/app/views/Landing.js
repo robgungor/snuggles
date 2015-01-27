@@ -176,7 +176,7 @@ define(["jquery",
 
                 $video.on('play', function(){
                    // hide loading state
-                  // $('#main-loading-spinner').fadeOut();
+                  $('#main-loading-spinner').fadeOut();
                   //$('#video-loading-spinner').fadeOut();
                 });
                 
