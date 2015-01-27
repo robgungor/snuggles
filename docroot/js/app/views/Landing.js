@@ -200,7 +200,7 @@ define(["jquery",
                     $('#main-loading-spinner').hide();
                 }, false);
                 $video.get(0).oncanplay = function() {
-                    alert("Can start playing video");
+                    //alert("Can start playing video");
                     $video.get(0).play();
                     $('#main-loading-spinner').hide();
                 };
@@ -216,7 +216,8 @@ define(["jquery",
 
                 checkLoad();
 
-
+                $video.get(0).load();
+                
                 // play the video
                 $video.get(0).play();
             },
