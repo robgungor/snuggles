@@ -39,7 +39,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 
                var self = this;
 
-                self.$el = $('#sharing');
+                self.$el = $('#sharing-facebook');
                 // Setting the view's template using the template method
                 self.template = _.template(template, {shareMethod:'Facebook'});
 
@@ -105,9 +105,10 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
             share: function(mId){
                 var self = this;
-                          
+                //self.render();
+
                 $('#main-loading-spinner').fadeOut(300);
-                $('#sharing').fadeIn();
+                self.$el.fadeIn();
                 $('#friend-selection').fadeIn();
                 $('.share-result').fadeOut();
 
@@ -156,6 +157,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 this.$el.fadeOut(200);
                 $('main').fadeIn();
             },
+
             onScrollStop: function(e) {
                 
                 var self = this;
@@ -203,16 +205,16 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var candidates = [],
                     pageIndex = 0;
 
-                $container.find('.page').each(function(){
+                $container.find('.page').each(function() {
                     var x = $(this).position().left;     
                     pageIndex ++;
                    
-                    if( Math.abs( x-curX ) <= $(this).width() ){                        
+                    if( Math.abs( x-curX ) <= $(this).width() ) {                        
                         candidates.push({$el:$(this), index:pageIndex});
                     }
                 });
 
-                _.sortBy(candidates, function(obj){                    
+                _.sortBy(candidates, function(obj) {                    
                     return obj.$el.position().left;
                 });
                 
@@ -259,12 +261,14 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 self.updateNavArrows();
             },
 
-            updateNavArrows: function(){
-                var self = this,
-                    perPage    = 9;
-                var totalFriends = this.model.get('friends').length;
-                var totalPages = $('#friend-container').find('.page').length;//Math.floor(totalFriends/perPage);
+            updateNavArrows: function() {
+                var self          = this,
+                    perPage       = 9;
+
+                var totalFriends  = this.model.get('friends').length;
+                var totalPages    = $('#friend-container').find('.page').length;//Math.floor(totalFriends/perPage);
                 var lastPageIndex = totalPages;
+
                 if( self.thumbPageIndex < 1 ) $('#move-left').hide();
                 else $('#move-left').show();
 
