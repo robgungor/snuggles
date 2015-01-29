@@ -21,8 +21,8 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
 
             // Default values for all of the Model attributes
             defaults: {
-                'selectedVideo':'super-snuggle',    
-                'videoURL':'video/1.mp4'            
+                'selectedVideo':'',    
+                'videoURL':''            
             },
 
             // Gets called automatically by Backbone when the set and/or save methods are called (Add your own logic)

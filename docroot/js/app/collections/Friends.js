@@ -28,7 +28,6 @@ define(["jquery","backbone","models/Friend"],
           this.remove(user);
           //add user to the front
           this.add(user, {at: 0, merge:true});
-          console.log(this);
         }
 
       }

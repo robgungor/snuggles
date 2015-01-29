@@ -8,11 +8,11 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
             // The DOM Element associated with this view
             //el: "sharing",
-            thumbPageIndex: 0,
-            shifting: null,
-            scrolling: false,
-            animating: false,
-            currentSwipeDirection: 'none',
+            thumbPageIndex        : 0,
+            shifting              : null,
+            scrolling             : false,
+            animating             : false,
+            currentSwipeDirection : 'none',
 
             // View constructor
             initialize: function() {   
@@ -25,13 +25,13 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             
             // View Event Handlers
             events: {
-                'click #sharing-nav .email': 'onEmailShareClick',
-                'click .friend':'onFriendClick',
-                'click #move-right':'onRightClick',
-                'click #move-left':'onLeftClick',
-                'click #back': 'onBackClick',                
-                'swipe':'onSwipe',
-                'dragEnd':'onSwipe'                
+                'click #sharing-nav .email' :'onEmailShareClick',
+                'click .friend'             :'onFriendClick',
+                'click #move-right'         :'onRightClick',
+                'click #move-left'          :'onLeftClick',
+                'click #back'               :'onBackClick',                
+                'swipe'                     :'onSwipe',
+                'dragEnd'                   :'onSwipe'                
             },            
 
             // Renders the view's template to the UI
@@ -107,6 +107,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 });
                 
                 self.onResize();
+                $('#main-loading-spinner').fadeOut(300);
             },
             
             onResize: function(){
@@ -122,7 +123,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var self = this;
                 //self.render();
 
-                $('#main-loading-spinner').fadeOut(300);
+                
                 self.$el.fadeIn();
                 $('#friend-selection').fadeIn();
                 $('.share-result').fadeOut();
@@ -407,7 +408,10 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             */
             login: function() {
                 // if we have already logged in and have a friends list don't login
-                if(this.model.get('FBuserId') && this.model.get('friends')) return;
+                if(this.model.get('FBuserId') && this.model.get('friends')) {
+                    $('#main-loading-spinner').fadeOut(300);
+                    return;
+                }
 
                 //http://developers.facebook.com/docs/authentication/permissions
                 var self = this;
