@@ -75,6 +75,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             },
 
             renderFriends: function() {
+
                 var self = this, col = 0, row = 0, index = -1, page = 0, prevCol,
                     $colEl = $('<div class="col"></div>'),
                     $pageEl = $('<div class="page"></div>');
@@ -107,7 +108,9 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 });
                 
                 self.onResize();
-                $('#main-loading-spinner').fadeOut(300);
+
+                $('#main-loading-spinner').fadeOut(300);                
+                console.log('friends rendered');
             },
             
             onResize: function(){

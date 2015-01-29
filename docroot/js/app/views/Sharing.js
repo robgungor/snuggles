@@ -87,10 +87,11 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
                     // set the mId to our model so it is not forgetten about                    
                     self.model.set({'mId': mId});                       
                     self.model.set({'hasChanged': false});  
+                    $('#main-loading-spinner').fadeOut(300);
                     // pass along to next step, use apply for scope and inheritance
                     if(shareView) shareView.share.apply(shareView, [mId]);
                   }
-                  $('#main-loading-spinner').fadeIn(500);
+                  $('#main-loading-spinner').fadeIn(300);
                   // save our message
                   OC_MessageSaver.saveMessage(self.model, {}, onMessageSaveComplete);
               }
