@@ -414,19 +414,19 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var strPermissions = "";
                 //User related permissions  
                 //user_about_me is appended at the end
-                strPermissions+= "user_activities, user_birthday, user_education_history, user_events, user_groups, user_hometown,";
-                strPermissions+= "user_interests, user_likes, user_location, user_notes, user_photo_video_tags, user_photos,";
-                strPermissions+= "user_relationships, user_relationship_details, user_religion_politics, user_status, user_videos, user_website, user_work_history, ";
-                strPermissions+= "read_stream, ";
+                //strPermissions+= "user_activities, user_birthday, user_education_history, user_events, user_groups, user_hometown,";
+                //strPermissions+= "user_interests, user_likes, user_location, user_notes, user_photo_video_tags, user_photos,";
+                //strPermissions+= "user_relationships, user_relationship_details, user_religion_politics, user_status, user_videos, user_website, user_work_history, ";
+                //strPermissions+= "read_stream, ";
                 //strDefaultPermissions+= "user_checkins, user_online_presence, ";
                 //strDefaultPermissions+= "email, read_friendlists, read_insights, read_mailbox, read_requests, xmpp_login, ads_management, ";
                         
                 //Friends related permissions
-                strPermissions+= "friends_about_me, friends_activities, friends_birthday, friends_education_history, friends_events, friends_groups, friends_hometown, ";
-                strPermissions+= "friends_interests, friends_likes, friends_location, friends_notes, friends_photo_video_tags, friends_photos, ";
-                strPermissions+= "friends_relationships, friends_relationship_details, friends_religion_politics, friends_status, friends_videos, friends_website, friends_work_history, ";
+                //strPermissions+= "friends_about_me, friends_activities, friends_birthday, friends_education_history, friends_events, friends_groups, friends_hometown, ";
+                //strPermissions+= "friends_interests, friends_likes, friends_location, friends_notes, friends_photo_video_tags, friends_photos, ";
+                //strPermissions+= "friends_relationships, friends_relationship_details, friends_religion_politics, friends_status, friends_videos, friends_website, friends_work_history, ";
                 //strDefaultPermissions+= "friends_checkins, friends_online_presence, ";
-                strPermissions+= "user_about_me, publish_actions";                 
+                strPermissions+= "public_profile, user_friends";                 
                             
                                
                 FB.login(function(response) {

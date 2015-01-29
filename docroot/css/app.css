@@ -58,7 +58,7 @@ button, a {
   -webkit-tap-highlight-color: transparent; }
 
 button.bubble {
-  font-family: "VAG Rounded W01 Bold", sans-serif;
+  font-family: "VAG Rounded W01 Black", sans-serif;
   background: url(../img/landing/bubble-button-bg@2x.png) no-repeat;
   color: #d747b8;
   width: 140px;
@@ -67,10 +67,7 @@ button.bubble {
   outline: none;
   background-position-y: -1px;
   line-height: 0px;
-  -webkit-transform: scale(1.2);
-  transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  margin: 0.2rem .6rem;
+  margin: 0rem .15rem;
   padding-bottom: 13px;
   font-size: .8rem;
   background-size: 100%;
@@ -94,6 +91,7 @@ button.bubble {
     background-size: 100%;
     background-position-y: -1px;
     padding-bottom: 8px;
+    padding-top: 2px;
     height: 45px;
     -webkit-tap-highlight-color: transparent;
     -webkit-tap-highlight-color: transparent; }
@@ -119,7 +117,9 @@ nav.share, nav.visit {
     @media only screen and (max-device-width: 320px) {
       nav.share button, nav.visit button {
         width: 18vw;
-        height: 18vw; } }
+        height: 18vw;
+        width: 13vw;
+        height: 13vw; } }
     nav.share button:active, nav.visit button:active {
       border: none;
       outline: none;
@@ -253,7 +253,8 @@ main#landing {
   display: none;
   overflow-y: scroll;
   padding-bottom: 0;
-  min-height: 100vh; }
+  min-height: 100vh;
+  font-size: 1em; }
   main#landing.loaded {
     position: relative; }
   main#landing .snuggle-logo {
@@ -262,7 +263,14 @@ main#landing {
     bottom: 15px;
     left: 15px;
     width: 91px; }
-  @media screen and (max-device-width: 414px) {
+  @media screen and (min-device-width: 375px) {
+    main#landing {
+      font-size: 1.1em;
+      width: 87vw;
+      padding: 0 6vw; }
+      main#landing .oddcast-logo {
+        position: relative; } }
+  @media screen and (min-device-width: 414px) {
     main#landing {
       font-size: 1.2em;
       width: 82vw;
@@ -270,13 +278,6 @@ main#landing {
       main#landing .oddcast-logo {
         position: absolute;
         bottom: 10px; } }
-  @media screen and (max-device-width: 375px) {
-    main#landing {
-      font-size: 1.1em;
-      width: 87vw;
-      padding: 0 6vw; }
-      main#landing .oddcast-logo {
-        position: relative; } }
   main#landing header {
     height: 13vh;
     position: relative; }
@@ -370,7 +371,24 @@ main#landing {
         margin-bottom: .65em; } }
   main#landing #message-selection nav {
     text-align: center; }
-    @media screen and (max-device-width: 414px) {
+    @media screen and (min-device-width: 360px) {
+      main#landing #message-selection nav button.bubble {
+        margin: 0rem .4rem;
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15);
+        -ms-transform: scale(1.15);
+        padding-bottom: 17px; }
+        main#landing #message-selection nav button.bubble:active, main#landing #message-selection nav button.bubble.selected {
+          padding-top: 2px; } }
+    @media screen and (min-device-width: 375px) {
+      main#landing #message-selection nav button.bubble {
+        margin: 0rem .6rem;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+        -ms-transform: scale(1.2); }
+        main#landing #message-selection nav button.bubble:active, main#landing #message-selection nav button.bubble.selected {
+          padding-top: 8px; } }
+    @media screen and (min-device-width: 414px) {
       main#landing #message-selection nav button.bubble {
         margin: 0.2rem .75rem;
         -webkit-transform: scale(1.25);
@@ -379,9 +397,6 @@ main#landing {
         padding-bottom: 17px; }
         main#landing #message-selection nav button.bubble:active, main#landing #message-selection nav button.bubble.selected {
           padding-bottom: 8px; } }
-    @media screen and (max-device-width: 375px) {
-      main#landing #message-selection nav button.bubble {
-        margin: 0rem .6rem; } }
   main#landing #sharing-nav {
     text-align: center;
     margin-top: -15px; }

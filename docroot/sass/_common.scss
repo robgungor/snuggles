@@ -42,7 +42,7 @@ button, a{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 button.bubble {
-    font-family: $font-family, sans-serif;
+    font-family: $font-black, sans-serif;
     background: url(../img/landing/bubble-button-bg@2x.png) no-repeat;
     color: #d747b8;
     width: 140px;
@@ -51,10 +51,10 @@ button.bubble {
     outline: none;
     background-position-y: -1px;
     line-height: 0px;
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    margin: 0.2rem .6rem;   
+    // -webkit-transform: scale(1.2);
+    // transform: scale(1.2);
+    // -ms-transform: scale(1.2);
+    margin: 0rem .15rem;   
     padding-bottom: 13px;
     font-size: .8rem;
     background-size: 100%;
@@ -82,6 +82,7 @@ button.bubble {
         background-size: 100%;
         background-position-y: -1px;
         padding-bottom: 8px;
+        padding-top: 2px;
         height: 45px;
         -webkit-tap-highlight-color: transparent;           
         -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -111,6 +112,9 @@ nav.share, nav.visit{
         @media only screen and (max-device-width : 320px) {
             width: 18vw;
             height: 18vw;
+
+            width: 13vw;
+            height: 13vw;
         }        
 
         &:active{

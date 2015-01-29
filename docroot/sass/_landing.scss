@@ -13,6 +13,7 @@ main#landing {
 	overflow-y: scroll;
 	padding-bottom: 0;
 	min-height: 100vh;
+	font-size: 1em;
 
 	&.loaded {
 		position: relative;
@@ -26,21 +27,8 @@ main#landing {
 		width: 91px;
 	}
 	
-
 	@media screen 
-	and (max-device-width: $iphone6plus) 
-	{					
-		font-size: 1.2em;
-		width: 82vw;
-		padding: 0 9vw;	
-
-		.oddcast-logo {
-			position: absolute;
-			bottom: 10px;
-		}	
-	}
-	@media screen 
-	and (max-device-width: $iphone6) 
+	and (min-device-width: $iphone6) 
 	{			
 		font-size: 1.1em;
 		width: 87vw;
@@ -51,6 +39,19 @@ main#landing {
 		}	
 	}
 
+	@media screen 
+	and (min-device-width: $iphone6plus) 
+	{					
+		font-size: 1.2em;
+		width: 82vw;
+		padding: 0 9vw;	
+
+		.oddcast-logo {
+			position: absolute;
+			bottom: 10px;
+		}	
+	}
+	
 	header {
 		height: 13vh;
 		position: relative;	
@@ -184,8 +185,27 @@ main#landing {
 			text-align: center;
 
 			button.bubble {
-				
-				@media screen and (max-device-width: $iphone6plus) {	
+				@media screen and (min-device-width: $galaxys4) {				
+					margin: 0rem .4rem;
+					-webkit-transform: scale(1.15);
+					transform: scale(1.15);
+					-ms-transform: scale(1.15);
+					padding-bottom: 17px;
+					&:active, &.selected {
+						padding-top: 2px;
+					}	
+				}
+				@media screen and (min-device-width: $iphone6) {				
+					margin: 0rem .6rem;
+					-webkit-transform: scale(1.2);
+					transform: scale(1.2);
+					-ms-transform: scale(1.2);
+					
+					&:active, &.selected {
+						padding-top: 8px;	
+					}		
+				}
+				@media screen and (min-device-width: $iphone6plus) {	
 					margin: 0.2rem .75rem;
 					-webkit-transform: scale(1.25);
 					transform: scale(1.25);
@@ -195,11 +215,7 @@ main#landing {
 					&:active, &.selected {
 						padding-bottom: 8px;
 					}	
-				}
-				
-				@media screen and (max-device-width: $iphone6) {				
-					margin: 0rem .6rem;
-				}
+				}		
 			}
 		}
 	}
