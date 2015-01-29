@@ -50,7 +50,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html",],
                 
                 $('#main-loading-spinner').fadeOut(300);
                 $('#sharing').fadeIn();
-
+                $('.share-in').fadeIn();
                 
             },
 
