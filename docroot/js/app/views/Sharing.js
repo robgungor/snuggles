@@ -62,14 +62,15 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               var onGotVideoLink = function(link){
                   self.getMID(shareView);            
               }
-              console.log("has changed: "+hasChanged);
-              if( videoURL.indexOf('http') < 0 && !hasChanged ) {
+              
+              if( videoURL.indexOf('http') >= 0 && !hasChanged ) {                  
                   onGotVideoLink(videoURL);
               } else {
-                  self.model.fetchVideoLink(onGotVideoLink);
+                 //lock the screen
+                $('#main-loading-spinner').fadeIn();
+                self.model.fetchVideoLink(onGotVideoLink);
               }
-              //lock the screen
-              $('#main-loading-spinner').fadeIn();
+             
           },
 
           getMID: function(shareView){
@@ -77,8 +78,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               var mId = self.model.get('mId');              
 
               $('main').fadeOut();
-              $('#main-loading-spinner').fadeIn(500);
-              console.log("has changed: "+self.model.get('hasChanged'));
+              
               if( !OC_Utils.isUndefined(mId) && !self.model.get('hasChanged') ) {
                 // if we have an mId, reuse it
                 if(shareView) shareView.share.apply(shareView, [mId]);
@@ -90,6 +90,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
                     // pass along to next step, use apply for scope and inheritance
                     if(shareView) shareView.share.apply(shareView, [mId]);
                   }
+                  $('#main-loading-spinner').fadeIn(500);
                   // save our message
                   OC_MessageSaver.saveMessage(self.model, {}, onMessageSaveComplete);
               }

@@ -84,21 +84,21 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 $('#friend-container').append($pageEl);
 
                 self.model.get('friends').each(function(friend) {  
-                    
                     var f = _.template(friendTemplate, friend.toJSON());                   
                     index++;
-                    row = index % 5;
-                    col = Math.floor(index / 5);
+                    row  = index % 5;
+                    col  = Math.floor(index / 5);
                     page = col % 3;
 
                     if(row == 0) {
                         $colEl = $('<div class="col"></div>');
                     }
 
-                    if( page == 0 & col > prevCol  ){
+                    if( page == 0 & col > prevCol  ) {
                         $pageEl = $('<div class="page"></div>');
                         $('#friend-container').append($pageEl);
                     }
+
                     prevCol = col;
                    
                     // Dynamically updates the UI with the view's template

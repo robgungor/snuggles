@@ -209,8 +209,8 @@ define(["jquery",
 
             onVideoEnded: function() {
               // show poster image/thumbnail
-              $('.poster-image').css({opacity:1});
-              $("#video-container").removeClass('active');
+              //$('.poster-image').css({opacity:1});
+              //$("#video-container").removeClass('active');
             },
             
             onVideoSelectClick: function(e) {
