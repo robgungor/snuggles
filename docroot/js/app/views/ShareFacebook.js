@@ -62,14 +62,29 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 return this;
             },
             
+            onGotFriendsInfo : function(result){
+                var self = this;
+                
+                var friends = new Friends();
+                friends.set(result);
+                var userID = self.model.get('FBuserId');
+                friends.moveUserToTopOfList(userID);
+
+                self.model.set({'friends':friends});
+                self.renderFriends();
+            },
+
             renderFriends: function() {
                 var self = this, col = 0, row = 0, index = -1, page = 0, prevCol,
                     $colEl = $('<div class="col"></div>'),
                     $pageEl = $('<div class="page"></div>');
 
                 $('#friend-container').empty();
+                
+                $('#friend-container').append($pageEl);
 
-                _.each(self.model.get('friends'), function(friend) {                    
+                self.model.get('friends').each(function(friend) {  
+                    
                     var f = _.template(friendTemplate, friend.toJSON());                   
                     index++;
                     row = index % 5;
@@ -89,7 +104,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     // Dynamically updates the UI with the view's template
                     $pageEl.append($colEl);
                     $colEl.append(f);
-                })
+                });
                 
                 self.onResize();
             },
@@ -123,12 +138,6 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 $('.share-result').fadeIn();
             },
 
-            onGotFriendsInfo : function(result){
-                var self = this;
-                
-                this.model.set({'friends':new Friends().set(result)});
-                self.renderFriends();
-            },
 
             onOKClick : function(e){
                 e.preventDefault();
@@ -368,13 +377,13 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             */
             onConnected: function (user_id, response) {
                 var self = this;
-                
+
                 self.model.set({'FBuserId':user_id});
                 if (user_id == null || user_id == undefined) {
                 }
                 else {
                     self.model.set({'FBAccessToken':response.authResponse.accessToken});
-                    self.getFriendsInfo();
+                    self.getFriendsInfo(true);
                 }
             },
      
@@ -397,6 +406,9 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
             if fbcRequiredApplicationPermissions is defined. fbcRequiredApplicationPermissions can be set from application attributes.
             */
             login: function() {
+                // if we have already logged in and have a friends list don't login
+                if(this.model.get('FBuserId') && this.model.get('friends')) return;
+
                 //http://developers.facebook.com/docs/authentication/permissions
                 var self = this;
                 var strPermissions = "";
@@ -479,7 +491,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 strFQL += ' ( SELECT uid2 FROM friend WHERE uid1=\'' +self.model.get('FBuserId') +'\' )';
              
                 if (bIncludeYourSelf != undefined && bIncludeYourSelf == true) {
-                    strFQL += ' OR uid=\'' + fbcUserId + '\'';
+                    strFQL += ' OR uid=\'' + self.model.get('FBuserId') + '\'';
                 }
                 
                 strFQL += ' ) '; //end of user id restrictions

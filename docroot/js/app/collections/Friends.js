@@ -9,9 +9,28 @@ define(["jquery","backbone","models/Friend"],
 
       // Tells the Backbone Collection that all of it's models will be of type Model (listed up top as a dependency)
       model: Friend,
-      parse: function(response) {
-      	console.log(response);
+    
+      parse: function(response) {      	
       	return response;
+      },
+      
+      moveUserToTopOfList: function(user_id){
+        var self = this;
+        
+        var user = this.findWhere({'uid':user_id }); 
+        
+        // reorder results by name first
+        self.indexBy('name');
+
+        if(user){
+          var userRef = user;
+          // remove user from list
+          this.remove(user);
+          //add user to the front
+          this.add(user, {at: 0, merge:true});
+          console.log(this);
+        }
+
       }
     });
 

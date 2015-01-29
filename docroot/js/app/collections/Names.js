@@ -30,7 +30,8 @@ define(["jquery","backbone","models/Name",],
             $(data).find("name").each(function (index) {
                 // there is only one node per name
                 var actualName = $(this).text();
-                self.dropDownNames.push({id:actualName,value:actualName});
+                var dropDownName = $(this).attr('dropdown');
+                self.dropDownNames.push({id:dropDownName,value:dropDownName});
                 
                 var spellings = $(this).attr("allNames").split('|');
                 // there are multiple spellings per name, but make them individual objects for future iteration

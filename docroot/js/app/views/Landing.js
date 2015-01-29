@@ -170,34 +170,7 @@ define(["jquery",
                 
                 //var $video = $("#video-player");
                 var $video = $($parent.find("video#video-player").get(0));
-                // // on pause of video
-                // $video.on('pause', function() {                  
-                //   self.onVideoPaused();
-                // });                
-                // // on end of video
-                // $video.on('ended', function() { self.onVideoEnded(); } );
-
-                // $video.on('playing', function() {
-                //    // hide loading state
-                //    console.log('on playing');
-                //   $('#main-loading-spinner').hide();                  
-                // });
-
-                // $video.on('play', function(){
-                //    // hide loading state
-                //    console.log('on play');
-                //   $('#main-loading-spinner').fadeOut();
-                //   //$('#video-loading-spinner').fadeOut();
-                // });
-                // $video.on('loadstart', function(){
-                //    // hide loading state
-                //    console.log('on loadstart');
-                //   $('#main-loading-spinner').fadeOut();
-                //   //$('#video-loading-spinner').fadeOut();
-                // });
-                
-
-
+              
                 // on pause of video
                 $video.on('pause', function(){self.onVideoPaused();});                
                 // on end of video
@@ -208,67 +181,16 @@ define(["jquery",
                   $('#main-loading-spinner').fadeOut();
                 });
 
-
-                // $video.get(0).addEventListener('loadeddata', function() {
-                //    // Video is loaded and can be played
-                //     $video.get(0).play();
-                //     $('#main-loading-spinner').hide();
-                // }, false);
                 $video.get(0).oncanplay = function() {
                     //alert("Can start playing video");
                     $video.get(0).play();
                     $('#main-loading-spinner').hide();
-                };
-                // var checkLoad = function() {
-                //   console.log('checkLoad: '+$video.get(0).readyState);
-                //     if ($video.get(0).readyState === 4) {
-                //         $video.get(0).play();
-                //         $('#main-loading-spinner').hide();
-                //     } else {
-                //         setTimeout(checkLoad, 100);
-                //     }
-                // }
-
-                // checkLoad();
+                };                
 
                 $video.get(0).load();
 
                 // play the video
-                $video.get(0).play();
-
-
-
-
-
-
-
-
-
-            //     playVideo: function($parent) {                
-            //     var self = this;
-
-            //     // show loading state
-            //     $('#video-loading-spinner').show();
-
-            //     // we do this so we don't reference an old video that is still hanging
-            //     $parent = $parent || self.$el;                
-            //     // show the container of the player
-            //     $parent.find("#video-container").addClass('active');
-                
-            //     var $video = $($parent.find("video#video-player").get(0));
-            //     // on pause of video
-            //     $video.on('pause', function(){self.onVideoPaused();});                
-            //     // on end of video
-            //     $video.on('ended', function(){self.onVideoEnded();});
-
-            //     $video.on('playing', function(){
-            //        // hide loading state
-            //       $('#video-loading-spinner').fadeOut();
-            //     });
-
-            //     // play the video
-            //     $video.get(0).play();
-            // },
+                //$video.get(0).play();
             },
             
             playVideo: function() {
@@ -281,7 +203,7 @@ define(["jquery",
                 var video = $('.'+this.model.get('selectedVideo')).find("video#video-player").get(0);                
                 // if we aren't in full screen, assume the video is ended... 
                 //if (!video.webkitDisplayingFullscreen) 
-                  this.onVideoEnded(); 
+                this.onVideoEnded(); 
 
             },
 

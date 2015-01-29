@@ -85,6 +85,11 @@
 		margin-top: 50px;
 		
 		@media screen 
+		and (min-device-width: $iphone6) 
+		{								
+			margin-top: 19px;
+		}
+		@media screen 
 		and (min-device-width: $iphone6plus) 
 		{									
 			margin-top: 30px;
@@ -131,9 +136,9 @@
 			width: calc(100vw - 70px);
 			overflow: hidden;
 			overflow-x: scroll;
-			height: calc(100vh - 146px);
+			height: calc(100vh - 142px);
 			margin-top: 15px;
-
+			
 			@media screen 
 			and (min-device-width: $iphone6plus) 
 			{									
@@ -155,9 +160,9 @@
 
 					.col {
 						float: left;					
-						width: calc(33vw - 40px);
+						width: calc(33vw - 39px);
 						margin-right: 25px;
-
+						
 						@media screen 
 						and (min-device-width: $iphone6plus) 
 						{									

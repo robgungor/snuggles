@@ -62,7 +62,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               var onGotVideoLink = function(link){
                   self.getMID(shareView);            
               }
-
+              console.log("has changed: "+hasChanged);
               if( videoURL.indexOf('http') < 0 && !hasChanged ) {
                   onGotVideoLink(videoURL);
               } else {
@@ -78,15 +78,15 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
 
               $('main').fadeOut();
               $('#main-loading-spinner').fadeIn(500);
-
+              console.log("has changed: "+self.model.get('hasChanged'));
               if( !OC_Utils.isUndefined(mId) && !self.model.get('hasChanged') ) {
                 // if we have an mId, reuse it
                 if(shareView) shareView.share.apply(shareView, [mId]);
               } else {
                   var onMessageSaveComplete = function(mId){
                     // set the mId to our model so it is not forgetten about                    
-                    self.model.set({'mId': mId});  
-                                    
+                    self.model.set({'mId': mId});                       
+                    self.model.set({'hasChanged': false});  
                     // pass along to next step, use apply for scope and inheritance
                     if(shareView) shareView.share.apply(shareView, [mId]);
                   }

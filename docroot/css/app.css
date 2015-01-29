@@ -515,6 +515,9 @@ ul.ui-autocomplete {
 
 #sharing-facebook #friend-selection {
   margin-top: 50px; }
+  @media screen and (min-device-width: 375px) {
+    #sharing-facebook #friend-selection {
+      margin-top: 19px; } }
   @media screen and (min-device-width: 414px) {
     #sharing-facebook #friend-selection {
       margin-top: 30px; } }
@@ -549,7 +552,7 @@ ul.ui-autocomplete {
     width: calc(100vw - 70px);
     overflow: hidden;
     overflow-x: scroll;
-    height: calc(100vh - 146px);
+    height: calc(100vh - 142px);
     margin-top: 15px; }
     @media screen and (min-device-width: 414px) {
       #sharing-facebook #friend-selection #friend-wrap {
@@ -565,7 +568,7 @@ ul.ui-autocomplete {
             width: calc(100vw - 79px); } }
         #sharing-facebook #friend-selection #friend-wrap #friend-container .page .col {
           float: left;
-          width: calc(33vw - 40px);
+          width: calc(33vw - 39px);
           margin-right: 25px; }
           @media screen and (min-device-width: 414px) {
             #sharing-facebook #friend-selection #friend-wrap #friend-container .page .col {

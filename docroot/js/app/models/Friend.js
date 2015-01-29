@@ -17,9 +17,7 @@ define(["jquery", "backbone"],
             defaults: {               
             },
 
-            parse: function(response) {
-                console.log("a friend");
-                console.log(response);
+            parse: function(response) {               
                 return response;
             },
     
