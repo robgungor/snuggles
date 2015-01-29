@@ -451,6 +451,9 @@ ul.ui-autocomplete {
     padding: 1px .8em; }
     ul.ui-autocomplete li a {
       color: #1eafeb; }
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    ul.ui-autocomplete {
+      max-width: calc(57% - 60px); } }
 
 #main-bg-container {
   background: url(../img/common/main-bg.jpg) no-repeat top left;

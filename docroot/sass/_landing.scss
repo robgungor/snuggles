@@ -309,6 +309,14 @@ ul.ui-autocomplete {
 			color: $light-blue;
 		}
 	}
+	
+	@media only screen 
+	and (min-device-width : 768px) 
+	and (max-device-width : 1024px) 
+	and (orientation : portrait)
+	{ 
+		max-width: calc(57% - 60px);
+	}
 }
 
 #main-bg-container {
