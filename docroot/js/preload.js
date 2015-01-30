@@ -68,7 +68,7 @@
             },
             loadJavascripts: function(firstFile, callback){
                 var self = this,
-                    filesToLoad = [firstFile, 'tracking.js',
+                    filesToLoad = [firstFile, 'js/tracking.js',
                                     //'//'+OC_CONFIG.baseURL+'/includes/facebookconnectV2.js',
                                     //'//platform.twitter.com/widgets.js',
                                     
