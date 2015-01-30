@@ -1,6 +1,6 @@
 //basic
 @media only screen 
-and (min-aspect-ratio: 13/9) { 
+and (min-aspect-ratio: 13/12) { 
 
 	#landscape-blocker {
 		width: 100%;
@@ -11,7 +11,7 @@ and (min-aspect-ratio: 13/9) {
 		top: 0;
 		left: 0;
 		background: url(../img/common/landscape-blocker.jpg) no-repeat center top;
-		background-size: 100%;
+		background-size: cover;
 		z-index: 9999;
 	}
 
