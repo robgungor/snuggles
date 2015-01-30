@@ -62,7 +62,8 @@ define(["jquery", "backbone", "collections/Names",  "models/Settings", "collecti
                     from: self.get('fromName'),
                     to: self.get('toName')
                   },
-                  url: '//'+self.config.baseURL+'/api_misc/1281/api.php',                 
+                  url: '//host.oddcast.com/api_misc/1281/api.php',                 
+                  //'//host.oddcast.com/'+self.config.baseURL+'/api_misc/1281/api.php',                 
                   async: true,
                   dataType : 'xml',
                   beforeSend: function(xhr, opts){

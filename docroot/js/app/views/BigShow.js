@@ -34,7 +34,9 @@ define(["jquery", "backbone", "models/Message", "text!templates/big-show.html", 
 
             // Dynamically updates the UI with the view's template
             this.$el.html(this.template);
-          
+            $('.snuggledotcom-logo').on('click', function(e){
+                OC_ET.event("ce17");
+            });
             return this;
           },           
 
@@ -103,6 +105,7 @@ define(["jquery", "backbone", "models/Message", "text!templates/big-show.html", 
             $('#big-show-video').get(0).pause();
             this.$el.fadeOut();
             window.router.navigate('landing', {trigger: true});
+            OC_ET.event("ce16");
           },
 
         });

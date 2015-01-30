@@ -13,7 +13,12 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui","jquerymobile"
 
     // Disabling this will prevent jQuery Mobile from handling hash changes
     $.mobile.hashListeningEnabled = false;
-    
+         
+    OC_ET.init(OC_CONFIG.trackingURL, {
+        'apt': 'W',
+        'acc': OC_CONFIG.doorId,
+        'emb': '0'
+    });
     // Instantiates a new Mobile Router instance
     window.router = new MobileRouter();
 

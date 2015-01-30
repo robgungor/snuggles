@@ -1,6 +1,6 @@
 //basic
 @media only screen 
-and (orientation : landscape) { 
+and (min-aspect-ratio: 13/9) { 
 
 	#landscape-blocker {
 		width: 100%;

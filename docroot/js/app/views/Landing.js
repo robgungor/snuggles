@@ -53,7 +53,8 @@ define(["jquery",
 
               'change input'  : 'onInputChange',
               'keyup input'  : 'onInputChange',
-                            
+              'focus #tName'  : 'onToFocus',
+              'focus #fName'  : 'onFromFocus',        
               'mousedown .video-select':'onVideoSelectClick',   
 
               'orientationchange':'onOrientationChange'
@@ -73,6 +74,10 @@ define(["jquery",
                 // first time, show this
                 $('.poster-image').css({opacity:1});
                 $('#video-loading-spinner').hide();
+
+                $('.snuggledotcom-logo').on('click', function(e){
+                    OC_ET.event("ce17");
+                });
                 return this;
             },
             
@@ -151,10 +156,8 @@ define(["jquery",
             onVideoPreviewClick: function(e) {
                 // prevent default actions
                 e.preventDefault();
-                // this.playVideo();
-                // return;
-
-                console.log('hasChangeD: '+this.model.get('hasChanged'));
+                
+                OC_ET.event("ce3");
                 if( this.model.get('hasChanged') )this.loadAndPlayVideo();
                 else this.playVideo();
                 
@@ -252,6 +255,9 @@ define(["jquery",
                     $currentVid = $($('.video-wrapper')[0]),
                     vidName = $(e.currentTarget).attr('data-video-name');
 
+                //tracking
+                OC_ET.event("ce"+(3+parseInt(vidName)));
+                
                 // pause current video
                 $("#video-player")[0].pause();
                 // set the selected video name to the model
@@ -287,6 +293,14 @@ define(["jquery",
               var self = this;        
               self.sharing.shareTwitterInit();
             },
+            // for tracking
+            onToFocus: function(e) {
+              OC_ET.event("ce1");
+            },
+            // for tracking
+            onFromFocus: function(e) {
+              OC_ET.event("ce2");
+            }
         });
 
         // Returns the Landing class

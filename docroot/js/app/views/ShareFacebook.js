@@ -58,7 +58,9 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
 
                 $('#friend-wrap').on('scrollstop', function(e){ self.onScrollStop(e); });
                 $('#friend-wrap').on('scroll', function(e){ self.onScroll(e); });
-              
+                $('.snuggledotcom-logo').on('click', function(e){
+                    OC_ET.event("ce17");
+                });
                 return this;
             },
             
@@ -156,6 +158,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                
                 this.$el.fadeOut(200);
                 $('main').fadeIn();
+                OC_ET.event("ce12");
             },            
             
             onLeftClick : function(e){
@@ -307,6 +310,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     OC_ET.event("edfbc");
                     if(window.postedToFacebook){
                         OC_ET.event("uiebfb");
+                        OC_ET.event("ce9");
                         try {
                             if(self.model.config.messageId.length > 4) {
                                 OC_ET.embed_session = 2;

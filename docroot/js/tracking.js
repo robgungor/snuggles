@@ -554,7 +554,7 @@ function EventTracker(){
       in_scene = defaultValue(in_scene, null);
       in_count = defaultValue(in_count, 0);
       in_value = defaultValue(in_value, null);
-
+      
       if (this.account_id != null && this.app_type != null && in_event != null)
       {
         var t_et = (this.eventtime != null) ? Math.round((new Date().getTime() - this.eventtime.getTime())) : 0;
@@ -640,7 +640,7 @@ function EventTracker(){
     this.sendRequest = function(in_str)
     {
       
-      //console.log("TRACKING: " +etself.req_domain+in_str)
+      console.log("TRACKING: " +etself.req_domain+in_str)
       //return;
 
       $.ajax({

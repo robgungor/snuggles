@@ -40,7 +40,9 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", "text
                 $('#ok-after').on("click", function(e){
                     self.onOKAfterClick(e);
                 });
-              
+                $('.snuggledotcom-logo').on('click', function(e){
+                    OC_ET.event("ce17");
+                });
                 return this;
             },
             
@@ -67,6 +69,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", "text
                
                 this.$el.fadeOut(200);
                 $('main').fadeIn();
+                OC_ET.event("ce12");
             },
 
             sendEmail: function(){
@@ -91,7 +94,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", "text
                 OC_ET.event("edems");
                 //email message sent to 1 or more recipients 
                 OC_ET.event("evrcpt"); 
-
+                OC_ET.event("ce11");
                 try {
                 if(this.model.config.messageId.length > 4) {
                     OC_ET.embed_session = 2;

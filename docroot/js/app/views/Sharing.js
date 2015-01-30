@@ -62,7 +62,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               var onGotVideoLink = function(link){
                   if(OC_Utils.isUndefined(link)) {
                     // try again... the server may have given an initial false response... 
-                    self.getVideoLink(shareView);
+                    //self.getVideoLink(shareView);
                   } else {
                     self.getMID(shareView);            
                   }

@@ -39,7 +39,9 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html",],
                 $('#ok-after').on("click", function(e){
                     self.onOKAfterClick(e);
                 });
-              
+                $('.snuggledotcom-logo').on('click', function(e){
+                    OC_ET.event("ce17");
+                });
                 return this;
             },
             
@@ -56,6 +58,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html",],
                
                 this.$el.fadeOut(200);
                 $('main').fadeIn();
+                OC_ET.event("ce12");
             },
 
             share: function(mId){                                
@@ -70,6 +73,7 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html",],
               window.open(this.model.getTwitterLink(), '_blank');
               //OC_ET.event("ce12");
                 OC_ET.event("uiebfb");
+                OC_ET.event("ce10");
                 try {
                     if(OC_CONFIG.messageId.length > 4) {
                         OC_ET.embed_session = 2;
