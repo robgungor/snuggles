@@ -131,7 +131,7 @@ main#landing {
 			}
 			
 			input {			
-				width: calc(100% - 2.7em);
+				width: calc(100% - 3.7em);
 				height: 10.25vw;
 				margin-bottom: .25em;
 				font-family: $font-family, sans-serif;
@@ -248,33 +248,24 @@ main#landing {
 		}
 
 	}
+
+
 	// tablet styles
 	@media only screen 
 	and (min-device-width : 600px) 
 	// and (max-device-width : 1024px) 
 	// and (orientation : portrait)
 	{ 
-		header, section {
-			max-width: 72%;
-			margin: auto;
-		}
 
-		#video-preview {
-			padding: 0;
-			padding-bottom: 42%;
-
-			#video-loading-spinner {
-				padding-bottom: 58%;
-			}
-		}
+		
 		
 		.form-container {
-			    	
+			
 			form {
-				font-size: 1.5em;
+				font-size: 1.2em;
 
 				aside {
-					font-size: .45em;
+					
 				}
 				.form-row {
 					padding: 0;
@@ -306,6 +297,26 @@ main#landing {
 				max-width: 80px;
 				max-height: 80px;
 			}
+		}
+	}
+	//iPad only
+	@media only screen 
+	and (min-device-width : 728px) 
+	and (max-device-width : 1024px) 
+	and (orientation : portrait)
+	{ 
+
+		#video-preview {
+			padding: 0;
+			padding-bottom: 42%;
+
+			#video-loading-spinner {
+				padding-bottom: 58%;
+			}
+		}
+		header, section {
+			max-width: 72%;
+			margin: auto;
 		}
 	}
 }
