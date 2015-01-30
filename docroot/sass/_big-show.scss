@@ -61,4 +61,17 @@
 			background-size: 100%;
 		}
 	}
+
+	@media only screen 
+	and (min-device-width : 600px) 
+	// and (max-device-width : 1024px) 
+	// and (orientation : portrait)
+	{ 
+
+		header{
+			margin-top: 25vw;
+		}
+
+	}
+	
 }

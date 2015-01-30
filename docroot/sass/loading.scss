@@ -41,19 +41,6 @@ body {
     position: absolute;
     z-index: 1000;     
 
-    &.big-show {
-
-        .loading-text {
-
-            .big-show {
-                display: block;
-            }
-            
-            .standard {
-                display: none;
-            }
-        }
-    }
    
     #loading-heart {
         -webkit-transition: opacity 500ms ease-out 0;
@@ -97,6 +84,20 @@ body {
         }
     }    
 
+    &.big-show {
+        .share-a-snug {
+            .loading-text {
+
+                .big-show {
+                    display: block;
+                }
+                
+                .standard {
+                    display: none;
+                }
+            }
+        }
+    }
     .loading-oddcast-logo {
         position: absolute;
         left: 50%;
@@ -203,7 +204,7 @@ body {
             margin-top: -10%;
         }
     }
-    
+
     @media only screen 
     and (min-width : 600px) 
     { 
