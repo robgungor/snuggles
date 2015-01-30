@@ -60,9 +60,17 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
               var hasChanged = self.model.get('hasChanged');
 
               var onGotVideoLink = function(link){
-                  self.getMID(shareView);            
+                  if(OC_Utils.isUndefined(link)) {
+                    // try again... the server may have given an initial false response... 
+                    self.getVideoLink(shareView);
+                  } else {
+                    self.getMID(shareView);            
+                  }
+                  
               }
-              
+              // if we received a previous bad response, it's undefined
+              if(OC_Utils.isUndefined(videoURL)) videoURL = '';
+
               if( videoURL.indexOf('http') >= 0 && !hasChanged ) {                  
                   onGotVideoLink(videoURL);
               } else {
