@@ -279,10 +279,7 @@ main#landing {
     main#landing {
       font-size: 1.2em;
       width: 82vw;
-      padding: 0 9vw; }
-      main#landing .oddcast-logo {
-        position: absolute;
-        bottom: 10px; } }
+      padding: 0 9vw; } }
   main#landing header {
     height: 13vh;
     position: relative; }
@@ -342,7 +339,8 @@ main#landing {
         border: none;
         padding-top: .1em;
         font-size: .98em;
-        text-align: center; }
+        text-align: center;
+        font-size: .8em; }
         main#landing .form-container form input:-webkit-autofill {
           background: url(../img/landing/input-bg.jpg) no-repeat left; }
       main#landing .form-container form label {
@@ -437,8 +435,7 @@ main#landing {
     main#landing #sharing-nav {
       margin-top: 56px; }
       main#landing #sharing-nav aside {
-        font-size: 1.4em;
-        padding-left: 50px; }
+        font-size: 1.4em; }
       main#landing #sharing-nav button {
         max-width: 80px;
         max-height: 80px; } }

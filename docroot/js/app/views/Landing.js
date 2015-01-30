@@ -213,6 +213,11 @@ define(["jquery",
                   $('#main-loading-spinner').fadeOut();
                 });
 
+                $video.on('play', function(){
+                   // hide loading state
+                  $('#main-loading-spinner').fadeOut();
+                });
+
                 $video.get(0).oncanplay = function() {
                     //alert("Can start playing video");
                     $video.get(0).play();

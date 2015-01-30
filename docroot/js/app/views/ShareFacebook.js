@@ -128,7 +128,6 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var self = this;
                 //self.render();
 
-                
                 self.$el.fadeIn();
                 $('#friend-selection').fadeIn();
                 $('.share-result').fadeOut();

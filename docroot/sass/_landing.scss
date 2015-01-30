@@ -46,10 +46,10 @@ main#landing {
 		width: 82vw;
 		padding: 0 9vw;	
 
-		.oddcast-logo {
-			position: absolute;
-			bottom: 10px;
-		}	
+		// .oddcast-logo {
+		// 	position: absolute;
+		// 	bottom: 10px;
+		// }	
 	}
 	
 	header {
@@ -135,7 +135,8 @@ main#landing {
 				border: none;
 				padding-top: .1em;
 				font-size: .98em;
-				text-align: center;		
+				text-align: center;	
+				font-size: .8em;	
 				
 				&:-webkit-autofill {
 					background: url(../img/landing/input-bg.jpg) no-repeat left;
@@ -281,7 +282,7 @@ main#landing {
 
 			aside {
 				font-size: 1.4em;
-				padding-left: 50px;
+				//padding-left: 50px;
 			}
 
 			button {
