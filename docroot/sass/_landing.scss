@@ -248,11 +248,11 @@ main#landing {
 		}
 
 	}
-	// iPad styles
+	// tablet styles
 	@media only screen 
-	and (min-device-width : 768px) 
-	and (max-device-width : 1024px) 
-	and (orientation : portrait)
+	and (min-device-width : 600px) 
+	// and (max-device-width : 1024px) 
+	// and (orientation : portrait)
 	{ 
 		header, section {
 			max-width: 72%;
@@ -273,6 +273,9 @@ main#landing {
 			form {
 				font-size: 1.5em;
 
+				aside {
+					font-size: .45em;
+				}
 				.form-row {
 					padding: 0;
 				}
