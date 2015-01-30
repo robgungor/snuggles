@@ -1,118 +1,158 @@
 * {
-        margin:0;
-        padding:0;
-    }   
-    body {       
-        background-size: cover;
-        background-color: #24afe9;
-        font-family: "VAG Rounded W01 Bold", sans-serif;
-        min-height:100%;
-        height: 100%;
-        height:100vh;
-        min-height:100vh;
+    margin:0;
+    padding:0;
+}   
+
+body {       
+    background-size: cover;
+    background-color: #24afe9;
+    font-family: "VAG Rounded W01 Bold", sans-serif;
+    min-height:100%;
+    height: 100%;
+    height:100vh;
+    min-height:100vh;
+}
+
+.spinner {        
+    border-radius: 50%; /* Rounds out the halo */
+    opacity: .7; /* Some subtle opacity to help blend with variable background colors */
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -16px;
+}  
+
+#main-loading-spinner {
+    display: none;
+}   
+
+#loading {
+    opacity: 0;
+    background: url("../img/loading/loading-bg.jpg") no-repeat left top #24afe9;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    width: 100vw;
+    height: 100vh; 
+    position: absolute;
+    z-index: 1000;     
+
+    &.big-show {
+
+        .loading-text {
+
+            .big-show {
+                display: block;
+            }
+            
+            .standard {
+                display: none;
+            }
+        }
     }
-    .spinner {        
-        border-radius: 50%; /* Rounds out the halo */
-        opacity: .7; /* Some subtle opacity to help blend with variable background colors */
-        width: 32px;
-        height: 32px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-left: -16px;
-        margin-top: -16px;
-    }  
-    #main-loading-spinner {
-        display: none;
-    }   
-    #loading {
-        opacity: 0;
-        background: url("../img/loading/loading-bg.jpg") no-repeat left top #24afe9;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        overflow: hidden; 
-        width: 100vw;
-        height: 100vh; 
-        position: absolute;
-        z-index: 1000;     
-    }
-    #loading, #loading-heart {
+   
+    #loading-heart {
         -webkit-transition: opacity 500ms ease-out 0;
         -moz-transition: opacity 500ms ease-out 0;
         -o-transition: opacity 500ms ease-out 0;
         transition: opacity 500ms ease-out 0;
     }
-    #loading .loading-text {
-        text-align: center;
-        color: #ffffff;
-        font-size: 1.375em;
-        margin-top: -6%;
-        margin-top: -25px;
-        float: left;
-        width: 60%;
-        margin-top: -6%;
-        padding: 20%;
-        padding-top: 0;
-    }
-    #loading .share-a-snug {
+    
+    .share-a-snug {
 		text-align: center;
 		float: left;
 		margin-left: auto;
 		width: 100%;
 		top: 50%;
 		margin-top: -33vw;
+
+        img {
+            width: 100%;
+            max-width: 400px; 
+        }
+
+        .loading-text {
+            text-align: center;
+            color: #ffffff;
+            font-size: 1.375em;
+            margin-top: -6%;
+            margin-top: -25px;
+            float: left;
+            width: 60%;
+            margin-top: -6%;
+            padding: 20%;
+            padding-top: 0;
+
+            .big-show{
+                display: none;
+            }
+
+            .standard {
+                display: block;
+            }
+        }
     }    
-    #loading .share-a-snug img {
-        width: 100%;
-        max-width: 400px; 
-    }
-    #loading .loading-oddcast-logo {
+
+    .loading-oddcast-logo {
         position: absolute;
         left: 50%;
         bottom: 101px;
         width: 100px;
         margin-left: -50px;
+
+        img {
+            width: 100%;
+            max-width: 104px; 
+        }   
     }
-    #loading .loading-oddcast-logo img {
-        width: 100%;
-        max-width: 104px; 
-    }
-    #loading .snuggle-logo img {
-        width: 100%;
-    }
-    #loading .snuggle-logo {
+
+     .snuggle-logo {
         position: absolute;
         bottom: 14px;
         left: 15px;
         width: 84px;
+        
+        img {   width: 100%; }
     }
-    #loading .cloud {   position: absolute; }
-    #loading .cloud img {   width: 100%; }
-    #loading .cloud.top-right {
-        top: 3%;
-        right: -66px;
-        width: 211px;
-        float: right;
-        position: relative;
-        position: relative; 
+
+    .cloud {   
+        position: absolute; 
+
+        img {   width: 100%; }
+
+        &.top-right {
+            top: 3%;
+            right: -66px;
+            width: 211px;
+            float: right;
+            position: relative;
+            position: relative; 
+        }
+
+        &.top-left {
+            width: 112px;
+            top: 13%;
+            left: -10%; 
+        }
+        
+        &.bottom-middle {
+            bottom: 0;
+            left: 50%;
+            float: left;
+            width: 195px;
+            z-index: 10;
+            height: 67px;
+            overflow: hidden;
+            margin-left: -104px;
+        }   
     }
-    #loading .cloud.top-left {
-        width: 112px;
-        top: 13%;
-        left: -10%; 
-    }
-    #loading .cloud.bottom-middle {
-        bottom: 0;
-        left: 50%;
-        float: left;
-        width: 195px;
-        z-index: 10;
-        height: 67px;
-        overflow: hidden;
-        margin-left: -104px;
-    }   
-    #loading .loading-bar {
+
+
+    .loading-bar {
         background: url("../img/loading/loading-bar-bg.png") no-repeat left top;
         float: left;
         position: absolute;
@@ -122,12 +162,14 @@
         bottom: 65px;
         margin-left: -197.5px; 
     }
+    
     #loading-heart {
         position: absolute;
         top: 12px;
         right: 19px;
         opacity: 0;
     }
+
     #loading-bar-fill {
         position: absolute;          
         left: 73px;
@@ -141,38 +183,58 @@
     }  
 
     @media screen and (max-width: 320px) {
-         #loading .loading-logo, #loading .loading-bar, #loading .loading-oddcast-logo {
+         .loading-logo, .loading-bar, .loading-oddcast-logo {
             -webkit-transform: scale(.8);
             transform: scale(.8);
             -ms-transform: scale(.8); 
-			bottom: 70px;
+    		bottom: 70px;
         }
-        #loading .loading-logo{
+        .loading-logo{
             margin-top: -39%;
         }
-        #loading .loading-bar {
+        .loading-bar {
             bottom: 5%;
+        }
+        .snuggle-logo {    
+            width: 63px;
+        }
+
+        .share-a-snug .loading-text {
+            margin-top: -10%;
+        }
+    }
+
+    @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px) 
+    and (orientation : portrait)
+    { 
+    	.loading-text {
+    		margin-top: -4%;
+    	}
+
+    	.share-a-snug {
+    		margin-top: -80px;
+    	}
+
+    	.loading-bar {
+    		top: 73%;
+            transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+    	}
+
+
+    	.loading-oddcast-logo {
+    		top: 79%;
+    	}
+        .share-a-snug{
+            
+            img{
+                max-width: 550px;
+            }
         }
         
     }
-	@media only screen 
-	and (min-device-width : 768px) 
-	and (max-device-width : 1024px) 
-	and (orientation : portrait)
-	{ 
-		#loading .loading-text {
-			margin-top: -4%;
-		}
 
-		#loading .share-a-snug {
-			margin-top: 0;
-		}
-
-		#loading .loading-bar {
-			top: 66%;
-		}
-
-		#loading .loading-oddcast-logo {
-			top: 79%;
-		}
-	}
+}

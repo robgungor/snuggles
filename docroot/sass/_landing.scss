@@ -24,7 +24,13 @@ main#landing {
 		position: absolute;
 		bottom: 15px;
 		left: 15px;
-		width: 91px;
+		width: 71px;
+
+		@media screen 
+		and (min-device-width: $iphone6) 
+		{
+			width: 91px;
+		}
 	}
 	
 	@media screen 
@@ -141,6 +147,7 @@ main#landing {
 				&:-webkit-autofill {
 					background: url(../img/landing/input-bg.jpg) no-repeat left;
 				}
+				
 			}
 
 			label {
@@ -149,7 +156,8 @@ main#landing {
 			}
 
 			aside {			
-				font-size: 10px;
+				// font-size: 10px;
+				font-size: 0.55em;
 				width: calc(100% - 4.7em);
 				text-align: center;
 				padding-left: 14%;
@@ -240,6 +248,7 @@ main#landing {
 		}
 
 	}
+	// iPad styles
 	@media only screen 
 	and (min-device-width : 768px) 
 	and (max-device-width : 1024px) 
@@ -258,22 +267,27 @@ main#landing {
 				padding-bottom: 58%;
 			}
 		}
+		
+		.form-container {
+			    	
+			form {
+				font-size: 1.5em;
 
-		form {
-			font-size: 1.5em;
+				.form-row {
+					padding: 0;
+				}
 
-			.form-row {
-				padding: 0;
-			}
-
-			input {
-				height: 7.75vw;
-				margin-bottom: .25em;
+				input {
+					height: 7.5vw;
+					margin-bottom: .25em;
+					width: calc(100% - 3.3em);
+				}
 			}
 		}
 
 		#message-selection {
 			-webkit-transform: scale(1.5);
+			transform: scale(1.5);
 			margin-top: 59px;			
 		}
 
