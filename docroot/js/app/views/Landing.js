@@ -41,6 +41,7 @@ define(["jquery",
                 }, 300);
 
                 self.updateInputValues();
+                console.log(OC_ET);
             },
             
             // View Event Handlers
@@ -158,9 +159,6 @@ define(["jquery",
                 else this.playVideo();
                 
             },
-
-            
-
             loadAndPlayVideo: function() {
                 var self = this;
 
@@ -219,7 +217,9 @@ define(["jquery",
                 };                
 
                 $video.get(0).load();
-
+                
+                //Video Generated (Should occur when the custom video is displayed on the preview screen)
+                OC_ET.event("edvscr");
                 // play the video
                 //$video.get(0).play();
             },

@@ -68,7 +68,14 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html",],
 
             postToTwitter : function () {
               window.open(this.model.getTwitterLink(), '_blank');
-
+              //OC_ET.event("ce12");
+                OC_ET.event("uiebfb");
+                try {
+                    if(OC_CONFIG.messageId.length > 4) {
+                        OC_ET.embed_session = 2;
+                        OC_ET.event("uiebfb");
+                    }
+                } catch(e) {}
             },
             
             twLogin: function(cb) {

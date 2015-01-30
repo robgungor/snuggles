@@ -68,7 +68,7 @@
             },
             loadJavascripts: function(firstFile, callback){
                 var self = this,
-                    filesToLoad = [//'//connect.facebook.net/en_US/fbds.js',
+                    filesToLoad = [firstFile, 'tracking.js',
                                     //'//'+OC_CONFIG.baseURL+'/includes/facebookconnectV2.js',
                                     //'//platform.twitter.com/widgets.js',
                                     
@@ -91,7 +91,7 @@
                 };
 
                 filesTotal = filesToLoad.length+1;
-                self.loadJS(firstFile, onJSLoaded);
+                self.loadJS(filesToLoad[0], onJSLoaded);
                 
 
             },  

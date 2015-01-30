@@ -306,6 +306,13 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 FB.ui(obj, function(event){
                     OC_ET.event("edfbc");
                     if(window.postedToFacebook){
+                        OC_ET.event("uiebfb");
+                        try {
+                            if(self.model.config.messageId.length > 4) {
+                                OC_ET.embed_session = 2;
+                                OC_ET.event("uiebfb");
+                            }
+                        } catch(e) {}
                         self.onPostedToFacebook(event);
                     }
                 });

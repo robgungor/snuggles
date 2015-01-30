@@ -88,6 +88,9 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", 'view
                     self.model.set({'mId': mId});                       
                     self.model.set({'hasChanged': false});  
                     $('#main-loading-spinner').fadeOut(300);
+                    
+                    OC_ET.event("edsv");//Messages created
+
                     // pass along to next step, use apply for scope and inheritance
                     if(shareView) shareView.share.apply(shareView, [mId]);
                   }

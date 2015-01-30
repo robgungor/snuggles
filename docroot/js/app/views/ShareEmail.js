@@ -85,7 +85,19 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", "text
                 // mail_href_msg += "body=Hi%2C%0D%0A%0D%0ASomeone wants to make your holidays merry and bright!%0D%0A%0D%0A";
                 // mail_href_msg += "Click "+here_link+" to see your Note from the Nutcracker!%0D%0A%0D%0A";
                 // mail_href_msg += "Privacy Policy (http://content.oddcast.com/host/nutcracker/privacy.php)";
-                window.location.href = mail_href_msg;               
+                window.location.href = mail_href_msg;          
+
+                //Sharing via email
+                OC_ET.event("edems");
+                //email message sent to 1 or more recipients 
+                OC_ET.event("evrcpt"); 
+
+                try {
+                if(this.model.config.messageId.length > 4) {
+                    OC_ET.embed_session = 2;
+                    OC_ET.event("edems");
+                }
+            } catch(e) {}    
             },
 
             emailMessage : function (mid, fromInfo, toInfos, extradata, cb){
