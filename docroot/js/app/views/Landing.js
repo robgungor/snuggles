@@ -5,12 +5,13 @@ define(["jquery",
         "models/App", 
         "text!templates/landing.html", 
         "text!templates/video-preview.html", 
+        "text!templates/alert.html", 
         "utils/OC_Utils", 
         "utils/OC_MessageSaver", 
         "views/Sharing", 
         "jqueryui"],
 
-    function($, Backbone, Model, template, previewTemplate, OC_Utils, OC_MessageSaver, Sharing) {
+    function($, Backbone, Model, template, previewTemplate, alertTemplate, OC_Utils, OC_MessageSaver, Sharing) {
         
         var Landing = Backbone.View.extend( {
 
@@ -47,12 +48,12 @@ define(["jquery",
               'click .poster-image': 'onVideoPreviewClick',
               'click .email'  : 'onEmailShareClick',
               'click .fb'     : 'onFbShareClick',
-              'click .twitter': 'onTwitterShareClick',
+              'click .twitter': 'onTwitterShareClick',              
 
               'change input'  : 'onInputChange',
-              'keypress input'  : 'onInputChange',
+              'keyup input'  : 'onInputChange',
                             
-              'mousedown .bubble':'onVideoSelectClick',   
+              'mousedown .video-select':'onVideoSelectClick',   
 
               'orientationchange':'onOrientationChange'
             },     
@@ -73,7 +74,7 @@ define(["jquery",
                 $('#video-loading-spinner').hide();
                 return this;
             },
-
+            
             onNameListLoaded: function(data) {
                 var self = this;                
 
@@ -100,7 +101,35 @@ define(["jquery",
                 var self = this;
                 // only do this on save. 
                 self.model.set({'hasChanged':true});
-                self.updateInputValues();     
+                if( !self.checkForBadWords() ) self.updateInputValues();     
+            },
+
+            checkForBadWords: function(){
+              var self = this;
+              var badWordsPresent = false;
+              // if either are true, set to true - otherwise it's false              
+              badWordsPresent = self.checkFieldForBadWords($('#tname')) || self.checkFieldForBadWords($('#fname'));
+              if(badWordsPresent) 
+              {
+                  self.renderBadWordsAlert();
+                  $('#alert').fadeIn(300);
+              }
+              return badWordsPresent;
+            },
+            checkFieldForBadWords: function($field){
+              var self = this;
+              var badWordsPresent = self.model.badWords.isBadWord($field.val());              
+              if(badWordsPresent) $field.val('');             
+              return badWordsPresent;
+            },
+            renderBadWordsAlert: function() {
+              var self = this;
+              if($('#alert')) $('#alert').remove();
+              $('body').append(_.template(alertTemplate, {'title':'Please use a different word.'}));
+              $('#bad-words-ok').on('click', function(e){ self.onBadWordsOkClick(e);});
+            },
+            onBadWordsOkClick: function(e){
+              $('#alert').fadeOut(300);
             },
 
             updateInputValues: function() {
@@ -129,6 +158,8 @@ define(["jquery",
                 else this.playVideo();
                 
             },
+
+            
 
             loadAndPlayVideo: function() {
                 var self = this;

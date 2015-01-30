@@ -8,6 +8,11 @@
 	top: 0;
 	display: none;
 
+	button.bubble{
+		-webkit-transform: scale(1.4);
+		transform: scale(1.4);
+		-ms-transform: scale(1.4);
+	}
 	.share-in, .share-result {
 		background: transparent;
 		top: 50%;

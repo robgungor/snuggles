@@ -14,7 +14,7 @@ main#landing {
 	padding-bottom: 0;
 	min-height: 100vh;
 	font-size: 1em;
-
+	
 	&.loaded {
 		position: relative;
 	}
@@ -318,6 +318,7 @@ ul.ui-autocomplete {
 		max-width: calc(57% - 60px);
 	}
 }
+
 
 #main-bg-container {
     background: url(../img/common/main-bg.jpg) no-repeat top left;

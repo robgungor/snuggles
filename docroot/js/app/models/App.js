@@ -1,8 +1,8 @@
 // Model.js
 // --------
-define(["jquery", "backbone","collections/Names",  "models/Settings"],
+define(["jquery", "backbone", "collections/Names",  "models/Settings", "collections/BadWords"],
 
-    function($, Backbone, Names, Settings) {
+    function($, Backbone, Names, Settings, BadWords) {
 
         // Creates a new Backbone Model class object
         var App = Backbone.Model.extend({
@@ -11,11 +11,13 @@ define(["jquery", "backbone","collections/Names",  "models/Settings"],
             settings: null,
             names: null,
             friends: null,
+            badWords: null,
             // Model Constructor
             initialize: function(options) {                
-                               
-                this.settings   = new Settings({config:options.config});
-                this.names      = new Names([], {config:options.config});
+                this.settings   = new Settings(     {config:options.config});
+                this.names      = new Names([],     {config:options.config});
+                this.badWords   = new BadWords([],  {config:options.config})
+
                 this.config     = options.config;
             },
 
