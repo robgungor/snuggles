@@ -15,24 +15,22 @@ main#landing {
 	min-height: 100vh;
 	font-size: 1em;
 	
-	&.loaded {
-		position: relative;
-	}
-	
-	.snuggle-logo {
-		float: left;
-		position: absolute;
-		bottom: 15px;
-		left: 15px;
-		width: 71px;
+	// @media only screen 
+	// and (max-device-height: 400px) { 
+	// 	width: 100vh;
+	// 	left: calc( (100vh - 100vw) / 2 );
+	// }
 
-		@media screen 
-		and (min-device-width: $iphone6) 
-		{
-			width: 91px;
-		}
-	}
-	
+	// @media only screen 
+	// and (max-device-height: 600px) { 
+	// 	width: 100vh;
+	// }
+
+	// @media only screen 
+	// and (max-device-height: 800px) { 
+	// 	width: 90vw;
+	// }
+
 	@media screen 
 	and (min-device-width: $iphone6) 
 	{			
@@ -57,7 +55,24 @@ main#landing {
 		// 	bottom: 10px;
 		// }	
 	}
+	&.loaded {
+		position: relative;
+	}
 	
+	.snuggle-logo {
+		float: left;
+		position: absolute;
+		bottom: 15px;
+		left: 15px;
+		width: 71px;
+
+		@media screen 
+		and (min-device-width: $iphone6) 
+		{
+			width: 91px;
+		}
+	}
+
 	header {
 		height: 13vh;
 		position: relative;	
@@ -319,6 +334,8 @@ main#landing {
 			margin: auto;
 		}
 	}
+
+
 }
 
 ul.ui-autocomplete {	
