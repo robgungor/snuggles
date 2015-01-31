@@ -112,7 +112,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 self.onResize();
 
                 $('#main-loading-spinner').fadeOut(300);                
-                console.log('friends rendered');
+                
             },
             
             onResize: function(){
@@ -131,7 +131,14 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 self.$el.fadeIn();
                 $('#friend-selection').fadeIn();
                 $('.share-result').fadeOut();
-                $('#main-loading-spinner').fadeIn(300);                
+                
+                // we arlready have friends, hide the spinner
+                if(this.model.get('FBuserId') && this.model.get('friends')) {
+                    $('#main-loading-spinner').fadeOut(300);                
+                } else {
+                    $('#main-loading-spinner').fadeIn(300);
+                }     
+                
                 self.updateNavArrows();
             },
             
