@@ -22,7 +22,16 @@ body {
     &.loaded{
         background: url(../img/common/main-bg.jpg) no-repeat;
         background-size: cover;
-        background-attachment: fixed;     
+        background-attachment: fixed;  
+
+        //iPad only
+        @media only screen 
+        and (min-device-width : 728px) 
+        and (max-device-width : 1024px) 
+        and (orientation : portrait)
+        {    
+            background: url(../img/common/ipad-main-bg.jpg) no-repeat;
+        }
     }
 }
 

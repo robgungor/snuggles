@@ -7,7 +7,9 @@ require(["jquery", "backbone", "routers/MobileRouter", "jqueryui","jquerymobile"
   	
   // for main bg        
     //$('#main-bg-container').css({'opacity':'1'});
-    $('body').css({background:'url(img/common/main-bg.jpg) no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});   
+    var bg = $(window).width() > 767 ? 'img/common/ipad-main-bg.jpg' : 'img/common/main-bg.jpg';
+
+    $('body').css({background:'url('+bg+') no-repeat', 'background-size':'cover', 'background-attachment':'fixed'});   
 
     $.mobile.linkBindingEnabled = false;
 

@@ -93,6 +93,11 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                     col  = Math.floor(index / 5);
                     page = col % 3;
 
+                    // preload images (in case we aren't visible yet)
+                    var img = new Image();
+                    // load the image
+                    img.src = friend.get('pic_big');
+
                     if(row == 0) {
                         $colEl = $('<div class="col"></div>');
                     }
@@ -138,7 +143,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 } else {
                     $('#main-loading-spinner').fadeIn(300);
                 }     
-                
+
                 self.updateNavArrows();
             },
             
