@@ -93,7 +93,8 @@ nav.share, nav.visit{
     width: calc(38vw - 5px);
     margin: auto;
     min-width: 159px;
-
+    position: relative;
+    
     @media only screen 
     and (min-device-width : 768px) 
     and (max-device-width : 1024px) 
