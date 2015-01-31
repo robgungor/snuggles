@@ -271,9 +271,6 @@ main#landing {
 	// and (max-device-width : 1024px) 
 	// and (orientation : portrait)
 	{ 
-
-		
-		
 		.form-container {
 			
 			form {
@@ -314,6 +311,7 @@ main#landing {
 			}
 		}
 	}
+	
 	//iPad only
 	@media only screen 
 	and (min-device-width : 728px) 

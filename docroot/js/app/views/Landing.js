@@ -225,7 +225,7 @@ define(["jquery",
                 };                
 
                 $video.get(0).load();
-                
+                $('#main-loading-spinner').hide();
                 //Video Generated (Should occur when the custom video is displayed on the preview screen)
                 OC_ET.event("edvscr");
                 // play the video

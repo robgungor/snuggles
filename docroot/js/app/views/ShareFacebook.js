@@ -131,7 +131,7 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 self.$el.fadeIn();
                 $('#friend-selection').fadeIn();
                 $('.share-result').fadeOut();
-
+                $('#main-loading-spinner').fadeIn(300);                
                 self.updateNavArrows();
             },
             
