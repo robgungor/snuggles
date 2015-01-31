@@ -14,22 +14,6 @@ main#landing {
 	padding-bottom: 0;
 	min-height: 100vh;
 	font-size: 1em;
-	
-	// @media only screen 
-	// and (max-device-height: 400px) { 
-	// 	width: 100vh;
-	// 	left: calc( (100vh - 100vw) / 2 );
-	// }
-
-	// @media only screen 
-	// and (max-device-height: 600px) { 
-	// 	width: 100vh;
-	// }
-
-	// @media only screen 
-	// and (max-device-height: 800px) { 
-	// 	width: 90vw;
-	// }
 
 	@media screen 
 	and (min-device-width: $iphone6) 
@@ -187,6 +171,13 @@ main#landing {
 			aside {			
 				// font-size: 10px;
 				font-size: 0.5em;
+
+				@media screen 
+				and (min-device-width: $iphone6plus) 
+				{
+					font-size: 0.4em;
+				}
+
 				width: calc(100% - 4.7em);
 				text-align: center;
 				padding-left: 14%;
