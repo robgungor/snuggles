@@ -47,9 +47,10 @@ main#landing {
 	and (min-device-width: $iphone6plus) 
 	{					
 		font-size: 1.2em;
-		width: 82vw;
-		padding: 0 9vw;	
-
+		// width: 82vw;
+		// padding: 0 9vw;	
+		width: 77vw;
+		padding: 0 12vw;
 		// .oddcast-logo {
 		// 	position: absolute;
 		// 	bottom: 10px;
@@ -172,7 +173,7 @@ main#landing {
 
 			aside {			
 				// font-size: 10px;
-				font-size: 0.55em;
+				font-size: 0.5em;
 				width: calc(100% - 4.7em);
 				text-align: center;
 				padding-left: 14%;
@@ -230,14 +231,14 @@ main#landing {
 					}		
 				}
 				@media screen and (min-device-width: $iphone6plus) {	
-					margin: 0.2rem .75rem;
-					-webkit-transform: scale(1.25);
-					transform: scale(1.25);
-					-ms-transform: scale(1.25);					
+					margin: 0.2rem .5rem;
+					-webkit-transform: scale(1.2);
+					transform: scale(1.2);
+					-ms-transform: scale(1.2);					
 					padding-bottom: 17px;
 					
 					&:active, &.selected {
-						padding-bottom: 8px;
+						padding-bottom: 17px;
 					}	
 				}		
 			}
@@ -311,7 +312,7 @@ main#landing {
 			}
 		}
 	}
-	
+
 	//iPad only
 	@media only screen 
 	and (min-device-width : 728px) 
