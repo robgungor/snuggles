@@ -26,7 +26,12 @@ define(["jquery", "backbone"],
             parse: function(data) {
                 var parsed = {};    
                 var $video = $(data).find('assets').find('video');
-                parsed.videoURL = $video.text();                
+                parsed.videoURL = $video.text();        
+                var extraData = decodeURIComponent($(data).find('extradata').text());  
+                // too brute --  
+                var selectedVideo = extraData.substr(extraData.indexOf('selectedVideo')+14,extraData.indexOf('selectedVideo')+15);
+               // console.log('selectedVideo: '+extraData);
+                parsed.selectedVideo = selectedVideo || '0';
                 // convert each element to JSON element
                 // $(data).find('data').children().each(function (index) {     
                 //     var nodeName        = $(this)[0].localName;

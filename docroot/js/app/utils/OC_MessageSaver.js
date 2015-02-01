@@ -15,10 +15,9 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			
 	        extraData = extraData || {};
 	        extraData.selectedVideo =  model.get('selectedVideo');
-	        console.log("extradata");
-	        console.log(extraData);
+	        
 			var strExtraData = "";
-			for (var prop in extraData) {
+			for (var prop in extraData) {				
 				strExtraData += prop +"=" +encodeURIComponent(extraData[prop]) +"&amp;";
 			}
 			// 		  	<player>
@@ -70,7 +69,7 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 			xml += '      <id>1</id>\n';
 			xml += '    </scene>\n';
 			xml += '  </scenes>\n';
-			xml += '  <extradata></extradata>\n'; //' +strExtraData +'
+			xml += '  <extradata>'+strExtraData+'</extradata>\n'; //' +strExtraData +'
 			xml += '</player>\n';
 
 			var tmp;			
