@@ -69,7 +69,7 @@ define(["jquery",
                 // Dynamically updates the UI with the view's template
                 this.$el.html(this.template);
 
-                $('#video-preview').append(_.template(previewTemplate, this.model.toJSON()));
+                $('#video-preview').html(_.template(previewTemplate, this.model.toJSON()));
 
                 // first time, show this
                 $('.poster-image').css({opacity:1});
@@ -172,7 +172,12 @@ define(["jquery",
                   self.embedAndPlayVideo();
                   self.model.set({'hasChanged':false});
                 }
+                try{
+                  $('video').get(0).pause();
+                }catch(e){}
                 
+                $('video').remove();
+                $('#video-container').remove();
                 self.model.fetchVideoLink(onGotPreviewVideoLink);
 
                 //lock the screen

@@ -13,8 +13,10 @@ define(['backbone', 'underscore', 'utils/OC_Utils', 'utils/OC_Parser'],
 	    //NOTE saveMessage
 		saveMessage : function (model, extraData, callback){
 			
-			console.log('saving message: '+model.get('selectedVideo'));			
-	        
+	        extraData = extraData || {};
+	        extraData.selectedVideo =  model.get('selectedVideo');
+	        console.log("extradata");
+	        console.log(extraData);
 			var strExtraData = "";
 			for (var prop in extraData) {
 				strExtraData += prop +"=" +encodeURIComponent(extraData[prop]) +"&amp;";
