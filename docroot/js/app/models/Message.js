@@ -32,7 +32,7 @@ define(["jquery", "backbone"],
                 var selectedVideo = extraData.substr(extraData.indexOf('selectedVideo')+14,extraData.indexOf('selectedVideo')+15);
                // console.log('selectedVideo: '+extraData);
                 selectedVideo = selectedVideo.split('=').join('').split('&').join('');
-                parsed.selectedVideo = selectedVideo || '0';
+                parsed.selectedVideo = selectedVideo || '1';
                 // convert each element to JSON element
                 // $(data).find('data').children().each(function (index) {     
                 //     var nodeName        = $(this)[0].localName;
