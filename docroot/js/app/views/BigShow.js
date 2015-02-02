@@ -80,7 +80,8 @@ define(["jquery", "backbone", "models/Message", "text!templates/big-show.html", 
             
 
             // play the video
-            $video.get(0).play();
+            $video.get(0).load();
+            //$video.get(0).play();
           },
             
           playVideo: function() {
