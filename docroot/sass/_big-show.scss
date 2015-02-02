@@ -30,7 +30,14 @@
 
 	video {
 		margin-top: 20px;
+
+		@media only screen 
+		and (max-device-height : 568px) 
+		{ 
+			margin-top: 7px;
+		}
 		width: 100%;
+		padding-bottom: 0;
 	}
 
 	.snuggle-logo {
@@ -56,6 +63,11 @@
 		border: none;
 		margin-top: 40px;
 
+		@media only screen 
+		and (max-device-height : 568px) 
+		{ 
+			margin-top: 7px;
+		}
 		&:active {
 			background: url("../img/big_show/create-your-own-active@2x.png") no-repeat;
 			background-size: 100%;

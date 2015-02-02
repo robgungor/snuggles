@@ -31,6 +31,7 @@ define(["jquery", "backbone"],
                 // too brute --  
                 var selectedVideo = extraData.substr(extraData.indexOf('selectedVideo')+14,extraData.indexOf('selectedVideo')+15);
                // console.log('selectedVideo: '+extraData);
+                selectedVideo = selectedVideo.split('=').join('').split('&').join('');
                 parsed.selectedVideo = selectedVideo || '0';
                 // convert each element to JSON element
                 // $(data).find('data').children().each(function (index) {     
