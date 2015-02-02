@@ -64,6 +64,12 @@
 		margin-top: 40px;
 
 		@media only screen 
+		and (max-device-width : $iphone6) 
+		{ 
+			margin-top: 15px;
+		}
+
+		@media only screen 
 		and (max-device-height : 568px) 
 		{ 
 			margin-top: 7px;
