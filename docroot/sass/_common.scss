@@ -99,8 +99,10 @@ button.bubble {
 }
 
 nav.share, nav.visit{
+    width: 53%; /*fallback*/
     width: calc(38vw - 5px);
     margin: auto;
+    min-height: 50px;
     min-width: 159px;
     position: relative;
     
