@@ -33,12 +33,19 @@ main#landing {
 		font-size: 1.2em;
 		// width: 82vw;
 		// padding: 0 9vw;	
+		width: 72%;
 		width: 72vw;
 		padding: 0px 14vw;
 		// .oddcast-logo {
 		// 	position: absolute;
 		// 	bottom: 10px;
 		// }	
+	}
+
+	@media (min-device-width: 800px) { 
+		width: 72%;
+		font-size: 1.2em;		
+		padding: 0px 14vw;
 	}
 
 	&.loaded {
