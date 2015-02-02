@@ -78,12 +78,16 @@ define(["jquery", "backbone", "models/App", "text!templates/sharing.html", "text
                 var link = this.model.getMessageLink();
                 this.model.set({'pickUpLink':link});
 
-                var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Special Valentine%E2%80%99s Day Snug&body=";
+                var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Special Valentine%E2%80%99s Day Snug&";
                 // mail_href_msg += "body=Hi "+Someone wants to make your holidays merry and bright!%0D%0A%0D%0A";
                 // mail_href_msg += "Click "+here_link+" to see your Note from the Nutcracker!%0D%0A%0D%0A";
                 // mail_href_msg += "Privacy Policy (http://content.oddcast.com/host/nutcracker/privacy.php)";
-                
-                mail_href_msg += _.template(EmailMessage, this.model.toJSON());
+                mail_href_msg += 'Hi '+this.model.get('toName')+'!%0D%0A%0D%0A'+this.model.get('fromName')+' sent you a Snug!%0D%0A%0D%0A';
+
+                mail_href_msg += 'Click here to see your customized video Valentine featuring Sunggle Bear.';
+                mail_href_msg += this.model.get('pickUpLink');
+
+//                mail_href_msg += _.template(EmailMessage, this.model.toJSON());
                 //  var mail_href_msg = "mailto:?subject=You%E2%80%99ve Received a Note from the Nutcracker and Lindeman%E2%80%99s!&";
                 // mail_href_msg += "body=Hi%2C%0D%0A%0D%0ASomeone wants to make your holidays merry and bright!%0D%0A%0D%0A";
                 // mail_href_msg += "Click "+here_link+" to see your Note from the Nutcracker!%0D%0A%0D%0A";
