@@ -23,7 +23,7 @@ define(["jquery",
                 var self = this;
 
                 self.model.set( {'selectedVideo':'1', 'autoplay':''} );
-                self.model.set( {'hasChanged':true} );
+                self.model.set( {'hasChanged':true, 'namesHaveChanged':true} );
                 self.sharing = new Sharing( {model:this.model} );
                 
                 //self.model.set({'videoURL':'http://host-vd.oddcast.com/ccs7/tmp/APS/video/75/c6/75c622f1465ba12c3d297fe22ac056fb/75c622f1465ba12c3d297fe22ac056fb.mp4'});
@@ -104,13 +104,13 @@ define(["jquery",
 
             onInputChange: function(e) {
                 var self = this;
-                // only do this on save. 
-                self.model.set({'hasChanged':true});
+                
                 if( !self.checkForBadWords() ) self.updateInputValues();     
             },
 
             checkForBadWords: function(){
               var self = this;
+
               var badWordsPresent = false;
               // if either are true, set to true - otherwise it's false              
               badWordsPresent = self.checkFieldForBadWords($('#tname')) || self.checkFieldForBadWords($('#fname'));
@@ -121,18 +121,22 @@ define(["jquery",
               }
               return badWordsPresent;
             },
+
             checkFieldForBadWords: function($field){
               var self = this;
+
               var badWordsPresent = self.model.badWords.isBadWord($field.val());              
               if(badWordsPresent) $field.val('');             
               return badWordsPresent;
             },
+
             renderBadWordsAlert: function() {
               var self = this;
               if($('#alert')) $('#alert').remove();
               $('body').append(_.template(alertTemplate, {'title':'Please use a different word.'}));
               $('#bad-words-ok').on('click', function(e){ self.onBadWordsOkClick(e);});
             },
+
             onBadWordsOkClick: function(e){
               $('#alert').fadeOut(300);
             },
@@ -148,8 +152,11 @@ define(["jquery",
 
                 self.model.set({
                   'toName':toName,
-                  'fromName':fromName
-                });                  
+                  'fromName':fromName,
+                  'hasChanged':true,
+                  'namesHaveChanged':true
+                });      
+                
             },
             // on click of a thumbnail
             onVideoPreviewClick: function(e) {
@@ -157,7 +164,7 @@ define(["jquery",
                 e.preventDefault();
                 
                 OC_ET.event("ce3");
-                if( this.model.get('hasChanged') )this.loadAndPlayVideo();
+                if( this.model.get('namesHaveChanged') )this.loadAndPlayVideo();
                 else this.playVideo();
                 
             },
@@ -169,7 +176,7 @@ define(["jquery",
                 // use local callback for scope
                 var onGotPreviewVideoLink = function(){                  
                   self.embedAndPlayVideo();
-                  self.model.set({'hasChanged':false});
+                  self.model.set({'hasChanged':true, 'namesHaveChanged':false});
                 }
                 try{
                   $('video').get(0).pause();

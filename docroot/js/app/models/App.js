@@ -71,7 +71,7 @@ define(["jquery", "backbone", "collections/Names",  "models/Settings", "collecti
                   
                   },
                   complete: function(data, textStatus, errorThrown) { 
-                    console.log(data.responseText); 
+                    
                     var url = $(data.responseText).attr('URL');
                     self.set({'videoURL':url});
                     if(cb!=undefined)cb(url);  
