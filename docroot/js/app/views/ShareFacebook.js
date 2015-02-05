@@ -127,6 +127,9 @@ define(["jquery", "backbone", "models/App", "text!templates/share-facebook.html"
                 var totalPages = Math.floor(total/perPage);
                 var $container = $('#friend-container');
                 $container.css({'width':totalPages * ($container.find('.page').width()-25) });
+
+                $('body').css({'min-height':$(window).height()});   
+                $('#sharing-facebook').css({'min-height':$(window).height()});   
             },
 
             share: function(mId){

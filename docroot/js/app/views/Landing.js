@@ -40,8 +40,7 @@ define(["jquery",
                   self.$el.addClass('loaded');                  
                 }, 300);
 
-                self.updateInputValues();
-                console.log(OC_ET);
+                self.updateInputValues();               
             },
             
             // View Event Handlers
