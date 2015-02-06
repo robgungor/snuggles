@@ -54,20 +54,29 @@ main#landing {
 		position: relative;
 	}
 	
-	.snuggle-logo {
-		float: left;
-		position: absolute;
-		bottom: 15px;
-		left: 15px;
-		width: 71px;
+	footer{
+		margin-top: 3px;
 
-		@media screen 
-		and (min-device-width: $iphone6) 
-		{
-			width: 91px;
+		.legal{
+			color: #ffffff;
+			font-size: .85em;
+			text-align: center;
+			
+			a{
+				text-decoration: none;
+			}
 		}
-	}
 
+		.snuggle-logo {
+			float: left;
+			position: relative;
+			bottom: -4px;
+			left: -77px;
+			width: 69px;
+		}
+
+	}
+	
 	header {
 		height: 13vh;
 		position: relative;	

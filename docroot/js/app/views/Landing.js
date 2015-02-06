@@ -168,6 +168,7 @@ define(["jquery",
                 else this.playVideo();
                 
             },
+            
             loadAndPlayVideo: function() {
                 var self = this;
 
