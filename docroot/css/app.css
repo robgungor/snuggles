@@ -22,6 +22,8 @@
   text-align: center;
   /*            margin: 0 auto;*/ }
 
+@-ms-viewport {
+  width: device-width; }
 body {
   background-color: #24afe9;
   background: linear-gradient(top, #ffffff 0%, #24afe9 100%);
@@ -481,6 +483,10 @@ main#landing {
       main#landing #sharing-nav button {
         max-width: 80px;
         max-height: 80px; } }
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    main#landing {
+      /* Retina-specific stuff here */
+      font-size: .8em; } }
   @media only screen and (min-device-width: 728px) and (max-device-width: 1024px) and (orientation: portrait) {
     main#landing #video-preview {
       padding: 0;

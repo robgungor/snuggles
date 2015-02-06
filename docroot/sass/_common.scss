@@ -9,6 +9,8 @@
 /*            margin: 0 auto;*/
 }
 
+@-ms-viewport{   width:device-width; }
+
 body {
     background-color: $bg-color;
     background: linear-gradient(top, #ffffff 0%,#24afe9 100%);

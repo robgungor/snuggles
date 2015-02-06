@@ -287,7 +287,6 @@ main#landing {
 
 	}
 
-
 	// tablet styles
 	@media only screen 
 	and (min-device-width : 600px) 
@@ -335,7 +334,14 @@ main#landing {
 			}
 		}
 	}
-
+	// trying to fix windows 8 here...
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and ( min-resolution: 192dpi),
+	only screen and ( min-resolution: 2dppx) {
+	    /* Retina-specific stuff here */
+	    font-size: .8em;	   
+	}
 	//iPad only
 	@media only screen 
 	and (min-device-width : 728px) 
