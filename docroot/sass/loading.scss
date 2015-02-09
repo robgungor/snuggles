@@ -183,7 +183,9 @@ body {
         transition: width .5s ease-out 0;
     }  
 
-    @media screen and (max-width: 320px) {
+    @media only screen 
+    and (min-device-width : 320px) 
+    and (max-device-width : 480px) {
          .loading-logo, .loading-bar, .loading-oddcast-logo {
             -webkit-transform: scale(.8);
             transform: scale(.8);
@@ -203,8 +205,23 @@ body {
         .share-a-snug .loading-text {
             margin-top: -10%;
         }
-    }
 
+
+       
+    }
+    
+
+    @media only screen 
+    and (max-width : 320px) 
+    { 
+        .share-a-snug img{
+           width: 77%;
+           margin: auto;
+        }
+        .share-a-snug {
+            margin-top: -42vw;
+        }
+    }
     @media only screen 
     and (min-width : 600px) 
     { 
