@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "VAG Rounded W01 Thin";
   src: url("../fonts/710839/c6cde420-95aa-4d44-8874-0fdf667e66a7.eot?#iefix");
@@ -285,7 +286,95 @@ main#landing {
   overflow-y: scroll;
   padding-bottom: 0;
   min-height: 100vh;
-  font-size: 1em; }
+  font-size: 1em;
+  	/* ==========================================================================
+  TARGET PATTERNS
+  source: http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
+  compiled by Annika Lidne, annikalidne.com
+  ========================================================================== */
+  /*——————————————————
+  MOBILE & SMART PHONES – ANY ORIENTATION – MAX WIDTH
+  ——————————————————–*/
+  /*–Low-end mobiles –*/
+  /*– HTC Desire, HTC Nexus One, HTC One SV, HTC Evo, HTC HD2, HTC Thunderbolt, LG Optimus 2X, LG LU1400, LG Optimus 3D, Lumia 710, Samsung Epic (D700), Samsung Nexus S SAMOLED, Samsung Nexus S LCD, Galaxy S Plus (I9001), Galaxy S II (I9100), –*/
+  /*– HTC Sensation, HTC Evo HD, HTC Sensation XE–*/
+  /*– LG Optimus LTE, LG Spectrum (VS920), LG Optimus 4X HD-*/
+  /*– iPhone 4, 4S, iPod Touch 4Gen–*/
+  /*– iPhone 5, iPod Touch 5Gen–*/
+  /*– HTC OneX, LG Nexus 4, Blackberry Z10, Samsung Galaxy Nexus, HTC Evo LTE, Galaxy S III (I9300), Samsung Galaxy Note, Samsung Galaxy Note II, Sony Xperia S, -*/
+  /*– HTCOne, Sony Xperia, HTC Droid DNA, Samsung Galaxy S4, Sony Xperia Z */
+  /*– Lumia 
+  @media only screen and (-webkit-min-device-pixel-ratio: 5:3) and (max-device-width:1280px) { }
+  */
+  /*——————————————-
+  TABLETS
+  ——————————————–*/
+  /*– iPad 1Gen/2Gen iPad Mini, Kindle Fire –*/
+  /*– Nexus 7 (2012)–*/
+  /*– Kindle Fire 7″ –*/
+  /*– Kindle Fire HD 8.9″–*/
+  /*– Nexus 7, Samsung Galaxy Note III –*/
+  /*– iPad 3Gen/4Gen, –*/
+  /*————————–
+  TABLETS/ DESKTOP
+  ————————–*/
+  /*– Macbook Pro 13″, Samsung Nexus 10 –*/
+  /*– Macbook Pro 15″ –*/
+  /*——————————————————
+  MOBILE & SMART PHONES – LANDSCAPE
+  ——————————————————–*/
+  /*–Low-end mobiles –*/
+  /*– HTC Desire, HTC Nexus One, HTC One SV, HTV Evo, HTC HD2, HTC Thunderbolt, LG Optimus 2X, LG LU1400, LG Optimus 3D, Lumia 710, Samsung Epic (D700), Samsung Nexus S SAMOLED, Samsung Nexus S LCD, Galaxy S Plus (I9001), Galaxy S II (I9100), –*/
+  /*– HTC Sensation, HTC Evo HD, HTC Sensation XE–*/
+  /*– LG Optimus LTE, LG Spectrum (VS920), LG Optimus 4X HD-*/
+  /*– iPhone 4, 4S, iPod Touch 4Gen–*/
+  /*– iPhone 5, iPod Touch 5Gen–*/
+  /*– HTC OneX, LG Nexus 4, Blackberry Z10, Samsung Galaxy Nexus, HTC Evo LTE, Galaxy S III (I9300), Samsung Galaxy Note, Samsung Galaxy Note II, Sony Xperia S, -*/
+  /*– HTCOne, Sony Xperia, HTC Droid DNA, Samsung Galaxy S4, Sony Xperia Z */
+  /*– Lumia 
+  @media only screen and (-webkit-min-device-pixel-ratio: 5:3) and (max-device-width:1280px) and (orientation : landscape) { }
+  */
+  /*——————————————-
+  TABLETS
+  ——————————————–*/
+  /*– iPad 1Gen/2Gen iPad Mini, Kindle Fire –*/
+  /*– Nexus 7 (2012)–*/
+  /*– Kindle Fire 7″ –*/
+  /*– Kindle Fire HD 8.9″–*/
+  /*– Nexus 7 (2013), Samsung Galaxy Note III –*/
+  /*– iPad 3Gen/4Gen, –*/
+  /*————————–
+  TABLETS/ DESKTOP
+  ————————–*/
+  /*– Macbook Pro 13″, Samsung Nexus 10 –*/
+  /*– Macbook Pro 15″ –*/
+  /*——————————————————
+  MOBILE & SMART PHONES – PORTRAIT
+  ——————————————————–*/
+  /*–Low-end mobiles –*/
+  /*– HTC Desire, HTC Nexus One, HTC One SV, HTC Evo, HTC HD2, HTC Thunderbolt, LG Optimus 2X, LG LU1400, LG Optimus 3D, Lumia 710, Samsung Epic (D700), Samsung Nexus S SAMOLED, Samsung Nexus S LCD, Galaxy S Plus (I9001), Galaxy S II (I9100), –*/
+  /*– HTC Sensation, HTC Evo HD, HTC Sensation XE–*/
+  /*– LG Optimus LTE, LG Spectrum (VS920), LG Optimus 4X HD-*/
+  /*– iPhone 4, 4S, 5, iPod Touch 4Gen, 5Gen–*/
+  /*– Samsung Galaxy Nexus, Galaxy S III (I9300), Samsung Galaxy Note II, , Sony Xperia S, -*/
+  /*– LG Nexus 4, Blackberry Z10, Samsung Galaxy Note, Samsung Galaxy Note II -*/
+  /*– HTC OneX, HTC Evo LTE, LG Nexus 4, Blackberry Z10 -*/
+  /*– Samsung Galaxy Note -*/
+  /*– HTCOne, HTC Droid DNA, Samsung Galaxy S4, Sony Xperia Z */
+  /*– Lumia 
+  @media only screen and (-webkit-min-device-pixel-ratio: 5:3) and (max-device-width:768px) and (orientation : portrait) { }
+  */
+  /*——————————————-
+  TABLETS
+  ——————————————–*/
+  /*– Kindle Fire –*/
+  /*– iPad 1Gen/2Gen iPad Mini, –*/
+  /*– Kindle Fire 7″ –*/
+  /*– Kindle Fire HD 8.9″–*/
+  /*– Samsung Galaxy Note III */
+  /*– Nexus 7 –*/
+  /*– iPad 3Gen/4Gen, –*/
+  /*–Samsung Nexus 10 –*/ }
   @media screen and (min-device-width: 375px) {
     main#landing {
       font-size: 1.1em;
@@ -496,6 +585,18 @@ main#landing {
     main#landing header, main#landing section {
       max-width: 72%;
       margin: auto; } }
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) and (max-device-width: 1920px) {
+    main#landing {
+      /* Retina-specific stuff here */
+      font-size: .8em; } }
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5) and (max-device-width: 540px) and (orientation: portrait) {
+    main#landing {
+      /* Retina-specific stuff here */
+      font-size: .8em; } }
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) and (max-device-width: 1080px) and (orientation: portrait) {
+    main#landing {
+      /* Retina-specific stuff here */
+      font-size: .8em; } }
 
 ul.ui-autocomplete {
   max-width: calc(84% - 60px);
