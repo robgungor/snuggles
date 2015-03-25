@@ -149,7 +149,12 @@ body {
     #loading .snuggle-logo {
       width: 63px; }
     #loading .share-a-snug .loading-text {
-      margin-top: -10%; } }
+      margin-top: -10%; }
+    #loading .share-a-snug img {
+      width: 77%;
+      margin: auto; }
+      #loading .share-a-snug img.standard {
+        margin: auto; } }
   @media only screen and (max-width: 320px) {
     #loading .share-a-snug img {
       width: 77%;
